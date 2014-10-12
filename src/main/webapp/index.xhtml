@@ -1,14 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Forum</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content"> 
+                <h:form id="form">           
+                    <p:growl id="msgs" showDetail="true" />
+                    <h2>Topics</h2>
+                    <p:accordionPanel multiple="true" activeIndex="0,1,2">
+                        <p:tab title="Topic 1">
+                            <h:panelGrid columns="1" cellpadding="10">
+                                <h:link value="SubTopic" outcome="threads"/>
+                                <h:link value="SubTopic" />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Topic 2">
+                            <h:panelGrid columns="1" cellpadding="10">
+                                <h:link value="SubTopic" />
+                                <h:link value="SubTopic" />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Topic 3">
+                            <h:panelGrid columns="1" cellpadding="10">
+                                <h:link value="SubTopic" />
+                                <h:link value="SubTopic" />
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:accordionPanel>    
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
