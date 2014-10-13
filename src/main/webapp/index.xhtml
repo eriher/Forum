@@ -16,7 +16,7 @@
                     <p:accordionPanel multiple="true" activeIndex="0,1,2">
                         <p:tab title="Topic 1">
                             <h:panelGrid columns="1" cellpadding="10">
-                                <h:link value="SubTopic" outcome="threads"/>
+                                <h:link value="SubTopic"  outcome="#{breadCrumbBB.navigateThreads()}"/>
                                 <h:link value="SubTopic" />
                             </h:panelGrid>
                         </p:tab>

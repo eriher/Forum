@@ -10,14 +10,20 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Forum</title>
         <meta name="Content-Type" content="text/html, charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="bootstrap.css"  />
+        <h:outputStylesheet library="css" name="default.css"  />
+        <title>Forum</title>
+        
     </h:head>
     <h:body>
         <header>
             <hgroup>
                 <h1>Forum</h1>
-                <h2>Test Forum</h2>
+                <h:form>
+                <p:breadCrumb model="#{breadCrumbBB.model}">
+                </p:breadCrumb>
+                </h:form>
             </hgroup>
         </header>
         

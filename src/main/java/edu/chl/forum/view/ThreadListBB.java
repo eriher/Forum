@@ -13,14 +13,13 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Named;
 
 
 /**
  *
  * @author erik
  */
-@Named
+@ManagedBean
 @ViewScoped
 public class ThreadListBB implements Serializable {
 

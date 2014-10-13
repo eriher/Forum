@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author erikk
+ * @author erik
  */
 @Entity
 public class User {

@@ -15,7 +15,7 @@
 
             <ui:define name="content">
                 <h:form> 
-                    <p:dataScroller value="#{threadListBB.getThreads()}" var="thread" chunkSize="5">
+                    <p:dataScroller value="#{threadListBB.threads}" var="thread" chunkSize="5">
                         <f:facet name="header">
                             Scroll Down to Load More Threads
                         </f:facet>

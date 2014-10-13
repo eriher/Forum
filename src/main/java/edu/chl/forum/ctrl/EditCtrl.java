@@ -7,7 +7,7 @@ package edu.chl.forum.ctrl;
 
 /**
  *
- * @author erikk
+ * @author erik
  */
 public class EditCtrl {
     

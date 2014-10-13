@@ -9,7 +9,7 @@ import javax.enterprise.context.RequestScoped;
 
 /**
  *
- * @author erikk
+ * @author erik
  */
 @RequestScoped
 public class EditBB {
