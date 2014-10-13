@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Olof
  */
-public interface IThreadCatalogue extends IEntityContainer<Thread,Long> {
+public interface ISubTopicCatalogue extends IEntityContainer<SubTopic,Long> {
     
-    public List<Thread> getByName(String name);
+    public List<SubTopic> getByName(String name);
 }

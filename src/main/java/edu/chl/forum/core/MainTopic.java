@@ -14,31 +14,31 @@ import java.util.List;
  *
  * @author Olof
  */
-public class Thread extends AbstractEntity{
+public class MainTopic extends AbstractEntity {
     
-    private final String name;
-    private final List<Post> posts = new ArrayList();
+    private String name;
+    private List<SubTopic> subTopics;
     
-    public Thread(String name, Post post){
+    public MainTopic(String name, List<SubTopic> list){
         this.name = name;
-        posts.add(post);
+        this.subTopics = list;
     }
     
-    public Thread(Long id, String name, Post post){
+    public MainTopic(Long id, String name, List<SubTopic> list){
         super(id);
         this.name = name;
-        posts.add(post);
+        this.subTopics = list;
     }
     
-    public String getName() {
+    public String getName(){
         return name;
     }
     
-    public List<Post> getList(){
-        return posts;
+    public List<SubTopic> getList(){
+        return subTopics;
     }
-    
-    public boolean addPost(Post post) {
-        return posts.add(post);
+     
+    public boolean addSubTopic(SubTopic topic){
+        return subTopics.add(topic);
     }
 }

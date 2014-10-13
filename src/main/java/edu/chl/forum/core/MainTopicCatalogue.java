@@ -14,27 +14,18 @@ import java.util.List;
  *
  * @author Olof
  */
-public final class ThreadCatalogue extends AbstractEntityContainer<Thread, Long>
-        implements IThreadCatalogue {
-    
-    private ThreadCatalogue() {
-        
-    }
-    
-    public static IThreadCatalogue newInstance() {
-        return new ThreadCatalogue();
-    }
+public final class MainTopicCatalogue extends AbstractEntityContainer<MainTopic, Long>
+        implements IMainTopicCatalogue{
     
     
     @Override
-    public List<Thread> getByName(String name) {
-        List<Thread> found = new ArrayList<>();
-        for (Thread p : findRange(0, count())) {
+    public List<MainTopic> getByName(String name) {
+        List<MainTopic> found = new ArrayList<>();
+        for (MainTopic p : findRange(0, count())) {
             if (p.getName().equals(name)) {
                 found.add(p);
             }
         }
         return found;
     }
-    
 }
