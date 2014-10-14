@@ -6,24 +6,44 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.util.AbstractEntityContainer;
+import edu.chl.forum.util.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Olof
  */
-public final class ThreadCatalogue extends AbstractEntityContainer<Thread, Long>
+@Stateless
+public  class ThreadCatalogue extends AbstractDAO<Thread, Long>
         implements IThreadCatalogue {
     
-    private ThreadCatalogue() {
-        
-    }
+    @PersistenceContext
+    EntityManager em;
     
+
     public static IThreadCatalogue newInstance() {
         return new ThreadCatalogue();
     }
+    
+    public ThreadCatalogue() {
+        super(Thread.class);
+    }
+    
+    @Inject
+    public void EntityManager(EntityManager em) {
+        this.em = em;
+    }
+    
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+        
     
     
     @Override

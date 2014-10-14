@@ -8,27 +8,32 @@ package edu.chl.forum.util;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author Olof
  */
-public abstract class AbstractEntity implements IEntity<Long>, Serializable{
+@MappedSuperclass
+public abstract class AbstractEntity implements Serializable{
     
-    
-    private final Long id; 
-    private static int counter = 1; 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; 
+
    
     protected AbstractEntity(){
-        // This is for now, later database will generate
-        this.id = new Long(counter++);
+
     }
     
     protected AbstractEntity(Long id){
         this.id = id;
     }
     
-    @Override
+
     public Long getId(){
         return id;
     }

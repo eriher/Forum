@@ -6,16 +6,38 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.util.AbstractEntityContainer;
+import edu.chl.forum.util.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Olof
  */
-public final class MainTopicCatalogue extends AbstractEntityContainer<MainTopic, Long>
+public final class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
         implements IMainTopicCatalogue{
+    
+        
+    @PersistenceContext
+    EntityManager em;
+    
+    public MainTopicCatalogue(){
+        super(MainTopic.class);
+    }
+    
+    @Inject
+    public void EntityManager(EntityManager em) {
+        this.em = em;
+    }
+    
+    @Override 
+    protected EntityManager getEntityManager(){
+        return em;
+    }
+            
     
     
     @Override

@@ -6,14 +6,16 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.util.IEntityContainer;
+import edu.chl.forum.util.IDAO;
 import java.util.List;
+import javax.ejb.Local;
 
 /**
  *
  * @author Olof
  */
-public interface ISubTopicCatalogue extends IEntityContainer<SubTopic,Long> {
+@Local
+public interface ISubTopicCatalogue extends IDAO<SubTopic,Long> {
     
     public List<SubTopic> getByName(String name);
 }

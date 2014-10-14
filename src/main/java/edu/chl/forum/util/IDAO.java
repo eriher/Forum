@@ -14,7 +14,7 @@ import java.util.List;
  * @param <T>
  * @param <K>
  */
-public interface IEntityContainer<T extends IEntity<K>, K> {
+public interface IDAO<T , K> {
     
     public void create(T t);
 

@@ -13,4 +13,6 @@ package edu.chl.forum.core;
 public interface IForum {
     
     public IThreadCatalogue getThreadCatalogue();
+    public ISubTopicCatalogue getSubTopicCatalogue();
+    public IMainTopicCatalogue getMainTopicCatalogue();
 }
