@@ -7,7 +7,10 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.util.AbstractEntity;
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -17,6 +20,8 @@ import javax.persistence.Entity;
 public class Post extends AbstractEntity  {
 
     private String name;
+    @Temporal (TemporalType.DATE)
+    private Date date;
     private String message;
 
     public Post() {

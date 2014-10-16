@@ -17,8 +17,10 @@ import javax.persistence.OneToMany;
  * @author Olof
  */
 @Entity
-public class SubTopic extends AbstractEntity {
-    @Column(name = "Title")
+
+
+public class SubTopic extends AbstractEntity{
+
     private String title;
     private String description;
     @OneToMany
@@ -41,7 +43,8 @@ public class SubTopic extends AbstractEntity {
         this.threads = list;
     }
     
-    public String getName(){
+
+    public String getTitle(){
         return title;
     }
     

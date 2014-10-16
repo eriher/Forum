@@ -29,14 +29,14 @@ public class MainTopic extends AbstractEntity {
         
     }
     
-    public MainTopic(String name, List<SubTopic> list){
-        this.title = name;
+    public MainTopic(String title, List<SubTopic> list){
+        this.title = title;
         this.subTopics = list;
     }
     
-    public MainTopic(Long id, String name, List<SubTopic> list){
+    public MainTopic(Long id, String title, List<SubTopic> list){
         super(id);
-        this.title = name;
+        this.title = title;
         this.subTopics = list;
     }
     

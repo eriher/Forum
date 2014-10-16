@@ -38,14 +38,14 @@ public class Thread extends AbstractEntity{
     public Thread() {
     }
     
-    public Thread(String name, Post post){
-        this.title = name;
+    public Thread(String title, Post post){
+        this.title = title;
         posts.add(post);
     }
     
-    public Thread(Long id, String name, Post post){
+    public Thread(Long id, String title, Post post){
         super(id);
-        this.title = name;
+        this.title = title;
         posts.add(post);
     }
     

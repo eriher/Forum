@@ -44,7 +44,7 @@ public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
     public List<SubTopic> getByName(String name) {
         List<SubTopic> found = new ArrayList<>();
         for (SubTopic p : findRange(0, count())) {
-            if (p.getName().equals(name)) {
+            if (p.getTitle().equals(name)) {
                 found.add(p);
             }
         }
