@@ -50,7 +50,7 @@ public  class ThreadCatalogue extends AbstractDAO<Thread, Long>
     public List<Thread> getByName(String name) {
         List<Thread> found = new ArrayList<>();
         for (Thread p : findRange(0, count())) {
-            if (p.getName().equals(name)) {
+            if (p.getTitle().equals(name)) {
                 found.add(p);
             }
         }

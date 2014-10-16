@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class SubTopic extends AbstractEntity {
     @Column(name = "Title")
-    private String name;
+    private String title;
     private String description;
     @OneToMany
     private List<Thread> threads;
@@ -30,19 +30,19 @@ public class SubTopic extends AbstractEntity {
     }
     
     public SubTopic(String name, String description, List<Thread> list){
-        this.name = name;
+        this.title = name;
         this.description = description;
         this.threads = list;
     }
     
     public SubTopic(Long id, String name, List<Thread> list){
         super(id);
-        this.name = name;
+        this.title = name;
         this.threads = list;
     }
     
     public String getName(){
-        return name;
+        return title;
     }
     
     public List<Thread> getList(){

@@ -6,11 +6,16 @@
 
 package edu.chl.forum.core;
 
+import edu.chl.forum.auth.User;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -19,7 +24,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Thread extends AbstractEntity{
     
-    private String name;
+    @OneToOne
+    private User user;
+    private String title;
+    private String content;
+    
+    @Temporal(TemporalType.DATE)
+    private  Date date = new Date();
+    
     @OneToMany
     private List<Post> posts = new ArrayList();
 
@@ -27,25 +39,37 @@ public class Thread extends AbstractEntity{
     }
     
     public Thread(String name, Post post){
-        this.name = name;
+        this.title = name;
         posts.add(post);
     }
     
     public Thread(Long id, String name, Post post){
         super(id);
-        this.name = name;
+        this.title = name;
         posts.add(post);
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public List<Post> getList(){
-        return posts;
     }
     
     public boolean addPost(Post post) {
         return posts.add(post);
+    }
+    
+    public String getTitle(){
+        return title;
+    }
+    
+     public User getUser() {
+        return user;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 }

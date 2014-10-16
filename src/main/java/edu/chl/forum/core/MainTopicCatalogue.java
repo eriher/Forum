@@ -44,7 +44,7 @@ public final class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
     public List<MainTopic> getByName(String name) {
         List<MainTopic> found = new ArrayList<>();
         for (MainTopic p : findRange(0, count())) {
-            if (p.getName().equals(name)) {
+            if (p.getTitle().equals(name)) {
                 found.add(p);
             }
         }

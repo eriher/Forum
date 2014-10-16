@@ -19,27 +19,37 @@ import javax.persistence.OneToMany;
 @Entity
 public class MainTopic extends AbstractEntity {
     
-    private String name;
+    private String title;
+    private String description;
     @OneToMany
     private List<SubTopic> subTopics;
     
+    
+    public MainTopic() {
+        
+    }
+    
     public MainTopic(String name, List<SubTopic> list){
-        this.name = name;
+        this.title = name;
         this.subTopics = list;
     }
     
     public MainTopic(Long id, String name, List<SubTopic> list){
         super(id);
-        this.name = name;
+        this.title = name;
         this.subTopics = list;
     }
     
-    public String getName(){
-        return name;
+    public String getTitle(){
+        return title;
     }
     
     public List<SubTopic> getList(){
         return subTopics;
+    }
+    
+    public String getDescription(){
+        return description;
     }
      
     public boolean addSubTopic(SubTopic topic){
