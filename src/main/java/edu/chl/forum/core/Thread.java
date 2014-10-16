@@ -9,15 +9,22 @@ package edu.chl.forum.core;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Olof
  */
+@Entity
 public class Thread extends AbstractEntity{
     
-    private final String name;
-    private final List<Post> posts = new ArrayList();
+    private String name;
+    @OneToMany
+    private List<Post> posts = new ArrayList();
+
+    public Thread() {
+    }
     
     public Thread(String name, Post post){
         this.name = name;

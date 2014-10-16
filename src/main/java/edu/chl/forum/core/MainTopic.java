@@ -9,14 +9,18 @@ package edu.chl.forum.core;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Olof
  */
+@Entity
 public class MainTopic extends AbstractEntity {
     
     private String name;
+    @OneToMany
     private List<SubTopic> subTopics;
     
     public MainTopic(String name, List<SubTopic> list){

@@ -22,6 +22,7 @@ public class Forum implements IForum, Serializable{
     @EJB IThreadCatalogue threadCatalogue;
     @EJB ISubTopicCatalogue subTopicCatalogue;
     @EJB IMainTopicCatalogue mainTopicCatalogue;
+    @EJB IUserCatalogue userCatalogue;
     
     
     private Forum() {

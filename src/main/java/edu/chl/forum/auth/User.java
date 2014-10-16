@@ -5,6 +5,7 @@
  */
 package edu.chl.forum.auth;
 
+import edu.chl.forum.util.AbstractEntity;
 import javax.persistence.Entity;
 
 /**
@@ -12,6 +13,15 @@ import javax.persistence.Entity;
  * @author erik
  */
 @Entity
-public class User {
+public class User extends AbstractEntity{
     
+    private String name;
+    
+    public User(String name){
+        this.name = name;
+    }
+    
+    public String getName(){
+        return name;
+    }
 }

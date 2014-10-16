@@ -7,15 +7,20 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.util.AbstractEntity;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Olof
  */
+@Entity
 public class Post extends AbstractEntity  {
 
-    private final String name;
-    private final String message;
+    private String name;
+    private String message;
+
+    public Post() {
+    }
     
     public Post(String name, String message){
         this.name = name;
