@@ -6,9 +6,11 @@
 
 package edu.chl.forum.core;
 
+import edu.chl.forum.auth.User;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,31 +21,30 @@ import javax.persistence.TemporalType;
 @Entity
 public class Post extends AbstractEntity  {
 
-    private String name;
+
+    private Long threadId;
+    private String content;
+    @ManyToOne
+    private User user;
     @Temporal (TemporalType.DATE)
     private Date date;
-    private String message;
 
     public Post() {
     }
     
-    public Post(String name, String message){
-        this.name = name;
-        this.message = message;
+    public Post(Long threadId, String content, User user, Date date){
+        this.threadId = threadId;
+        this.content = content;
+        this.user = user;
+        this.date = date;
     }
     
-    public Post(Long id, String name, String message){
+    public Post(Long id, Long threadId, String content, User user, Date date){
         super(id);
-        this.name = name;
-        this.message = message;
-    }
-
-    public String getName(){
-        return name;
-    }
-    
-    public String getMessage() {
-        return message;
+        this.threadId = threadId;
+        this.content = content;
+        this.user = user;
+        this.date = date;
     }
     
 }

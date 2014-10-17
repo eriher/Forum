@@ -40,7 +40,7 @@ public class ForumTest {
     public static Archive<?> createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "shop.war")
                 // Add all classes
-                .addPackage("edu.chl.hajo.shop.core")
+                .addPackage("edu.chl.forum.core")
                 // This will add test-persitence.xml as persistence.xml (renamed)
                 // in folder META-INF, see Files > jpa_managing > target > arquillian
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")

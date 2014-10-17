@@ -22,7 +22,7 @@ public class Forum implements IForum, Serializable{
     @EJB IThreadCatalogue threadCatalogue;
     @EJB ISubTopicCatalogue subTopicCatalogue;
     @EJB IMainTopicCatalogue mainTopicCatalogue;
-    @EJB IUserCatalogue userCatalogue;
+    //@EJB IUserCatalogue userCatalogue; 
     
     
     private Forum() {
@@ -50,6 +50,6 @@ public class Forum implements IForum, Serializable{
     
     private void initTestData(){
         Long i = 2212L;
-        threadCatalogue.create(new Thread("test", new Post(i, "olof", "blablabla")));
-    }
+        //threadCatalogue.create(new Thread("test", new Post(i, "olof", "blablabla")));
+    } 
 }

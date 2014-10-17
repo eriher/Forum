@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -24,7 +25,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Thread extends AbstractEntity{
     
-    @OneToOne
+    @ManyToOne
     private User user;
     private String title;
     private String content;

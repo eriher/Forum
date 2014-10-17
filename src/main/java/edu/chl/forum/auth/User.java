@@ -16,7 +16,10 @@ import javax.persistence.Entity;
 public class User extends AbstractEntity{
     
     private String name;
-    
+    private String password;
+    private String email;
+    private int rank;
+
     public User(){
         
     }
@@ -25,7 +28,21 @@ public class User extends AbstractEntity{
         this.name = name;
     }
     
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+    
     public String getName(){
         return name;
     }
+    
+
 }

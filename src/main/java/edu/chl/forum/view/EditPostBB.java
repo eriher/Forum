@@ -17,26 +17,25 @@ import javax.inject.Named;
 
 /**
  *
- * @author erik
+ * @author olof
  */
 @Named
 @RequestScoped
-public class AddPostBB implements Serializable {
+public class EditPostBB implements Serializable {
     
     private String content;
-    private Long threadId;
     private Date date;
     private User user;
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
     
     @PostConstruct
     public void post() {
-        LOG.log(Level.INFO, "AddPostBB alive {0}", this);
+        LOG.log(Level.INFO, "EditPostBB alive {0}", this);
     }
     
     @PreDestroy
     public void pre() {
-        LOG.log(Level.INFO, "AddPostBB to be destroyed {0}", this);
+        LOG.log(Level.INFO, "EditPostBB to be destroyed {0}", this);
     }
     
     public String getContent() {
@@ -49,10 +48,6 @@ public class AddPostBB implements Serializable {
 
     public User getUser() {
         return user;
-    }
-    
-    public Long getThreadId(){
-        return threadId;
     }
 
     public void setContent(String content) {
@@ -67,8 +62,6 @@ public class AddPostBB implements Serializable {
         this.user = user;
     }
     
-    public void setThreadId(Long threadId){
-        this.threadId = threadId;
-    }
+    
     
 }
