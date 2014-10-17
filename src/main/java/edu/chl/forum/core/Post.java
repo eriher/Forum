@@ -46,5 +46,23 @@ public class Post extends AbstractEntity  {
         this.user = user;
         this.date = date;
     }
+
+    public Long getThreadId() {
+        return threadId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    
+    
     
 }

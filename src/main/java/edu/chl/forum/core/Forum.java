@@ -22,6 +22,7 @@ public class Forum implements IForum, Serializable{
     @EJB IThreadCatalogue threadCatalogue;
     @EJB ISubTopicCatalogue subTopicCatalogue;
     @EJB IMainTopicCatalogue mainTopicCatalogue;
+    @EJB IPostCatalogue postCatalogue;
     //@EJB IUserCatalogue userCatalogue; 
     
     
@@ -42,6 +43,11 @@ public class Forum implements IForum, Serializable{
     @Override
     public IMainTopicCatalogue getMainTopicCatalogue() {
         return mainTopicCatalogue;
+    }
+
+    @Override
+    public IPostCatalogue getPostCatalogue() {
+        return postCatalogue;
     }
     
     public static IForum newInstance(){

@@ -53,12 +53,10 @@ public class AddPostCtrl {
     }
     
     // Will it work?
-    //ps Rename Thread, conflict with java.Lang.Thread
+    //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
         
-        edu.chl.forum.core.Thread thread = forum.getThreadCatalogue().find(postBB.getThreadId());
-        thread.addPost(new Post(postBB.getThreadId(), postBB.getContent(), postBB.getUser(), postBB.getDate()));
-        forum.getThreadCatalogue().update(thread);
+        forum.getPostCatalogue().
     }
 }

@@ -6,14 +6,16 @@
 
 package edu.chl.forum.core;
 
+import edu.chl.forum.util.IDAO;
+import java.util.List;
+import javax.ejb.Local;
+
 /**
  *
  * @author Olof
  */
-public interface IForum {
+@Local
+public interface IPostCatalogue extends IDAO<Post,Long> {
     
-    public IThreadCatalogue getThreadCatalogue();
-    public ISubTopicCatalogue getSubTopicCatalogue();
-    public IMainTopicCatalogue getMainTopicCatalogue();
-    public IPostCatalogue getPostCatalogue();
+    public List<Post> getByName(String name);
 }
