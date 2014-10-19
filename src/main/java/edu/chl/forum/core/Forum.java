@@ -23,11 +23,16 @@ public class Forum implements IForum, Serializable{
     @EJB ISubTopicCatalogue subTopicCatalogue;
     @EJB IMainTopicCatalogue mainTopicCatalogue;
     @EJB IPostCatalogue postCatalogue;
-    //@EJB IUserCatalogue userCatalogue; 
+    @EJB IUserCatalogue userCatalogue; 
     
     
     private Forum() {
         Logger.getAnonymousLogger().log(Level.INFO, "Forum alive!");
+    }
+    
+    @Override
+    public IUserCatalogue getUserCatalogue(){
+        return userCatalogue;
     }
     
     @Override

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -48,4 +49,18 @@ public class UserCatalogue extends AbstractDAO<User, Long>
         return found;
     }
     
+    public User login(String name, String password){
+        EntityManager em = getEntityManager();
+        TypedQuery q = em.createQuery("select U from User U where U.name=':name' and U.password=':password'",User.class);
+        q.setParameter("name", name);
+        q.setParameter("password", password);
+        
+        List<User> found = q.getResultList();
+        
+        if(found.isEmpty()){
+            return null;
+        } else {
+            return found.get(0);
+        }
+    }
 }

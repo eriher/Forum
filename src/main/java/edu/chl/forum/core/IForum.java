@@ -16,4 +16,5 @@ public interface IForum {
     public ISubTopicCatalogue getSubTopicCatalogue();
     public IMainTopicCatalogue getMainTopicCatalogue();
     public IPostCatalogue getPostCatalogue();
+    public IUserCatalogue getUserCatalogue();
 }

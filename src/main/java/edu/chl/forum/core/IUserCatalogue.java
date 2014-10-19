@@ -16,4 +16,5 @@ import java.util.List;
 public interface IUserCatalogue extends IDAO<User,Long> {
     
         public List<User> getByName(String name);
+        public User login(String name, String password);
 }
