@@ -30,10 +30,10 @@ public class PostCatalogue extends AbstractDAO<Post, Long>
         super(Post.class);
     }
     
-    /*@Inject
+    @Inject
     public void EntityManager(EntityManager em) {
         this.em = em;
-    }*/
+    }
     
     @Override 
     protected EntityManager getEntityManager(){

@@ -28,10 +28,10 @@ public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
         super(SubTopic.class);
     }
     
-    /*@Inject
+    @Inject
     public void EntityManager(EntityManager em) {
         this.em = em;
-    }*/
+    }
     
     @Override 
     protected EntityManager getEntityManager(){

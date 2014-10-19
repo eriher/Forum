@@ -30,10 +30,10 @@ public class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
         super(MainTopic.class);
     }
     
-    /*@Inject
+    @Inject
     public void EntityManager(EntityManager em) {
         this.em = em;
-    }*/
+    }
     
     @Override 
     protected EntityManager getEntityManager(){
