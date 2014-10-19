@@ -57,6 +57,6 @@ public class AddPostCtrl {
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
         
-        forum.getPostCatalogue().
+        //forum.getPostCatalogue().
     }
 }

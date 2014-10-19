@@ -9,6 +9,7 @@ package edu.chl.forum.core;
 import edu.chl.forum.util.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,10 +18,9 @@ import javax.persistence.PersistenceContext;
  *
  * @author Olof
  */
+@Stateless
 public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
         implements ISubTopicCatalogue {
- 
-    
     @PersistenceContext
     EntityManager em;
     
@@ -28,10 +28,10 @@ public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
         super(SubTopic.class);
     }
     
-    @Inject
+    /*@Inject
     public void EntityManager(EntityManager em) {
         this.em = em;
-    }
+    }*/
     
     @Override 
     protected EntityManager getEntityManager(){
