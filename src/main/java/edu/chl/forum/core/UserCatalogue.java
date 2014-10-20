@@ -31,11 +31,6 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
         super(ForumUser.class);
     }
     
-    @PersistenceContext
-    public void EntityManager(EntityManager em) {
-        this.em = em;
-    }
-    
     @Override 
     protected EntityManager getEntityManager(){
         return em;
