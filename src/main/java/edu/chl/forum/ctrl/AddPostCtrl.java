@@ -7,7 +7,6 @@ package edu.chl.forum.ctrl;
 
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
-import edu.chl.forum.core.SingletonForum;
 import edu.chl.forum.view.AddPostBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,8 +26,7 @@ public class AddPostCtrl {
     
     private AddPostBB postBB;
     private static final Logger LOG = Logger.getLogger(AddPostCtrl.class.getName());
-    private SingletonForum iForum;
-    private IForum forum;
+    private IForum iForum;
     
     protected AddPostCtrl(){
         
@@ -45,9 +43,8 @@ public class AddPostCtrl {
     }
     
     @Inject
-    public AddPostCtrl(SingletonForum forum){
+    public AddPostCtrl(IForum forum){
         this.iForum = forum;
-        this.forum = iForum.getForum();
     }
    
     @Inject
@@ -60,7 +57,7 @@ public class AddPostCtrl {
     public void save() {
        
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        forum.getPostCatalogue().create(new Post(postBB.getThreadId(),
+        iForum.getPostCatalogue().create(new Post(postBB.getThreadId(),
                 postBB.getContent(), postBB.getUser(), postBB.getDate()));
     
     }

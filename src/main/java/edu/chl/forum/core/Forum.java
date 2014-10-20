@@ -54,10 +54,10 @@ public class Forum implements IForum, Serializable{
     public IPostCatalogue getPostCatalogue() {
         return postCatalogue;
     }
-    
+    /*
     public static IForum newInstance(){
-        return new Forum();
-    }
+       // return new Forum();
+    }*/
     
     private void initTestData(){
         Long i = 2212L;

@@ -28,8 +28,7 @@ public class EditPostCtrl {
     
     private EditPostBB postBB;
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
-    private SingletonForum iForum;
-    private IForum forum;
+    private IForum iForum;
     
     
     protected EditPostCtrl(){
@@ -47,9 +46,8 @@ public class EditPostCtrl {
     }
     
     @Inject
-    public EditPostCtrl(SingletonForum forum){
-        this.iForum = forum;
-        this.forum = iForum.getForum();
+    public EditPostCtrl(IForum iForum){
+        this.iForum = iForum;
     } 
     
     @Inject
