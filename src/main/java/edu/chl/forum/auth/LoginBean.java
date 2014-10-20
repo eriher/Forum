@@ -51,7 +51,7 @@ public class LoginBean implements Serializable{
     }
     
     public String login(){
-        User user = forum.getUserCatalogue().login(loginBB.getUsername(), loginBB.getPassword());
+        ForumUser user = forum.getUserCatalogue().login(loginBB.getUsername(), loginBB.getPassword());
         if(user != null){
             HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             session.setAttribute("id", user.getId());

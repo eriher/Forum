@@ -6,7 +6,7 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.User;
+import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
 public class Thread extends AbstractEntity{
     
     @ManyToOne
-    private User user;
+    private ForumUser user;
     private String title;
     private String content;
     
@@ -58,7 +58,7 @@ public class Thread extends AbstractEntity{
         return title;
     }
     
-     public User getUser() {
+     public ForumUser getUser() {
         return user;
     }
 

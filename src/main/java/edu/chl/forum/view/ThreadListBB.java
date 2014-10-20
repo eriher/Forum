@@ -24,12 +24,14 @@ import javax.faces.bean.ViewScoped;
 public class ThreadListBB implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(ThreadListBB.class.getName()); 
+    //private List<Thread> threads;
     private List<String> threads;
          
     
     @PostConstruct
     public void init() {
         LOG.log(Level.INFO, "ThreadListBB alive {0}", this);
+        //threads = forum.getThreadCatalogue().findbynånting();
         threads = new ArrayList<>();
         for(int i=0;i<10;i++){
             threads.add("Thread"+Integer.toString(i));

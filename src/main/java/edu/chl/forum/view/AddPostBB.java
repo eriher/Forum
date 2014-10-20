@@ -5,7 +5,7 @@
  */
 package edu.chl.forum.view;
 
-import edu.chl.forum.auth.User;
+import edu.chl.forum.auth.ForumUser;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Level;
@@ -26,7 +26,7 @@ public class AddPostBB implements Serializable {
     private String content;
     private Long threadId;
     private Date date;
-    private User user;
+    private ForumUser user;
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
     
     @PostConstruct
@@ -47,7 +47,7 @@ public class AddPostBB implements Serializable {
         return date;
     }
 
-    public User getUser() {
+    public ForumUser getUser() {
         return user;
     }
     
@@ -63,7 +63,7 @@ public class AddPostBB implements Serializable {
         this.date = date;
     }
 
-    public void setUser(User user) {
+    public void setUser(ForumUser user) {
         this.user = user;
     }
     

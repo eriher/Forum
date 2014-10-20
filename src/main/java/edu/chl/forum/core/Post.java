@@ -6,7 +6,7 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.User;
+import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -25,21 +25,21 @@ public class Post extends AbstractEntity  {
     private Long threadId;
     private String content;
     @ManyToOne
-    private User user;
+    private ForumUser user;
     @Temporal (TemporalType.DATE)
     private Date date;
 
     public Post() {
     }
     
-    public Post(Long threadId, String content, User user, Date date){
+    public Post(Long threadId, String content, ForumUser user, Date date){
         this.threadId = threadId;
         this.content = content;
         this.user = user;
         this.date = date;
     }
     
-    public Post(Long id, Long threadId, String content, User user, Date date){
+    public Post(Long id, Long threadId, String content, ForumUser user, Date date){
         super(id);
         this.threadId = threadId;
         this.content = content;
@@ -55,7 +55,7 @@ public class Post extends AbstractEntity  {
         return content;
     }
 
-    public User getUser() {
+    public ForumUser getUser() {
         return user;
     }
 

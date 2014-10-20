@@ -13,18 +13,18 @@ import javax.persistence.Entity;
  * @author erik
  */
 @Entity
-public class User extends AbstractEntity{
+public class ForumUser extends AbstractEntity{
     
     private String name;
     private String password;
     private String email;
     private int rank;
 
-    public User(){
+    public ForumUser(){
         
     }
     
-    public User(String name){
+    public ForumUser(String name){
         this.name = name;
     }
     
