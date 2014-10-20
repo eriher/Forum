@@ -28,7 +28,7 @@ public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
         super(SubTopic.class);
     }
     
-    @Inject
+    @PersistenceContext
     public void EntityManager(EntityManager em) {
         this.em = em;
     }

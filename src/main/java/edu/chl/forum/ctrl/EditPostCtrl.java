@@ -7,7 +7,7 @@ package edu.chl.forum.ctrl;
 
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
-import edu.chl.forum.view.AddPostBB;
+import edu.chl.forum.view.EditPostBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -22,43 +22,41 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class AddPostCtrl {
+public class EditPostCtrl {
     
-    private AddPostBB postBB;
-    private static final Logger LOG = Logger.getLogger(AddPostCtrl.class.getName());
+    private EditPostBB postBB;
+    private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
     private IForum forum;
     
-    protected AddPostCtrl(){
+    protected EditPostCtrl(){
         
     }
     
     @PostConstruct
     public void post() {
-        LOG.log(Level.INFO, "AddPostCtrl alive {0}", this);
+        LOG.log(Level.INFO, "EditPostCtrl alive {0}", this);
     }
     
     @PreDestroy
     public void pre() {
-        LOG.log(Level.INFO, "AddPostCtrl to be destroyed {0}", this);
+        LOG.log(Level.INFO, "EditPostCtrl to be destroyed {0}", this);
     }
     /*
     @Inject
-    public AddPostCtrl(IForum forum){
+    public EditPostCtrl(IForum forum){
         this.forum = forum;
-    }
-    */
+    } */
+    
     @Inject
-    public void setPostBB(AddPostBB postBB){
+    public void setPostBB(EditPostBB postBB){
         this.postBB = postBB;
     }
     
     // Will it work?
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
-        /*
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        forum.getPostCatalogue().create(new Post(postBB.getThreadId(),
+        /*forum.getPostCatalogue().update(new Post(postBB.getThreadId(),
                 postBB.getContent(), postBB.getUser(), postBB.getDate())); */
-    
     }
 }

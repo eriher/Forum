@@ -28,7 +28,7 @@ public class UserCatalogue extends AbstractDAO<User, Long>
         super(User.class);
     }
     
-    @Inject
+    @PersistenceContext
     public void EntityManager(EntityManager em) {
         this.em = em;
     }

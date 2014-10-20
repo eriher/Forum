@@ -30,7 +30,7 @@ public class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
         super(MainTopic.class);
     }
     
-    @Inject
+    @PersistenceContext
     public void EntityManager(EntityManager em) {
         this.em = em;
     }

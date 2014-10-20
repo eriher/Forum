@@ -30,7 +30,7 @@ public class PostCatalogue extends AbstractDAO<Post, Long>
         super(Post.class);
     }
     
-    @Inject
+    @PersistenceContext
     public void EntityManager(EntityManager em) {
         this.em = em;
     }
