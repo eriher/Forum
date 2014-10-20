@@ -28,11 +28,6 @@ public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
         super(SubTopic.class);
     }
     
-    @PersistenceContext
-    public void EntityManager(EntityManager em) {
-        this.em = em;
-    }
-    
     @Override 
     protected EntityManager getEntityManager(){
         return em;

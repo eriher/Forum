@@ -34,11 +34,6 @@ public  class ThreadCatalogue extends AbstractDAO<Thread, Long>
         super(Thread.class);
     }
     
-    @PersistenceContext
-    public void EntityManager(EntityManager em) {
-        this.em = em;
-    }
-    
     @Override
     protected EntityManager getEntityManager() {
         return em;
