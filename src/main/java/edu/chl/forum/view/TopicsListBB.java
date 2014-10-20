@@ -7,6 +7,7 @@
 package edu.chl.forum.view;
 
 import edu.chl.forum.core.MainTopic;
+import edu.chl.forum.core.SubTopic;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

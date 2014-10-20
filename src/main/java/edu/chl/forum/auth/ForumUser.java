@@ -28,6 +28,11 @@ public class ForumUser extends AbstractEntity{
         this.name = name;
     }
     
+    public ForumUser(long id, String name) {
+        super(id);
+        this.name = name;
+    }
+    
     public String getPassword() {
         return password;
     }

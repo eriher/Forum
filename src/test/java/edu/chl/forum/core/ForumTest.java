@@ -1,5 +1,6 @@
 package edu.chl.forum.core;
 
+import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.core.Forum;
 import java.util.List;
 import javax.enterprise.inject.Default;
@@ -14,6 +15,7 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,17 +32,18 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class ForumTest {
     
-    /*@Inject
-    //Forum forum;
+    @Inject
+    Forum forum;
     
-    //@Inject
-    //UserTransaction utx;  // This is not an EJB so have to handle transactions
+    @Inject
+    UserTransaction utx;  // This is not an EJB so have to handle transactions
     
     @Deployment
     public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(WebArchive.class, "shop.war")
+        return ShrinkWrap.create(WebArchive.class, "forum.war")
                 // Add all classes
                 .addPackage("edu.chl.forum.core")
+                .addPackage("edu.chl.forum.auth")
                 // This will add test-persitence.xml as persistence.xml (renamed)
                 // in folder META-INF, see Files > jpa_managing > target > arquillian
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
@@ -52,12 +55,15 @@ public class ForumTest {
     @Before  // Run before each test
     public void before() throws Exception {
         //clearAll();
-    }*/
+    }
   
     
     @Test
     public void testPersistAProduct() throws Exception {
-        assertTrue(true);}
+        forum.getUserCatalogue().create(new ForumUser("Test"));
+        List<ForumUser> ul = forum.getUserCatalogue().findAll();
+        assertTrue(ul.size() > 0);
+        }
         /*
         Product p = new Product("aaa", 999);
         shop.getProductCatalogue().create(p);
