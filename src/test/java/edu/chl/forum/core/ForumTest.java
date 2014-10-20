@@ -1,6 +1,8 @@
 package edu.chl.forum.core;
 
+import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.core.Forum;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
@@ -30,15 +32,21 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class ForumTest {
     
-    /*@Inject
-    //Forum forum;
+    @Inject
+    Forum forum;
     
-    //@Inject
-    //UserTransaction utx;  // This is not an EJB so have to handle transactions
+    @Inject
+    SingletonForum iForum;
+    
+    //private IForum forum;
+
+    
+    @Inject
+    UserTransaction utx;  // This is not an EJB so have to handle transactions
     
     @Deployment
     public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(WebArchive.class, "shop.war")
+        return ShrinkWrap.create(WebArchive.class, "forum.war")
                 // Add all classes
                 .addPackage("edu.chl.forum.core")
                 // This will add test-persitence.xml as persistence.xml (renamed)
@@ -47,18 +55,21 @@ public class ForumTest {
                 // Must have for CDI to work
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 
+
     }
           
     @Before  // Run before each test
     public void before() throws Exception {
         //clearAll();
-    }*/
-  
+         //forum = iForum.getForum();
+    }
     
+  
+    /*
     @Test
     public void testPersistAProduct() throws Exception {
         assertTrue(true);}
-        /*
+        
         Product p = new Product("aaa", 999);
         shop.getProductCatalogue().create(p);
         List<Product> ps = shop.getProductCatalogue().findAll();
@@ -138,10 +149,17 @@ public class ForumTest {
         List<Product> ps = shop.getProductCatalogue().getByPrice((double) 20);
         assertTrue(ps.size() == 2); 
     }
-    
+    */
     @Test
-    public void testNewSerlvet() throws Exception {
-        shop.getProductCatalogue().create(new Product("banana", 20));
+    public void testDB() throws Exception {
+       
+        forum.getMainTopicCatalogue().create(new MainTopic("Test", null));
+        assertTrue(forum.getMainTopicCatalogue().count() == 1);
+        
+        //forum.getPostCatalogue().create(new Post(12L, "test", new User(),new Date()));
+        //assertTrue(forum.getPostCatalogue().count() == 1);
+        
+        /*
         shop.getProductCatalogue().create(new Product("apple", 20));
         shop.getProductCatalogue().create(new Product("pear", 33));
         shop.getProductCatalogue().create(new Product("pineapple", 44));
@@ -151,7 +169,7 @@ public class ForumTest {
         utx.commit();
         
         List<Product> ps = shop.getProductCatalogue().getByPrice((double) 400);
-        assertTrue(ps.size()>0);
+        assertTrue(ps.size()>0);*/
     }
     
        
@@ -159,7 +177,7 @@ public class ForumTest {
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
-    @PersistenceContext(unitName = "jpa_forum_test_pu")
+    @PersistenceContext
     @Produces
     @Default
     EntityManager em;
@@ -168,10 +186,10 @@ public class ForumTest {
     private void clearAll() throws Exception {
         utx.begin();  
         em.joinTransaction();
-        em.createQuery("delete from PurchaseOrder").executeUpdate();
-        em.createQuery("delete from Customer").executeUpdate();
-        em.createQuery("delete from Product").executeUpdate();
+        //em.createQuery("delete from PurchaseOrder").executeUpdate();
+        //em.createQuery("delete from Customer").executeUpdate();
+        //em.createQuery("delete from Product").executeUpdate();
         utx.commit();
     }   
-    */
+    
 }
