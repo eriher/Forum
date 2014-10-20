@@ -7,6 +7,7 @@ package edu.chl.forum.ctrl;
 
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
+import edu.chl.forum.core.SingletonForum;
 import edu.chl.forum.view.AddPostBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ public class AddPostCtrl {
     
     private AddPostBB postBB;
     private static final Logger LOG = Logger.getLogger(AddPostCtrl.class.getName());
+    private SingletonForum iForum;
     private IForum forum;
     
     protected AddPostCtrl(){
@@ -41,12 +43,13 @@ public class AddPostCtrl {
     public void pre() {
         LOG.log(Level.INFO, "AddPostCtrl to be destroyed {0}", this);
     }
-    /*
+    
     @Inject
-    public AddPostCtrl(IForum forum){
-        this.forum = forum;
+    public AddPostCtrl(SingletonForum forum){
+        this.iForum = forum;
+        this.forum = iForum.getForum();
     }
-    */
+   
     @Inject
     public void setPostBB(AddPostBB postBB){
         this.postBB = postBB;
@@ -55,10 +58,10 @@ public class AddPostCtrl {
     // Will it work?
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
-        /*
+       
         LOG.log(Level.INFO, "Save {0}" + postBB);
         forum.getPostCatalogue().create(new Post(postBB.getThreadId(),
-                postBB.getContent(), postBB.getUser(), postBB.getDate())); */
+                postBB.getContent(), postBB.getUser(), postBB.getDate()));
     
     }
 }

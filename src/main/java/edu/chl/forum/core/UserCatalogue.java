@@ -19,6 +19,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Olof
  */
+
 @Stateless
 public class UserCatalogue extends AbstractDAO<ForumUser, Long> 
         implements IUserCatalogue{
