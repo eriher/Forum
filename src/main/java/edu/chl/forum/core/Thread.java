@@ -60,7 +60,7 @@ public class Thread extends AbstractEntity{
     
      public ForumUser getUser() {
         return user;
-    }
+     }
 
     public String getContent() {
         return content;

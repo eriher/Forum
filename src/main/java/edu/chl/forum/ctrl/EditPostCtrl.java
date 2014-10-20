@@ -5,8 +5,10 @@
  */
 package edu.chl.forum.ctrl;
 
+import edu.chl.forum.core.Forum;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
+import edu.chl.forum.core.SingletonForum;
 import edu.chl.forum.view.EditPostBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +28,9 @@ public class EditPostCtrl {
     
     private EditPostBB postBB;
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
+    private SingletonForum iForum;
     private IForum forum;
+    
     
     protected EditPostCtrl(){
         
@@ -41,11 +45,12 @@ public class EditPostCtrl {
     public void pre() {
         LOG.log(Level.INFO, "EditPostCtrl to be destroyed {0}", this);
     }
-    /*
+    
     @Inject
-    public EditPostCtrl(IForum forum){
-        this.forum = forum;
-    } */
+    public EditPostCtrl(SingletonForum forum){
+        this.iForum = forum;
+        this.forum = iForum.getForum();
+    } 
     
     @Inject
     public void setPostBB(EditPostBB postBB){
