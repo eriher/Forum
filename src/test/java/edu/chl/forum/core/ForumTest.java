@@ -34,7 +34,7 @@ import org.junit.runner.RunWith;
 public class ForumTest {
     
     @Inject
-    Forum forum;
+    IForum forum;
 
     @Inject
     UserTransaction utx; 
@@ -60,14 +60,14 @@ public class ForumTest {
     }
     
   
-    
+    /*
     @Test
     public void testPersistAProduct() throws Exception {
         forum.getUserCatalogue().create(new ForumUser("Test"));
         List<ForumUser> ul = forum.getUserCatalogue().findAll();
         assertTrue(ul.size() > 0);
         }
-        /*
+        
         assertTrue(true);}
        
         Product p = new Product("aaa", 999);
@@ -152,9 +152,9 @@ public class ForumTest {
     */
     @Test
     public void testDB() throws Exception {
-       
-        forum.getMainTopicCatalogue().create(new MainTopic("Test", null));
-        assertTrue(forum.getMainTopicCatalogue().count() == 1);
+      
+        forum.getUserCatalogue().create(new ForumUser("test"));
+        assertTrue(forum.getUserCatalogue().count() == 1);
         
         //forum.getPostCatalogue().create(new Post(12L, "test", new User(),new Date()));
         //assertTrue(forum.getPostCatalogue().count() == 1);

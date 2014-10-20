@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginBean implements Serializable{
     private Forum forum;
-    private LoginBB loginBB;
+    //@Inject private LoginBB loginBB;
     
     public LoginBean(){
     }
@@ -32,18 +32,20 @@ public class LoginBean implements Serializable{
     /**
      * @param forum the forum to set
      */
+    /*
     @Inject
-    public void setForum(Forum forum) {
+    public LoginBean(Forum forum) {
         this.forum = forum;
-    }
+    }*/
 
     /**
      * @param loginBB the loginBB to set
      */
+    /*
     @Inject
     public void setLoginBB(LoginBB loginBB) {
         this.loginBB = loginBB;
-    }
+    }*/
     
     public Long getUserId(){
         HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
