@@ -5,10 +5,11 @@
  */
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.User;
+import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.util.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,14 +19,15 @@ import javax.persistence.TypedQuery;
  *
  * @author Olof
  */
-public class UserCatalogue extends AbstractDAO<User, Long> 
+@Stateless
+public class UserCatalogue extends AbstractDAO<ForumUser, Long> 
         implements IUserCatalogue{
     
     @PersistenceContext
     EntityManager em;
     
     public UserCatalogue(){
-        super(User.class);
+        super(ForumUser.class);
     }
     
     @PersistenceContext
@@ -39,9 +41,9 @@ public class UserCatalogue extends AbstractDAO<User, Long>
     }
     
     @Override
-    public List<User> getByName(String name) {
-        List<User> found = new ArrayList<>();
-        for (User p : findRange(0, count())) {
+    public List<ForumUser> getByName(String name) {
+        List<ForumUser> found = new ArrayList<>();
+        for (ForumUser p : findRange(0, count())) {
             if (p.getName().equals(name)) {
                 found.add(p);
             }
@@ -49,13 +51,13 @@ public class UserCatalogue extends AbstractDAO<User, Long>
         return found;
     }
     
-    public User login(String name, String password){
+    public ForumUser login(String name, String password){
         EntityManager em = getEntityManager();
-        TypedQuery q = em.createQuery("select U from User U where U.name=':name' and U.password=':password'",User.class);
+        TypedQuery q = em.createQuery("select U from User U where U.name=':name' and U.password=':password'",ForumUser.class);
         q.setParameter("name", name);
         q.setParameter("password", password);
         
-        List<User> found = q.getResultList();
+        List<ForumUser> found = q.getResultList();
         
         if(found.isEmpty()){
             return null;
