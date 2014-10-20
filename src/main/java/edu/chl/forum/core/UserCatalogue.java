@@ -9,6 +9,7 @@ import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.util.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +19,8 @@ import javax.persistence.TypedQuery;
  *
  * @author Olof
  */
+
+@Stateless
 public class UserCatalogue extends AbstractDAO<ForumUser, Long> 
         implements IUserCatalogue{
     
