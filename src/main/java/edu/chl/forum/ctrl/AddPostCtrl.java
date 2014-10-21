@@ -41,11 +41,11 @@ public class AddPostCtrl {
     public void pre() {
         LOG.log(Level.INFO, "AddPostCtrl to be destroyed {0}", this);
     }
-    
+    /*
     @Inject
     public AddPostCtrl(IForum forum){
         this.iForum = forum;
-    }
+    }*/
    
     @Inject
     public void setPostBB(AddPostBB postBB){

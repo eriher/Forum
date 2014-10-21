@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginBean implements Serializable{
     private Forum forum;
-    @Inject private LoginBB loginBB;
+    //@Inject private LoginBB loginBB;
     
     public LoginBean(){
     }
@@ -32,10 +32,11 @@ public class LoginBean implements Serializable{
     /**
      * @param forum the forum to set
      */
+    /*
     @Inject
     public LoginBean(Forum forum) {
         this.forum = forum;
-    }
+    }*/
 
     /**
      * @param loginBB the loginBB to set
@@ -52,7 +53,7 @@ public class LoginBean implements Serializable{
     }
     
     public String login(){
-        ForumUser user = forum.getUserCatalogue().login(loginBB.getUsername(), loginBB.getPassword());
+        ForumUser user =null;// forum.getUserCatalogue().login(loginBB.getUsername(), loginBB.getPassword());
         if(user != null){
             HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             session.setAttribute("id", user.getId());

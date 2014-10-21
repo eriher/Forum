@@ -154,9 +154,9 @@ public class ForumTest {
     public void testDB() throws Exception {
       
         forum.getUserCatalogue().create(new ForumUser("test"));
-        assertTrue(forum.getUserCatalogue().count() == 1);
         
-        //forum.getPostCatalogue().create(new Post(12L, "test", new User(),new Date()));
+        forum.getPostCatalogue().create(new Post(12L, "test", new ForumUser("test testsson"),new Date()));
+        assertTrue(forum.getPostCatalogue().count() == 1);
         //assertTrue(forum.getPostCatalogue().count() == 1);
         
         /*

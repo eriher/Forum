@@ -44,11 +44,11 @@ public class EditPostCtrl {
     public void pre() {
         LOG.log(Level.INFO, "EditPostCtrl to be destroyed {0}", this);
     }
-    
+    /*
     @Inject
     public EditPostCtrl(IForum iForum){
         this.iForum = iForum;
-    } 
+    } */
     
     @Inject
     public void setPostBB(EditPostBB postBB){
