@@ -7,6 +7,7 @@
 package edu.chl.forum.view;
 
 import edu.chl.forum.core.Forum;
+import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;
 import edu.chl.forum.core.SubTopic;
@@ -38,12 +39,30 @@ public class TopicsListBB implements Serializable{
         public void init() {
             
             LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
-            //maintopics = forum.getMainTopicCatalogue().findAll();
-            //System.out.println(maintopics.size());
+                    /*subtopics = new ArrayList();
+                    subtopics.add(new SubTopic("Subtopic 1","context",null));
+                    subtopics.add(new SubTopic("Subtopic 2","context",null));
+                    forum.getMainTopicCatalogue().create(new MainTopic("Test1",subtopics));
+                    subtopics = new ArrayList();
+                    subtopics.add(new SubTopic("Subtopic 1","context",null));
+                    subtopics.add(new SubTopic("Subtopic 2","context",null));
+                    subtopics.add(new SubTopic("Subtopic 3","context",null));
+                    subtopics.add(new SubTopic("Subtopic 4","context",null));
+                    forum.getMainTopicCatalogue().create(new MainTopic("Test2",subtopics));
+                    subtopics = new ArrayList();
+                    subtopics.add(new SubTopic("Subtopic 1","context",null));
+                    subtopics.add(new SubTopic("Subtopic 2","context",null));
+                    subtopics.add(new SubTopic("Subtopic 3","context",null));
+                    subtopics.add(new SubTopic("Subtopic 4","context",null));
+                    subtopics.add(new SubTopic("Subtopic 5","context",null));
+                    subtopics.add(new SubTopic("Subtopic 6","context",null));
+                    forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));*/
+                    maintopics = forum.getMainTopicCatalogue().findAll();
+            System.out.println(forum.getMainTopicCatalogue().count());
             //subtopics = maintopics.get(0).getList();
         }
-        public List<String> getStrings() {
-            return strings;
+        public List<MainTopic> getmaintopics() {
+            return maintopics;
         }
     
 }

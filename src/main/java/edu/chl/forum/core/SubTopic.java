@@ -25,20 +25,20 @@ public class SubTopic extends AbstractEntity{
     private String title;
     private String description;
     @OneToMany(cascade=CascadeType.PERSIST)
-    private List<Thread> threads;
+    private List<ForumThread> threads;
     
     
     public SubTopic() {
         
     }
     
-    public SubTopic(String name, String description, List<Thread> list){
+    public SubTopic(String name, String description, List<ForumThread> list){
         this.title = name;
         this.description = description;
         this.threads = list;
     }
     
-    public SubTopic(Long id, String name, List<Thread> list){
+    public SubTopic(Long id, String name, List<ForumThread> list){
         super(id);
         this.title = name;
         this.threads = list;
@@ -49,11 +49,11 @@ public class SubTopic extends AbstractEntity{
         return title;
     }
     
-    public List<Thread> getList(){
+    public List<ForumThread> getList(){
         return threads;
     }
     
-    public boolean addThread(Thread thread) {
+    public boolean addThread(ForumThread thread) {
         return threads.add(thread);
     }
     

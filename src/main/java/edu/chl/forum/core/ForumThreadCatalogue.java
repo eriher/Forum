@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
  * @author Olof
  */
 @Stateless
-public  class ThreadCatalogue extends AbstractDAO<Thread, Long>
+public  class ForumThreadCatalogue extends AbstractDAO<ForumThread, Long>
         implements IThreadCatalogue {
     
     @PersistenceContext
@@ -27,11 +27,11 @@ public  class ThreadCatalogue extends AbstractDAO<Thread, Long>
     
 
     public static IThreadCatalogue newInstance() {
-        return new ThreadCatalogue();
+        return new ForumThreadCatalogue();
     }
     
-    public ThreadCatalogue() {
-        super(Thread.class);
+    public ForumThreadCatalogue() {
+        super(ForumThread.class);
     }
     
     @Override
@@ -42,9 +42,9 @@ public  class ThreadCatalogue extends AbstractDAO<Thread, Long>
     
     
     @Override
-    public List<Thread> getByName(String name) {
-        List<Thread> found = new ArrayList<>();
-        for (Thread p : findRange(0, count())) {
+    public List<ForumThread> getByName(String name) {
+        List<ForumThread> found = new ArrayList<>();
+        for (ForumThread p : findRange(0, count())) {
             if (p.getTitle().equals(name)) {
                 found.add(p);
             }
