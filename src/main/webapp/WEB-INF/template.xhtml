@@ -22,7 +22,7 @@ and open the template in the editor.
             <hgroup>
                 <h:form style="float:left">
                     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
-                        <p:graphicImage name="/img/login.png" />
+                        <p:graphicImage name="/img/user_go.png" />
                     </h:outputLink>
 
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
@@ -41,6 +41,11 @@ and open the template in the editor.
                             </f:facet>
                         </h:panelGrid>
                     </p:dialog>
+                </h:form>
+                <h:form style="float:left">
+                    <h:commandLink action="register">
+                        <p:graphicImage name="/img/user_add.png" />
+                    </h:commandLink>
                 </h:form>
                 <h1>Forum</h1>
                 <h:form>

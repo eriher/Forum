@@ -7,7 +7,7 @@
 
 <!-- Main router -->
  <navigation-rule>
-     <from-view-id>*</from-view-id>
+    <from-view-id>*</from-view-id>
     <navigation-case>
         <from-outcome>home</from-outcome>
         <to-view-id>/index.xhtml</to-view-id>
@@ -15,6 +15,10 @@
     <navigation-case>
         <from-outcome>threads</from-outcome>
         <to-view-id>/partials/threads/threadList.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
+        <from-outcome>register</from-outcome>
+        <to-view-id>/register.xhtml</to-view-id>
     </navigation-case>
 </navigation-rule>       
     

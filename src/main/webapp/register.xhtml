@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Forum</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <h2>Register new user</h2>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
+                        <p:inputText id="name" value=""/>
+                        <h:outputLabel for="password1" value="Password:" style="font-weight:bold"/>
+                        <p:password id="password1" value=""/>
+                        <h:outputLabel for="password2" value="Re-type password:" style="font-weight:bold"/>
+                        <p:password id="password2" value=""/>
+                        <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>
+                        <p:inputText id="email" value=""/>
+                        <p:commandButton value="Submit" action="" icon="ui-icon-check"/>
+                    </h:panelGrid>               
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
