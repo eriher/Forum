@@ -16,7 +16,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class SingletonForum implements Serializable{
     
-    //private final IForum forum = Forum.newInstance();
+    //private final IForum forum = new Forum;
     
     public IForum getForum(){
         return null;

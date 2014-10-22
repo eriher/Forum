@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import edu.chl.forum.core.Forum;
+import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.UserCatalogue;
 import edu.chl.forum.view.LoginBB;
 import javax.faces.application.FacesMessage;
@@ -23,8 +24,8 @@ import javax.servlet.http.HttpSession;
  * @author Simon
  */
 public class LoginBean implements Serializable{
-    private Forum forum;
-    //@Inject private LoginBB loginBB;
+    //@Inject IForum forum;
+    //@Inject LoginBB loginBB;
     
     public LoginBean(){
     }
@@ -53,7 +54,7 @@ public class LoginBean implements Serializable{
     }
     
     public String login(){
-        ForumUser user =null;// forum.getUserCatalogue().login(loginBB.getUsername(), loginBB.getPassword());
+        ForumUser user = null; //forum.getUserCatalogue().login(loginBB.getUsername(), loginBB.getPassword());
         if(user != null){
             HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             session.setAttribute("id", user.getId());

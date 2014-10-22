@@ -15,7 +15,7 @@ import javax.ejb.Local;
  * @author Olof
  */
 @Local
-public interface IThreadCatalogue extends IDAO<Thread,Long> {
+public interface IThreadCatalogue extends IDAO<ForumThread,Long> {
     
-    public List<Thread> getByName(String name);
+    public List<ForumThread> getByName(String name);
 }

@@ -55,21 +55,25 @@ public abstract class AbstractDAO<T , K > implements IDAO<T, K> {
 
     @Override
     public List<T> findAll() {
-        EntityManager em = getEntityManager();
-        List<T> found = new ArrayList<>();
-        TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName() + " t",clazz);
-        found.addAll(q.getResultList());
-        return found;
+        return get(true, -1, -1);
     }
 
     @Override
     public List<T> findRange(int first, int n) {
+        return null;
+    }
+    
+    @SuppressWarnings("")
+    private List<T> get(boolean all, int first, int n) {
         EntityManager em = getEntityManager();
         List<T> found = new ArrayList<>();
-        TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName() + " t",clazz);
-        q.setFirstResult(first);
-        q.setMaxResults(n);
-        
+        // Warning because typename not found in string (clazz.getSimpleName())
+        // Criteria API better, possible misstakes in String, NOTE space before t
+        TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName() + " t", clazz);
+        if (!all) {
+            q.setFirstResult(first);
+            q.setMaxResults(n);
+        }
         found.addAll(q.getResultList());
         return found;
     }
@@ -77,7 +81,8 @@ public abstract class AbstractDAO<T , K > implements IDAO<T, K> {
     @Override
     public int count() {
         EntityManager em = getEntityManager();
-        Long n = em.createQuery("select count(t) from " + clazz.getSimpleName() + " t", Long.class).getSingleResult();
+        Long n = em.createQuery("select count(t) from " + clazz.getSimpleName() +
+                " t", Long.class).getSingleResult();
         return n.intValue();
     }
 }

@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
  * @author Olof
  */
 @Entity
-public class Thread extends AbstractEntity{
+public class ForumThread extends AbstractEntity{
     
     @ManyToOne
     private ForumUser user;
@@ -36,15 +36,15 @@ public class Thread extends AbstractEntity{
     @OneToMany
     private List<Post> posts = new ArrayList();
 
-    public Thread() {
+    public ForumThread() {
     }
     
-    public Thread(String title, Post post){
+    public ForumThread(String title, Post post){
         this.title = title;
         posts.add(post);
     }
     
-    public Thread(Long id, String title, Post post){
+    public ForumThread(Long id, String title, Post post){
         super(id);
         this.title = title;
         posts.add(post);
