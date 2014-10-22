@@ -14,6 +14,7 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.MenuModel;
+import java.io.Serializable;
 
 /**
  *
@@ -21,8 +22,7 @@ import org.primefaces.model.menu.MenuModel;
  */
 @ManagedBean
 @SessionScoped
-public class BreadCrumbBB {
-    
+public class BreadCrumbBB implements Serializable{
     private static final Logger LOG = Logger.getLogger(BreadCrumbBB.class.getName()); 
     private MenuModel model;
     
