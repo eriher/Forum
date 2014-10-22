@@ -8,6 +8,7 @@ package edu.chl.forum.core;
 
 import edu.chl.forum.util.AbstractEntity;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -23,7 +24,7 @@ public class SubTopic extends AbstractEntity{
 
     private String title;
     private String description;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<Thread> threads;
     
     

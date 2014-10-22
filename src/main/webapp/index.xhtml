@@ -10,11 +10,17 @@
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
-                <h:form id="form">           
+                <h:form>           
                     <p:growl id="msgs" showDetail="true" />
                     <h2>Topics</h2>
-                    <p:accordionPanel multiple="true" activeIndex="0,1,2">
-                        <p:tab title="Topic 1">
+                    <p:accordionPanel value="#{topicsListBB.strings}" var="title" multiple="true" activeIndex="1">
+                        <p:tab title="test">
+                            <h:panelGrid columns="1" cellpadding="10">
+                                <h:link value="SubTopic"  outcome="#{breadCrumbBB.navigateThreads()}"/>
+                                <h:link value="SubTopic" />
+                            </h:panelGrid>
+                        </p:tab>
+                        <!--<p:tab title="Topic 1">
                             <h:panelGrid columns="1" cellpadding="10">
                                 <h:link value="SubTopic"  outcome="#{breadCrumbBB.navigateThreads()}"/>
                                 <h:link value="SubTopic" />
@@ -31,7 +37,7 @@
                                 <h:link value="SubTopic" />
                                 <h:link value="SubTopic" />
                             </h:panelGrid>
-                        </p:tab>
+                        </p:tab>-->
                     </p:accordionPanel>    
                 </h:form>
             </ui:define>
