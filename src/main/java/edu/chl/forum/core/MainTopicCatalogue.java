@@ -28,13 +28,7 @@ public class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
     
     public MainTopicCatalogue(){
         super(MainTopic.class);
-    }
-    
-    @Override 
-    protected EntityManager getEntityManager(){
-        return em;
-    }
-            
+    }        
     
     
     @Override
@@ -46,5 +40,10 @@ public class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
             }
         }
         return found;
+    }
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 }
