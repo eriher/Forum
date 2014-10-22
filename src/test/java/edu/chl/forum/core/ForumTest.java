@@ -156,7 +156,11 @@ public class ForumTest {
       
         forum.getUserCatalogue().create(new ForumUser("test"));
         
-        forum.getPostCatalogue().create(new Post(12L, "test", new ForumUser("test testsson"),new Date()));
+        forum.getPostCatalogue().create(new Post(12L, "test1", new ForumUser("test testsson"),new Date()));
+        forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson"),new Date()));
+
+        assertTrue(forum.getPostCatalogue().count() == 2);
+        /*
         List<SubTopic> subtopics = new ArrayList();
         subtopics.add(new SubTopic("Subtopic 1","context",null));
         subtopics.add(new SubTopic("Subtopic 2","context",null));
@@ -178,7 +182,7 @@ public class ForumTest {
         assertTrue(forum.getMainTopicCatalogue().count() > 0);
         assertTrue(forum.getPostCatalogue().count() == 1);
         //assertTrue(forum.getPostCatalogue().count() == 1);
-        
+        */
         /*
         shop.getProductCatalogue().create(new Product("apple", 20));
         shop.getProductCatalogue().create(new Product("pear", 33));

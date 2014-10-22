@@ -6,7 +6,9 @@
 
 package edu.chl.forum.core;
 
+import edu.chl.forum.auth.ForumUser;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -28,6 +30,7 @@ public class Forum implements IForum, Serializable{
     
     private Forum() {
         Logger.getAnonymousLogger().log(Level.INFO, "Forum alive!");
+        //initTestData();
     }
     
     @Override
@@ -54,13 +57,13 @@ public class Forum implements IForum, Serializable{
     public IPostCatalogue getPostCatalogue() {
         return postCatalogue;
     }
-    /*
-    public static IForum newInstance(){
-       // return new Forum();
-    }*/
-    
+  
     private void initTestData(){
         Long i = 2212L;
-        //threadCatalogue.create(new Thread("test", new Post(i, "olof", "blablabla")));
+        
+        postCatalogue.create(new Post(i,"Text1", new ForumUser("test"), new Date()));
+        postCatalogue.create(new Post(22L,"Text2", new ForumUser("test"), new Date()));
+        postCatalogue.create(new Post(33L,"Text3", new ForumUser("test"), new Date()));
+        postCatalogue.create(new Post(44L,"Text4", new ForumUser("test"), new Date()));
     } 
 }
