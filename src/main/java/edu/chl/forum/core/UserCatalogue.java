@@ -47,9 +47,9 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
         return found;
     }
     
-    public ForumUser login(String name, String password){
-        EntityManager em = getEntityManager();
-        TypedQuery q = em.createQuery("select U from User U where U.name=':name' and U.password=':password'",ForumUser.class);
+    @Override
+    public ForumUser loginCheck(String name, String password){
+        TypedQuery q = getEntityManager().createQuery("select U from ForumUser U where U.name=':name' and U.password=':password'",ForumUser.class);
         q.setParameter("name", name);
         q.setParameter("password", password);
         
