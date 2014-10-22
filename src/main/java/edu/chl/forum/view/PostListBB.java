@@ -53,8 +53,7 @@ public class PostListBB implements Serializable {
     }
  
     public List<Post> getPosts() {
-        posts.add(forum.getPostCatalogue().find(4L));
-        return posts;
+        return forum.getPostCatalogue().findAll();
     }
     
     private void initTestData(){

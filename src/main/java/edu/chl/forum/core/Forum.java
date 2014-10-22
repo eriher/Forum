@@ -29,6 +29,7 @@ public class Forum implements IForum, Serializable{
     
     
     private Forum() {
+        System.gc();
         Logger.getAnonymousLogger().log(Level.INFO, "Forum alive!");
         //initTestData();
     }
@@ -65,5 +66,6 @@ public class Forum implements IForum, Serializable{
         postCatalogue.create(new Post(22L,"Text2", new ForumUser("test"), new Date()));
         postCatalogue.create(new Post(33L,"Text3", new ForumUser("test"), new Date()));
         postCatalogue.create(new Post(44L,"Text4", new ForumUser("test"), new Date()));
+
     } 
 }
