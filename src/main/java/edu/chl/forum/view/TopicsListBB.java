@@ -31,7 +31,7 @@ public class TopicsListBB implements Serializable{
         private List<MainTopic> maintopics;
         private List<SubTopic> subtopics;
         private List<String> strings;
-        @Inject private IForum forum;
+        @Inject IForum forum;
         
         
         @PostConstruct
