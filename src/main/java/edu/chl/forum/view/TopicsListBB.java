@@ -39,7 +39,7 @@ public class TopicsListBB implements Serializable{
         public void init() {
             
             LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
-                    /*subtopics = new ArrayList();
+                    subtopics = new ArrayList();
                     subtopics.add(new SubTopic("Subtopic 1","context",null));
                     subtopics.add(new SubTopic("Subtopic 2","context",null));
                     forum.getMainTopicCatalogue().create(new MainTopic("Test1",subtopics));
@@ -56,7 +56,7 @@ public class TopicsListBB implements Serializable{
                     subtopics.add(new SubTopic("Subtopic 4","context",null));
                     subtopics.add(new SubTopic("Subtopic 5","context",null));
                     subtopics.add(new SubTopic("Subtopic 6","context",null));
-                    forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));*/
+                    forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));
                     maintopics = forum.getMainTopicCatalogue().findAll();
             System.out.println(forum.getMainTopicCatalogue().count());
             //subtopics = maintopics.get(0).getList();

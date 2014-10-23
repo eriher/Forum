@@ -28,8 +28,7 @@ public class Forum implements IForum, Serializable{
     @EJB IUserCatalogue userCatalogue; 
     
     
-    private Forum() {
-        System.gc();
+    protected Forum() {
         Logger.getAnonymousLogger().log(Level.INFO, "Forum alive!");
         //initTestData();
     }

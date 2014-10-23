@@ -20,7 +20,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 /**
  *
  * @author olof
@@ -43,25 +42,31 @@ public class PostListBB implements Serializable {
     }
     
     @PostConstruct
-    public void init() {/*
+    public void init() {
         LOG.log(Level.INFO, "PostListBB alive {0}", this);
+        /*
+        forum.getPostCatalogue().create(new Post(22L,"Text", new ForumUser(), new Date()));
+        forum.getPostCatalogue().create(new Post(33L,"Text", new ForumUser(), new Date()));
+        forum.getPostCatalogue().create(new Post(44L,"Text", new ForumUser(), new Date()));
+         */
+        //System.out.println(forum.getPostCatalogue().count());
+        
+        /*
         posts = new ArrayList<>();
         for(int i=0;i<10;i++){
             posts.add("Post"+Integer.toString(i));
         }*/
-       // initTestData();
+
     }
  
     public List<Post> getPosts() {
-        return forum.getPostCatalogue().findAll();
+        return posts ;
     }
     
     private void initTestData(){
         Long i = 2212L;
         forum.getPostCatalogue().create(new Post(i,"Text", new ForumUser(), new Date()));
-        forum.getPostCatalogue().create(new Post(22L,"Text", new ForumUser(), new Date()));
-        forum.getPostCatalogue().create(new Post(33L,"Text", new ForumUser(), new Date()));
-        forum.getPostCatalogue().create(new Post(44L,"Text", new ForumUser(), new Date()));
+
     } 
     
 }

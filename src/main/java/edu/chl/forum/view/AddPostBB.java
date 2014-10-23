@@ -24,7 +24,6 @@ import javax.inject.Named;
 public class AddPostBB implements Serializable {
     
     private String content;
-    private Long threadId;
     private Date date;
     private ForumUser user;
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
@@ -50,10 +49,6 @@ public class AddPostBB implements Serializable {
     public ForumUser getUser() {
         return user;
     }
-    
-    public Long getThreadId(){
-        return threadId;
-    }
 
     public void setContent(String content) {
         this.content = content;
@@ -65,10 +60,6 @@ public class AddPostBB implements Serializable {
 
     public void setUser(ForumUser user) {
         this.user = user;
-    }
-    
-    public void setThreadId(Long threadId){
-        this.threadId = threadId;
     }
     
 }
