@@ -23,7 +23,7 @@ and open the template in the editor.
                 <h:form style="float:left">
                     <c:choose>
                         <c:when test="#{loginBean.loggedIn}">
-                            <p:commandButton value="#{loginBean.getUser().name}" 
+                             <p:commandButton value="#{loginBean.getUser().name}" 
                                              onclick="#{loginBean.logout()}" 
                                              title="logout" 
                                              class="loginButton"/>
@@ -52,11 +52,11 @@ and open the template in the editor.
                         </h:panelGrid>
                     </p:dialog>
                 </h:form>
-                <h:form style="float:left">
-                    <h:commandLink action="register">
-                        <p:graphicImage name="/img/user_add.png" />
-                    </h:commandLink>
-                </h:form>
+                <c:if test="#{!loginBean.loggedIn}">
+                    <h:form style="float:left">
+                        <p:commandButton value="New user" action="register" class="loginButton"/>
+                    </h:form>
+                </c:if>
                 <h1>Forum</h1>
                 <h:form>
                 <p:breadCrumb model="#{breadCrumbBB.model}">

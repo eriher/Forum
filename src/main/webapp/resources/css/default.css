@@ -60,3 +60,10 @@ footer {
     height:22px;
     font-size: 10px;
 }
+
+.loggedUser {
+    float:right; 
+    height:22px;
+    font-size: 10px;
+    color: white;
+}
