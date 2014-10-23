@@ -44,7 +44,10 @@ public class TopicsListBB implements Serializable{
         public void init() {
             
             LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
-                    /*subtopics = new ArrayList();
+            maintopics = forum.getMainTopicCatalogue().findAll();
+            if(forum.getMainTopicCatalogue().count() == 0)
+            {
+                    subtopics = new ArrayList();
                     subtopics.add(new SubTopic("Subtopic 1","context",null));
                     subtopics.add(new SubTopic("Subtopic 2","context",null));
                     forum.getMainTopicCatalogue().create(new MainTopic("Test1",subtopics));
@@ -65,8 +68,15 @@ public class TopicsListBB implements Serializable{
                     
                     ForumUser user = new ForumUser("Pelle");
                     maintopics.get(0).getList().get(0).getList().add(new ForumThread("threadtest1",new Post("this is a test post",user),user));
-                    forum.getMainTopicCatalogue().update(maintopics.get(0));*/
-                    maintopics = forum.getMainTopicCatalogue().findAll();
+                    forum.getMainTopicCatalogue().update(maintopics.get(0));
+            }
+            else{
+                    ForumUser user = new ForumUser("Pelle");
+                    maintopics.get(0).getList().get(0).getList().add(new ForumThread("threadtest1",new Post("this is a test post",user),user));
+                    forum.getMainTopicCatalogue().update(maintopics.get(0));
+            }
+                    
+                    
                     setActiveTabs(forum.getMainTopicCatalogue().count());
                     System.out.println(tabs);
             System.out.println(forum.getMainTopicCatalogue().count());
