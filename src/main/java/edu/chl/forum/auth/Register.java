@@ -20,17 +20,13 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class Register implements Serializable{
-    private RegisterBB registerBB;
-    @EJB
-    private IUserCatalogue userCatalogue;
-    
-    //@Inject //Does not work for some reason!
-    public void setRegisterBB(RegisterBB newUser){
-        this.registerBB = newUser;
-    }
+    @Inject private RegisterBB registerBB;
+    //@Inject private LoginBean loginBean;
+    @EJB private IUserCatalogue userCatalogue;
     
     public void add(){
         ForumUser user = new ForumUser(registerBB.getName());
         userCatalogue.create(user);
+        //loginBean.login(registerBB.getName(), registerBB.getPassword());
     }
 }
