@@ -22,7 +22,7 @@
                         <h:panelGrid columns="1" style="width:100%">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                <h:commandLink value="#{thred.getTitle()}"  action="#{breadCrumbBB.navigatePosts()}">
+                                <h:commandLink value="#{thread.getTitle()}"  action="#{breadCrumbBB.navigatePosts()}">
                                     <f:setPropertyActionListener target="#{topicsListBB.currentThread}" value="#{thread}" />
                                 </h:commandLink>
                                 </h:panelGrid>

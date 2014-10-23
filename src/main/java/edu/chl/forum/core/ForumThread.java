@@ -66,7 +66,7 @@ public class ForumThread extends AbstractEntity{
         return date;
     }
 
-    public List<Post> getPosts() {
+    public List<Post> getList() {
         return posts;
     }
 }

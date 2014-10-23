@@ -74,7 +74,7 @@ public class BreadCrumbBB implements Serializable{
         this.model.addElement(threads);
         return "threads";
     }
-    public String navigateThread(){
+    public String navigatePosts(){
         model = new DefaultMenuModel();
         
                 DefaultMenuItem home = new DefaultMenuItem();
