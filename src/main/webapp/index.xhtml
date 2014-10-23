@@ -16,13 +16,14 @@
                     <p:growl id="msgs" showDetail="true" />
                     <h2>Topics</h2>
 
-                    <p:accordionPanel value="#{topicsListBB.maintopics}" var="title" multiple="true" activeIndex="1">
+
+                    <p:accordionPanel value="#{topicsListBB.maintopics}" var="title" multiple="true" activeIndex="#{topicsListBB.tabs}">
+
                         <p:tab title="#{title.getTitle()}">
 
-                            <h:panelGrid columns="1" cellpadding="10">
-                                <h:link value="SubTopic"  outcome="#{breadCrumbBB.navigateThreads()}"/>
-                                <h:link value="SubTopic" />
-                            </h:panelGrid>
+                            <p:dataGrid columns="1" value="#{title.getList()}" var="topic" >
+                                <h:link value="#{topic.getTitle()}."  outcome="#{breadCrumbBB.navigateThreads()}"/>
+                            </p:dataGrid>
                         </p:tab>
                                 <!--      <p:tab title="Topic 1">
                             <h:panelGrid columns="1" cellpadding="10">
