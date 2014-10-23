@@ -23,7 +23,8 @@ import javax.inject.Named;
  */
 public class LoginBean implements Serializable{
     @EJB private IUserCatalogue userCatalogue;
-    @Inject private LoginBB loginBB;
+    //@Inject 
+    private LoginBB loginBB;
     private ForumUser user;
     
     public LoginBean(){
