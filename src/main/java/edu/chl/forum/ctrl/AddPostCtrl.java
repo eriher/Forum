@@ -64,6 +64,7 @@ public class AddPostCtrl {
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
         listBB.getCurrentThread().addPost(new Post(postBB.getContent(), postBB.getUser()));
+        forum.getThreadCatalogue().update(listBB.getCurrentThread());
         //forum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
     }
 }
