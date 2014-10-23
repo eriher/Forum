@@ -6,7 +6,6 @@
 package edu.chl.forum.auth;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import edu.chl.forum.core.Forum;
 import edu.chl.forum.core.IForum;
@@ -15,9 +14,10 @@ import edu.chl.forum.view.LoginBB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-@ManagedBean
+@Named
 @SessionScoped
 /**
  *

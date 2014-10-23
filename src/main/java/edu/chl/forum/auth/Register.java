@@ -5,25 +5,32 @@
  */
 package edu.chl.forum.auth;
 
+import edu.chl.forum.core.IUserCatalogue;
+import edu.chl.forum.view.RegisterBB;
+import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author Simon
  */
+@Named
 @RequestScoped
-public class Register {
-    private ForumUser user = new ForumUser();
-
-    public ForumUser getUser() {
-        return user;
-    }
-
-    public void setUser(ForumUser user) {
-        this.user = user;
+public class Register implements Serializable{
+    private RegisterBB registerBB;
+    @EJB
+    private IUserCatalogue userCatalogue;
+    
+    //@Inject //Does not work for some reason!
+    public void setRegisterBB(RegisterBB newUser){
+        this.registerBB = newUser;
     }
     
-    public String add() {
-        return "";
+    public void add(){
+        ForumUser user = new ForumUser(registerBB.getName());
+        userCatalogue.create(user);
     }
 }
