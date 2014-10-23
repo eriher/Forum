@@ -23,22 +23,17 @@
  
                          <f:facet name="header">
                              #{topicsListBB.currentThread.getTitle()}
-                             <p:button value="Post" outcome="addPost" icon="ui-icon-plus">
-                                <f:param name="threadName" value="#{threadName}" />
-                             </p:button>
+                             <p:button value="Post" outcome="addPost" icon="ui-icon-plus"/>
                          </f:facet>
  
                             <p:panel id="basic" header="#{posts.id}" style="text-align:right">
                                 <p:layout style="min-width:400px;min-height:200px;text-align:left">
-                                    <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                                    <p:layoutUnit position="west" size="120" >
                                  
-                                        <h:panelGrid columns="2">
-                                            <h:outputText value="Name:" />
-                                            <h:outputText value="Test" />
-                                            <h:outputText value="Auth:" />
-                                            <h:outputText value="Mod" />
-                                            <h:outputText value="Posts" />
-                                            <h:outputText value="402" />
+                                        <h:panelGrid columns="1">
+                                            <h:outputText value="Name:" style="font-size:12px" />
+                                            <h:outputText value="Auth" style="font-size:12px"/>
+                                            <h:outputText value="500 posts" style="font-size:12px"/>
                                         </h:panelGrid>
                                 
                                     </p:layoutUnit>

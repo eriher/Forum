@@ -8,6 +8,7 @@ package edu.chl.forum.ctrl;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.view.AddPostBB;
+import edu.chl.forum.view.TopicsListBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -27,6 +28,7 @@ public class AddPostCtrl {
     private AddPostBB postBB;
     private static final Logger LOG = Logger.getLogger(AddPostCtrl.class.getName());
     private IForum forum;
+    private TopicsListBB listBB;
     
     protected AddPostCtrl(){
         
@@ -52,11 +54,17 @@ public class AddPostCtrl {
         this.postBB = postBB;
     }
     
+    @Inject
+    public void setTopicsList(TopicsListBB listBB){
+        this.listBB = listBB;
+    }
+    
     // Will it work?
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
-
-        forum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
+        listBB.getCurrentThread().addPost(new Post(postBB.getContent(), postBB.getUser()));
+        forum.getThreadCatalogue().update(listBB.getCurrentThread());
+        //forum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
     }
 }
