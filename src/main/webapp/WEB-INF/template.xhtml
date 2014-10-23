@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <meta name="Content-Type" content="text/html, charset=UTF-8"/>
         <h:outputStylesheet library="css" name="bootstrap.css"  />
@@ -21,22 +22,32 @@ and open the template in the editor.
         <header>
             <hgroup>
                 <h:form style="float:left">
-                    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
-                        <p:graphicImage name="/img/user_go.png" />
-                    </h:outputLink>
-
+                    <c:choose>
+                        <c:when test="#{loginBean.loggedIn}">
+                            <p:commandButton value="#{loginBean.getUser().name}" 
+                                             onclick="#{loginBean.logout()}" 
+                                             title="logout" 
+                                             class="loginButton"/>
+                        </c:when>
+                        <c:otherwise>
+                            <p:commandButton value="Login" 
+                                             onclick="PF('dlg').show();" 
+                                             title="login" 
+                                             class="loginButton"/>
+                        </c:otherwise>
+                    </c:choose>
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
                     <p:dialog header="Login" widgetVar="dlg" resizable="false">
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputLabel for="username" value="Username:" style="padding:10px 0px;"/>
-                            <p:inputText id="username" value="#{LoginBB.username}" required="true" label="username" />
+                            <p:inputText id="username" value="#{loginBB.name}" required="true" label="username" />
 
                             <h:outputLabel for="password" value="Password:" style="padding:10px 0px;"/>
-                            <p:password id="password" value="#{LoginBB.password}" required="true" label="password" />
+                            <p:password id="password" value="#{loginBB.password}" required="true" label="password" />
 
                             <f:facet name="footer">
-                                <p:commandButton value="Login" update="growl" actionListener="#{LoginBean.login}"
+                                <p:commandButton value="Login" update="growl" actionListener="#{loginBean.login}"
                                                  oncomplete="handleLoginRequest(xhr, status, args)" />
                             </f:facet>
                         </h:panelGrid>
