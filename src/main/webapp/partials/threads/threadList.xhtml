@@ -15,18 +15,16 @@
 
             <ui:define name="content">
                 <h:form> 
-                    <p:dataScroller value="#{topicsListBB.threads}" var="thread" chunkSize="5">
+                    <p:dataScroller value="#{topicsListBB.currentTopic.getList()}" var="thread" chunkSize="5">
                         <f:facet name="header">
                             Scroll Down to Load More Threads
                         </f:facet>
-
-
                         <h:panelGrid columns="1" style="width:100%">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                    <h:link value="#{thread}" style="font-weight: bold" outcome ="postList.xhtml">
-                                        <f:param name="threadName" value="#{thread}" />
-                                    </h:link>
+                                <h:commandLink value="#{thred.getTitle()}"  action="#{breadCrumbBB.navigatePosts()}">
+                                    <f:setPropertyActionListener target="#{topicsListBB.currentThread}" value="#{thread}" />
+                                </h:commandLink>
                                 </h:panelGrid>
                             </p:outputPanel>
                         </h:panelGrid>

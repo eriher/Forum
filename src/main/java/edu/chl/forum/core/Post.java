@@ -26,15 +26,14 @@ public class Post extends AbstractEntity  {
     @ManyToOne(cascade=CascadeType.PERSIST)
     private ForumUser user;
     @Temporal (TemporalType.DATE)
-    private Date date;
+    private Date date = new Date();
 
     public Post() {
     }
     
-    public Post(String content, ForumUser user, Date date){
+    public Post(String content, ForumUser user){
         this.content = content;
         this.user = user;
-        this.date = date;
     }
     
     public Post(Long id, String content, ForumUser user, Date date){

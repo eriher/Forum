@@ -57,6 +57,6 @@ public class AddPostCtrl {
     public void save() {
        
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        iForum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser(), postBB.getDate()));
+        iForum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
     }
 }
