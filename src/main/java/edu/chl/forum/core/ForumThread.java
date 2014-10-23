@@ -28,7 +28,6 @@ public class ForumThread extends AbstractEntity{
     @ManyToOne
     private ForumUser user;
     private String title;
-    private String content;
     
     @Temporal(TemporalType.DATE)
     private  Date date = new Date();
@@ -39,9 +38,10 @@ public class ForumThread extends AbstractEntity{
     public ForumThread() {
     }
     
-    public ForumThread(String title, Post post){
+    public ForumThread(String title, Post post, ForumUser user){
         this.title = title;
         posts.add(post);
+        this.user = user;
     }
     
     public ForumThread(Long id, String title, Post post){
@@ -61,10 +61,6 @@ public class ForumThread extends AbstractEntity{
      public ForumUser getUser() {
         return user;
      }
-
-    public String getContent() {
-        return content;
-    }
 
     public Date getDate() {
         return date;

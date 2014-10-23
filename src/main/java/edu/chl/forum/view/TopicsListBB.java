@@ -6,8 +6,11 @@
 
 package edu.chl.forum.view;
 
+import edu.chl.forum.auth.ForumUser;
+import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;
+import edu.chl.forum.core.Post;
 import edu.chl.forum.core.SubTopic;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,14 +34,17 @@ public class TopicsListBB implements Serializable{
         private List<MainTopic> maintopics;
         private List<SubTopic> subtopics;
         private List<String> strings;
+        private List<ForumThread> threads;
         @Inject IForum forum;
-        private String tabs;        
+        private String tabs;
+        private SubTopic currentTopic;
+        private ForumThread currentThread;
         
         @PostConstruct
         public void init() {
             
             LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
-                    subtopics = new ArrayList();
+                    /*subtopics = new ArrayList();
                     subtopics.add(new SubTopic("Subtopic 1","context",null));
                     subtopics.add(new SubTopic("Subtopic 2","context",null));
                     forum.getMainTopicCatalogue().create(new MainTopic("Test1",subtopics));
@@ -56,6 +62,10 @@ public class TopicsListBB implements Serializable{
                     subtopics.add(new SubTopic("Subtopic 5","context",null));
                     subtopics.add(new SubTopic("Subtopic 6","context",null));
                     forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));
+                    
+                    ForumUser user = new ForumUser("Pelle");
+                    maintopics.get(0).getList().get(0).getList().add(new ForumThread("threadtest1",new Post("this is a test post",user),user));
+                    forum.getMainTopicCatalogue().update(maintopics.get(0));*/
                     maintopics = forum.getMainTopicCatalogue().findAll();
                     setActiveTabs(forum.getMainTopicCatalogue().count());
                     System.out.println(tabs);
@@ -65,8 +75,24 @@ public class TopicsListBB implements Serializable{
         public List<MainTopic> getmaintopics() {
             return maintopics;
         }
+        public void settabs(String tabs) {
+            this.tabs = tabs;
+        }
         public String gettabs() {
             return tabs;
+        }
+        public void setCurrentTopic(SubTopic st)
+        {
+            this.currentTopic=st;
+        }
+        public SubTopic getCurrentTopic(){
+            return currentTopic;
+        }
+        public ForumThread getCurrentThread(){
+            return currentThread;
+        }
+        public void setCurrentThread(ForumThread ft){
+            currentThread = ft;
         }
 
         

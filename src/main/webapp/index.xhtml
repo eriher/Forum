@@ -22,7 +22,9 @@
                         <p:tab title="#{title.getTitle()}">
 
                             <p:dataGrid columns="1" value="#{title.getList()}" var="topic" >
-                                <h:link value="#{topic.getTitle()}."  outcome="#{breadCrumbBB.navigateThreads()}"/>
+                                <h:commandLink value="#{topic.getTitle()}"  action="#{breadCrumbBB.navigateThreads()}">
+                                    <f:setPropertyActionListener target="#{topicsListBB.currentTopic}" value="#{topic}" />
+                                </h:commandLink>
                             </p:dataGrid>
                         </p:tab>
                                 <!--      <p:tab title="Topic 1">
