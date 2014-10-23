@@ -44,29 +44,18 @@ public class PostListBB implements Serializable {
     @PostConstruct
     public void init() {
         LOG.log(Level.INFO, "PostListBB alive {0}", this);
-        /*
-        forum.getPostCatalogue().create(new Post(22L,"Text", new ForumUser(), new Date()));
-        forum.getPostCatalogue().create(new Post(33L,"Text", new ForumUser(), new Date()));
-        forum.getPostCatalogue().create(new Post(44L,"Text", new ForumUser(), new Date()));
-         */
-        //System.out.println(forum.getPostCatalogue().count());
         
-        /*
-        posts = new ArrayList<>();
-        for(int i=0;i<10;i++){
-            posts.add("Post"+Integer.toString(i));
-        }*/
+        forum.getPostCatalogue().create(new Post("Text1", new ForumUser()));
+        forum.getPostCatalogue().create(new Post("Text2", new ForumUser()));
+        forum.getPostCatalogue().create(new Post("Text3", new ForumUser()));
+        
+        System.out.println(forum.getPostCatalogue().count());
+        posts = forum.getPostCatalogue().findAll();
 
     }
  
     public List<Post> getPosts() {
         return posts ;
     }
-    
-    private void initTestData(){
-        Long i = 2212L;
-        forum.getPostCatalogue().create(new Post(i,"Text", new ForumUser(), new Date()));
-
-    } 
     
 }

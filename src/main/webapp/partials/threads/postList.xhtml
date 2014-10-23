@@ -32,14 +32,27 @@
                              </p:button>
                          </f:facet>
  
-                            <p:panel header="#{post.id}" style="text-align:center">
-                            <h:panelGrid columns="1" style="width:100%">
-                                <h:outputText value="#{post.content}" />
-                            </h:panelGrid>
-                        </p:panel>
+                            <p:panel id="basic" header="#{posts.id}" style="text-align:right">
+                                <p:layout style="min-width:400px;min-height:200px;text-align:left">
+                                    <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                                 
+                                        <h:panelGrid columns="2">
+                                            <h:outputText value="Name:" />
+                                            <h:outputText value="Test" />
+                                            <h:outputText value="Auth:" />
+                                            <h:outputText value="Mod" />
+                                            <h:outputText value="Posts" />
+                                            <h:outputText value="402" />
+                                        </h:panelGrid>
+                                
+                                    </p:layoutUnit>
  
-                        </p:dataGrid>
-    
+                                    <p:layoutUnit position="center">
+                                        <h:outputText value="#{post.content}" />
+                                    </p:layoutUnit>
+                                </p:layout>
+                            </p:panel>
+                    </p:dataGrid>
                 </h:form>
             </ui:define>
         </ui:composition>

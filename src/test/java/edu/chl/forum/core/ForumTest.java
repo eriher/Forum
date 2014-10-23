@@ -156,8 +156,8 @@ public class ForumTest {
       
         forum.getUserCatalogue().create(new ForumUser("test"));
         
-        forum.getPostCatalogue().create(new Post(12L, "test1", new ForumUser("test testsson"),new Date()));
-        forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson"),new Date()));
+        forum.getPostCatalogue().create(new Post(12L, "test1", new ForumUser("test testsson")));
+        forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson")));
 
         assertTrue(forum.getPostCatalogue().count() == 2);
         /*
