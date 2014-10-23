@@ -46,6 +46,9 @@ public class ForumTest {
                 // Add all classes
                 .addPackage("edu.chl.forum.core")
                 .addPackage("edu.chl.forum.auth")
+                .addPackage("edu.chl.forum.ctrl")
+                .addPackage("edu.chl.forum.view")
+                .addPackage("edu.chl.forum.util")
                 // This will add test-persitence.xml as persistence.xml (renamed)
                 // in folder META-INF, see Files > jpa_managing > target > arquillian
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
@@ -160,7 +163,7 @@ public class ForumTest {
         forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson")));
 
         assertTrue(forum.getPostCatalogue().count() > 0);
-        /*
+        
         List<SubTopic> subtopics = new ArrayList();
         subtopics.add(new SubTopic("Subtopic 1","context",null));
         subtopics.add(new SubTopic("Subtopic 2","context",null));
@@ -180,24 +183,9 @@ public class ForumTest {
         subtopics.add(new SubTopic("Subtopic 6","context",null));
         forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));
         assertTrue(forum.getMainTopicCatalogue().count() > 0);
-        assertTrue(forum.getPostCatalogue().count() == 1);
+        assertTrue(forum.getPostCatalogue().count() == 2);
         //assertTrue(forum.getPostCatalogue().count() == 1);
-        */
-        /*
-        shop.getProductCatalogue().create(new Product("apple", 20));
-        shop.getProductCatalogue().create(new Product("pear", 33));
-        shop.getProductCatalogue().create(new Product("pineapple", 44));
-        
-        utx.begin();
-        em.createQuery("update Product p set p.price= 400 where p.price = 20").executeUpdate();
-        utx.commit();
-        
-        List<Product> ps = shop.getProductCatalogue().getByPrice((double) 400);
-        assertTrue(ps.size()>0);*/
     }
-    
-       
-        
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces

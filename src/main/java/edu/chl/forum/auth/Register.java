@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class Register implements Serializable{
     private RegisterBB registerBB;
     @Inject IForum forum;
-    LoginBean loginBean;
+    //LoginBean loginBean;
     
     @Inject
     public void setreg(RegisterBB registerBB){
@@ -34,6 +34,6 @@ public class Register implements Serializable{
         System.out.println("Adding new user: " + registerBB.getName() + ", " + registerBB.getPassword() + ", " + registerBB.getEmail());
         ForumUser user = new ForumUser(registerBB.getName(), registerBB.getPassword(), registerBB.getEmail());
         forum.getUserCatalogue().create(user);
-        loginBean.login(registerBB.getName(), registerBB.getPassword());
+        //loginBean.login(registerBB.getName(), registerBB.getPassword());
     }
 }
