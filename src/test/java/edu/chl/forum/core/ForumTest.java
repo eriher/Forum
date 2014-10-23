@@ -57,7 +57,7 @@ public class ForumTest {
           
     @Before  // Run before each test
     public void before() throws Exception {
-        //clearAll();
+        clearAll();
     }
     
   
@@ -156,10 +156,10 @@ public class ForumTest {
       
         forum.getUserCatalogue().create(new ForumUser("test"));
         
-        forum.getPostCatalogue().create(new Post(12L, "test1", new ForumUser("test testsson"),new Date()));
-        forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson"),new Date()));
+        forum.getPostCatalogue().create(new Post(12L, "test1", new ForumUser("test testsson")));
+        forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson")));
 
-        assertTrue(forum.getPostCatalogue().count() == 2);
+        assertTrue(forum.getPostCatalogue().count() > 0);
         /*
         List<SubTopic> subtopics = new ArrayList();
         subtopics.add(new SubTopic("Subtopic 1","context",null));
@@ -201,7 +201,7 @@ public class ForumTest {
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
-   /* @PersistenceContext
+    @PersistenceContext
     @Produces
     @Default
     EntityManager em;
@@ -213,7 +213,8 @@ public class ForumTest {
         //em.createQuery("delete from MainTopic").executeUpdate();
         //em.createQuery("delete from SubTopic").executeUpdate();
         //em.createQuery("delete from ForumUser").executeUpdate();
+        //em.createQuery("delete from ForumUser").executeUpdate();
         utx.commit();
-    }   */
+    }   
     
 }

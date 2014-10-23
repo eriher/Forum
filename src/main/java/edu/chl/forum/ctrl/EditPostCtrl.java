@@ -28,7 +28,7 @@ public class EditPostCtrl {
     
     private EditPostBB postBB;
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
-    private IForum iForum;
+    private IForum forum;
     
     
     protected EditPostCtrl(){
@@ -44,11 +44,11 @@ public class EditPostCtrl {
     public void pre() {
         LOG.log(Level.INFO, "EditPostCtrl to be destroyed {0}", this);
     }
-    /*
+    
     @Inject
-    public EditPostCtrl(IForum iForum){
-        this.iForum = iForum;
-    } */
+    public EditPostCtrl(IForum forum){
+        this.forum = forum;
+    } 
     
     @Inject
     public void setPostBB(EditPostBB postBB){

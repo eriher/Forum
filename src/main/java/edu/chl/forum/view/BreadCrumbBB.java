@@ -6,21 +6,21 @@
 package edu.chl.forum.view;
 
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.MenuModel;
-import java.io.Serializable;
 
 /**
  *
  * @author erik
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class BreadCrumbBB implements Serializable{
     private static final Logger LOG = Logger.getLogger(BreadCrumbBB.class.getName()); 
@@ -73,6 +73,29 @@ public class BreadCrumbBB implements Serializable{
         threads.setOutcome("threads");
         this.model.addElement(threads);
         return "threads";
+    }
+    public String navigatePosts(){
+        model = new DefaultMenuModel();
+        
+                DefaultMenuItem home = new DefaultMenuItem();
+        home.setValue("Topics");
+        home.setCommand("#{breadCrumbBB.navigateHome}");
+        home.setOutcome("home");
+        model.addElement(home);
+                       
+        DefaultMenuItem threads = new DefaultMenuItem();
+        threads.setValue("Threads");
+        threads.setCommand("#{breadCrumbBB.navigateThreads}");
+        threads.setOutcome("threads");
+        this.model.addElement(threads);
+        
+        DefaultMenuItem posts = new DefaultMenuItem();
+        threads.setValue("Posts");
+        threads.setCommand("#{breadCrumbBB.navigatePosts}");
+        threads.setOutcome("posts");
+        this.model.addElement(posts);
+        
+        return "posts";
     }
 
     

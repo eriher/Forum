@@ -6,11 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewParam name="threadName" />
-                </f:metadata>
-            </ui:define>
+
         
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="top">
@@ -20,26 +16,39 @@
             
             <ui:define name="content">
                 <h:form id="form">
-                        <p:dataGrid var="post" value="#{postListBB.getPosts()}" columns="1"
+                        <p:dataGrid value="#{topicsListBB.currentThread.getList()}" var="post" columns="1"
                                 rows="12" paginator="true" id="posts"
                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                 rowsPerPageTemplate="6,12,16">
  
                          <f:facet name="header">
-                             #{threadName}
+                             #{topicsListBB.currentThread.getTitle()}
                              <p:button value="Post" outcome="addPost" icon="ui-icon-plus">
                                 <f:param name="threadName" value="#{threadName}" />
                              </p:button>
                          </f:facet>
  
-                            <p:panel header="#{post.id}" style="text-align:center">
-                            <h:panelGrid columns="1" style="width:100%">
-                                <h:outputText value="#{post.content}" />
-                            </h:panelGrid>
-                        </p:panel>
+                            <p:panel id="basic" header="#{posts.id}" style="text-align:right">
+                                <p:layout style="min-width:400px;min-height:200px;text-align:left">
+                                    <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                                 
+                                        <h:panelGrid columns="2">
+                                            <h:outputText value="Name:" />
+                                            <h:outputText value="Test" />
+                                            <h:outputText value="Auth:" />
+                                            <h:outputText value="Mod" />
+                                            <h:outputText value="Posts" />
+                                            <h:outputText value="402" />
+                                        </h:panelGrid>
+                                
+                                    </p:layoutUnit>
  
-                        </p:dataGrid>
-    
+                                    <p:layoutUnit position="center">
+                                        <h:outputText value="#{post.content}" />
+                                    </p:layoutUnit>
+                                </p:layout>
+                            </p:panel>
+                    </p:dataGrid>
                 </h:form>
             </ui:define>
         </ui:composition>

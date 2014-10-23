@@ -24,8 +24,8 @@ import javax.inject.Named;
 public class AddPostBB implements Serializable {
     
     private String content;
-    private Date date;
-    private ForumUser user;
+    private Date date = new Date();
+    private ForumUser user = new ForumUser();
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
     
     @PostConstruct

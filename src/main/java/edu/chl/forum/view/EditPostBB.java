@@ -24,7 +24,7 @@ import javax.inject.Named;
 public class EditPostBB implements Serializable {
     
     private String content;
-    private Date date;
+    private Date date = new Date();
     private ForumUser user;
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
     

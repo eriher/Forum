@@ -17,6 +17,10 @@
         <to-view-id>/partials/threads/threadList.xhtml</to-view-id>
     </navigation-case>
     <navigation-case>
+        <from-outcome>posts</from-outcome>
+        <to-view-id>/partials/threads/postList.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
         <from-outcome>register</from-outcome>
         <to-view-id>/register.xhtml</to-view-id>
     </navigation-case>
