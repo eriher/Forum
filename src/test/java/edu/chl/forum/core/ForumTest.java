@@ -201,7 +201,7 @@ public class ForumTest {
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
-    @PersistenceContext
+   /* @PersistenceContext
     @Produces
     @Default
     EntityManager em;
@@ -210,10 +210,10 @@ public class ForumTest {
     private void clearAll() throws Exception {
         utx.begin();  
         em.joinTransaction();
-        //em.createQuery("delete from PurchaseOrder").executeUpdate();
-        //em.createQuery("delete from Customer").executeUpdate();
-        //em.createQuery("delete from Product").executeUpdate();
+        //em.createQuery("delete from MainTopic").executeUpdate();
+        //em.createQuery("delete from SubTopic").executeUpdate();
+        //em.createQuery("delete from ForumUser").executeUpdate();
         utx.commit();
-    }   
+    }   */
     
 }
