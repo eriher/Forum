@@ -26,7 +26,7 @@ public class AddPostCtrl {
     
     private AddPostBB postBB;
     private static final Logger LOG = Logger.getLogger(AddPostCtrl.class.getName());
-    private IForum iForum;
+    private IForum forum;
     
     protected AddPostCtrl(){
         
@@ -44,7 +44,7 @@ public class AddPostCtrl {
     
     @Inject
     public AddPostCtrl(IForum forum){
-        this.iForum = forum;
+        this.forum = forum;
     }
    
     @Inject
@@ -55,8 +55,8 @@ public class AddPostCtrl {
     // Will it work?
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
-       
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        iForum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
+
+        forum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
     }
 }

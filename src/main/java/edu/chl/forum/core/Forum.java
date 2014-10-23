@@ -60,11 +60,11 @@ public class Forum implements IForum, Serializable{
   
     private void initTestData(){
         Long i = 2212L;
-        
+        /*
         postCatalogue.create(new Post(i,"Text1", new ForumUser("test"), new Date()));
         postCatalogue.create(new Post(22L,"Text2", new ForumUser("test"), new Date()));
         postCatalogue.create(new Post(33L,"Text3", new ForumUser("test"), new Date()));
-        postCatalogue.create(new Post(44L,"Text4", new ForumUser("test"), new Date()));
+        postCatalogue.create(new Post(44L,"Text4", new ForumUser("test"), new Date()));*/
 
     } 
 }

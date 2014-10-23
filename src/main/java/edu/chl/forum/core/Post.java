@@ -36,11 +36,10 @@ public class Post extends AbstractEntity  {
         this.user = user;
     }
     
-    public Post(Long id, String content, ForumUser user, Date date){
+    public Post(Long id, String content, ForumUser user){
         super(id);
         this.content = content;
         this.user = user;
-        this.date = date;
     }
 
 
@@ -55,7 +54,5 @@ public class Post extends AbstractEntity  {
     public Date getDate() {
         return date;
     }
-    
-    
-    
+   
 }
