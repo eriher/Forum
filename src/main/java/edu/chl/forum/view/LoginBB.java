@@ -5,41 +5,32 @@
  */
 package edu.chl.forum.view;
 
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author Simon
  */
+@Named
 @RequestScoped
-public class LoginBB {
-    private String username;
+public class LoginBB implements Serializable{
+    private String name;
     private String password;
 
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }

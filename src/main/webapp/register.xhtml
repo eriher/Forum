@@ -15,14 +15,12 @@
                 <h:form>
                     <h:panelGrid columns="2">
                         <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>
-                        <p:inputText id="name" value="#{RegisterBB.name}"/>
+                        <p:inputText id="name" value="#{registerBB.name}"/>
                         <h:outputLabel for="password1" value="Password:" style="font-weight:bold"/>
-                        <p:password id="password1" value="#{RegisterBB.password}"/>
-                        <h:outputLabel for="password2" value="Re-type password:" style="font-weight:bold"/>
-                        <p:password id="password2" value=""/>
+                        <p:password id="password1" value="#{registerBB.password}"/>
                         <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>
-                        <p:inputText id="email" value="#{RegisterBB.email}"/>
-                        <p:commandButton value="Submit" actionListener="#{Register.add}" action="user?faces-redirect=true" icon="ui-icon-check"/>
+                        <p:inputText id="email" value="#{registerBB.email}"/>
+                        <p:commandButton value="Submit" actionListener="#{register.add}" action="home" icon="ui-icon-check"/>
                     </h:panelGrid>               
                 </h:form>
             </ui:define>
