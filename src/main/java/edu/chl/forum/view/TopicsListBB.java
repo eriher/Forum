@@ -61,11 +61,12 @@ public class TopicsListBB implements Serializable{
                     subtopics.add(new SubTopic("Subtopic 4","context",null));
                     subtopics.add(new SubTopic("Subtopic 5","context",null));
                     subtopics.add(new SubTopic("Subtopic 6","context",null));
-                    forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));*/
-                    /*maintopics = forum.getMainTopicCatalogue().findAll();
+                    forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));
+                    
                     ForumUser user = new ForumUser("Pelle");
                     maintopics.get(0).getList().get(0).getList().add(new ForumThread("threadtest1",new Post("this is a test post",user),user));
                     forum.getMainTopicCatalogue().update(maintopics.get(0));*/
+                    maintopics = forum.getMainTopicCatalogue().findAll();
                     setActiveTabs(forum.getMainTopicCatalogue().count());
                     System.out.println(tabs);
             System.out.println(forum.getMainTopicCatalogue().count());

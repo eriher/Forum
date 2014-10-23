@@ -54,3 +54,9 @@ footer {
 #error {
     color:  red;
 }
+
+.loginButton {
+    float:left; 
+    height:22px;
+    font-size: 10px;
+}

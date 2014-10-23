@@ -5,34 +5,48 @@
  */
 package edu.chl.forum.auth;
 
+import edu.chl.forum.core.IForum;
 import java.io.Serializable;
-import javax.faces.bean.SessionScoped;
-import edu.chl.forum.core.IUserCatalogue;
+import javax.enterprise.context.SessionScoped;
 import edu.chl.forum.view.LoginBB;
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 
-@Named
-@SessionScoped
+
 /**
  *
  * @author Simon
  */
+@Named
+@SessionScoped
 public class LoginBean implements Serializable{
-    @EJB private IUserCatalogue userCatalogue;
-    //@Inject 
-    private LoginBB loginBB;
+    @Inject IForum forum;
+    @Inject LoginBB loginBB;
     private ForumUser user;
-    
+    private boolean loggedIn;
+
     public LoginBean(){
     }
     
-    public String login(){
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+    
+    public ForumUser getUser() {
+        return this.user;
+    }
+    
+    /*
+   ¨*   Method for logging in users with clientside input
+    */
+    public void login(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage msg;
         this.user = null;
-        for(ForumUser u : userCatalogue.findAll()){
+        for(ForumUser u : forum.getUserCatalogue().findAll()){
             if(u.getName().equals(loginBB.getName()) && u.getPassword().equals(loginBB.getPassword())){
                 this.user = u;
                 break;
@@ -40,19 +54,26 @@ public class LoginBean implements Serializable{
         }
         
         if(user != null){
-            return "home";
+            System.out.println("Login successfull2.");
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", loginBB.getName());
+            loggedIn = true;
         } else {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Invalid Login!",
-                    "Please Try Again!"));
-            return "home";
+            System.out.println("Login failed2.");
+            msg =  new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+            loggedIn = false;
         }
+           
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        context.addCallbackParam("loggedIn", loggedIn);
     }
     
-    public String login(String name, String password){
+    /*
+   ¨*   Method for logging in users without clientside input
+    */
+    public void login(String name, String password){
+        FacesMessage msg;
         this.user = null;
-        for(ForumUser u : userCatalogue.findAll()){
+        for(ForumUser u : forum.getUserCatalogue().findAll()){
             if(u.getName().equals(name) && u.getPassword().equals(password)){
                 this.user = u;
                 break;
@@ -60,18 +81,20 @@ public class LoginBean implements Serializable{
         }
         
         if(user != null){
-            return "home";
+            System.out.println("Login successfull2.");
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", name);
+            loggedIn = true;
         } else {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Invalid Login!",
-                    "Please Try Again!"));
-            return "login";
+            System.out.println("Login failed2.");
+            msg =  new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+            loggedIn = false;
         }
+           
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public String logout(){
+    public void logout(){
         this.user = null;
-        return "login";
+        loggedIn = false;
     }
 }

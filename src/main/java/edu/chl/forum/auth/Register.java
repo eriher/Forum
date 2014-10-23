@@ -5,6 +5,7 @@
  */
 package edu.chl.forum.auth;
 
+import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.IUserCatalogue;
 import edu.chl.forum.view.RegisterBB;
 import java.io.Serializable;
@@ -20,15 +21,19 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class Register implements Serializable{
-    //@Inject 
     private RegisterBB registerBB;
-    //@Inject 
-    private LoginBean loginBean;
-    @EJB private IUserCatalogue userCatalogue;
+    @Inject IForum forum;
+    LoginBean loginBean;
     
-    public void add(){
-        ForumUser user = new ForumUser(registerBB.getName());
-        userCatalogue.create(user);
+    @Inject
+    public void setreg(RegisterBB registerBB){
+        this.registerBB = registerBB;
+    }
+    
+    public void save(){
+        System.out.println("Adding new user: " + registerBB.getName() + ", " + registerBB.getPassword() + ", " + registerBB.getEmail());
+        ForumUser user = new ForumUser(registerBB.getName(), registerBB.getPassword(), registerBB.getEmail());
+        forum.getUserCatalogue().create(user);
         loginBean.login(registerBB.getName(), registerBB.getPassword());
     }
 }
