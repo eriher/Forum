@@ -24,8 +24,9 @@
                         <h:panelGrid columns="1" style="width:100%">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                    <h:link value="#{thread}" style="font-weight: bold"/>
-                                    <h:link outcome ="postList.xhtml">PostList</h:link>
+                                    <h:link value="#{thread}" style="font-weight: bold" outcome ="postList.xhtml">
+                                        <f:param name="threadName" value="#{thread}" />
+                                    </h:link>
                                 </h:panelGrid>
                             </p:outputPanel>
                         </h:panelGrid>

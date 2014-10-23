@@ -16,10 +16,9 @@
                     <p:growl id="msgs" showDetail="true" />
                     <h2>Topics</h2>
 
-                    <h3>
-                        <h:link outcome ="postList.xhtml">PostList</h:link>                      
-                    </h3>
+
                     <p:accordionPanel value="#{topicsListBB.maintopics}" var="title" multiple="true" activeIndex="#{topicsListBB.tabs}">
+
                         <p:tab title="#{title.getTitle()}">
 
                             <p:dataGrid columns="1" value="#{title.getList()}" var="topic" >

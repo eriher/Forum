@@ -22,8 +22,6 @@ import javax.persistence.TemporalType;
 @Entity
 public class Post extends AbstractEntity  {
 
-
-    private Long threadId;
     private String content;
     @ManyToOne(cascade=CascadeType.PERSIST)
     private ForumUser user;
@@ -33,24 +31,19 @@ public class Post extends AbstractEntity  {
     public Post() {
     }
     
-    public Post(Long threadId, String content, ForumUser user, Date date){
-        this.threadId = threadId;
+    public Post(String content, ForumUser user, Date date){
         this.content = content;
         this.user = user;
         this.date = date;
     }
     
-    public Post(Long id, Long threadId, String content, ForumUser user, Date date){
+    public Post(Long id, String content, ForumUser user, Date date){
         super(id);
-        this.threadId = threadId;
         this.content = content;
         this.user = user;
         this.date = date;
     }
 
-    public Long getThreadId() {
-        return threadId;
-    }
 
     public String getContent() {
         return content;

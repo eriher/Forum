@@ -29,6 +29,8 @@ public class PostCatalogue extends AbstractDAO<Post, Long>
     public PostCatalogue(){
         super(Post.class);
     }
+
+    
     
     @Override 
     protected EntityManager getEntityManager(){

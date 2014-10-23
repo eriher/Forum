@@ -41,11 +41,11 @@ public class AddPostCtrl {
     public void pre() {
         LOG.log(Level.INFO, "AddPostCtrl to be destroyed {0}", this);
     }
-    /*
+    
     @Inject
     public AddPostCtrl(IForum forum){
         this.iForum = forum;
-    }*/
+    }
    
     @Inject
     public void setPostBB(AddPostBB postBB){
@@ -57,8 +57,6 @@ public class AddPostCtrl {
     public void save() {
        
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        iForum.getPostCatalogue().create(new Post(postBB.getThreadId(),
-                postBB.getContent(), postBB.getUser(), postBB.getDate()));
-    
+        iForum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser(), postBB.getDate()));
     }
 }
