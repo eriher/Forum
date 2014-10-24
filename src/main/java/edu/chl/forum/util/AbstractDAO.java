@@ -60,7 +60,7 @@ public abstract class AbstractDAO<T , K > implements IDAO<T, K> {
 
     @Override
     public List<T> findRange(int first, int n) {
-        return null;
+        return get(false, first, n);
     }
     
     @SuppressWarnings("")

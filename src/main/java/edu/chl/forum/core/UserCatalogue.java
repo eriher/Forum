@@ -43,14 +43,15 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
     @Override
     public List<ForumUser> getByName(String name) {
         List<ForumUser> found = new ArrayList<>();
-        for (ForumUser p : findRange(0, count())) {
-            if (p.getName().equals(name)) {
-                found.add(p);
+        for (ForumUser u : findRange(0, count())) {
+            if (u.getName().equals(name)) {
+                found.add(u);
             }
         }
         return found;
     }
     
+    /*
     @Override
     public ForumUser loginCheck(String name, String password){
         TypedQuery q = getEntityManager().createQuery("select U from ForumUser U where U.name=':name' and U.password=':password'",ForumUser.class);
@@ -65,4 +66,5 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
             return found.get(0);
         }
     }
+    */
 }
