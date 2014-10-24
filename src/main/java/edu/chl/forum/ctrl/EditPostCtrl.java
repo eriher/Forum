@@ -10,6 +10,7 @@ import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.core.SingletonForum;
 import edu.chl.forum.view.EditPostBB;
+import edu.chl.forum.view.TopicsListBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -29,6 +30,7 @@ public class EditPostCtrl {
     private EditPostBB postBB;
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
     private IForum forum;
+    private TopicsListBB listBB;
     
     
     protected EditPostCtrl(){
@@ -55,11 +57,17 @@ public class EditPostCtrl {
         this.postBB = postBB;
     }
     
-    // Will it work?
+    @Inject
+    public void setTopicsList(TopicsListBB listBB){
+        this.listBB = listBB;
+    }
+  
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        /*forum.getPostCatalogue().update(new Post(postBB.getThreadId(),
-                postBB.getContent(), postBB.getUser(), postBB.getDate())); */
+        
+        //TODO Every post need serverside ID(Inside thread only) listBB.getCurrentThread().getList().size();??
+        listBB.getCurrentThread().getList().get(postBB.getIndex()).setContent(postBB.getContent());
+        forum.getThreadCatalogue().update(listBB.getCurrentThread());
     }
 }

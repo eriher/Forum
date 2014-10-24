@@ -63,8 +63,10 @@ public class AddPostCtrl {
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
+        
         listBB.getCurrentThread().addPost(new Post(postBB.getContent(), postBB.getUser()));
         forum.getThreadCatalogue().update(listBB.getCurrentThread());
+        
         //forum.getPostCatalogue().create(new Post(postBB.getContent(), postBB.getUser()));
     }
 }

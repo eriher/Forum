@@ -44,11 +44,11 @@ public class PostListBB implements Serializable {
     @PostConstruct
     public void init() {
         LOG.log(Level.INFO, "PostListBB alive {0}", this);
-        
+        /*
         forum.getPostCatalogue().create(new Post("Text1", new ForumUser()));
         forum.getPostCatalogue().create(new Post("Text2", new ForumUser()));
         forum.getPostCatalogue().create(new Post("Text3", new ForumUser()));
-        
+        */
         System.out.println(forum.getPostCatalogue().count());
         posts = forum.getPostCatalogue().findAll();
 

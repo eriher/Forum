@@ -42,7 +42,6 @@ public class Post extends AbstractEntity  {
         this.user = user;
     }
 
-
     public String getContent() {
         return content;
     }
@@ -54,5 +53,9 @@ public class Post extends AbstractEntity  {
     public Date getDate() {
         return date;
     }
-   
+    
+    public void setContent(String content){
+        this.content = content;
+    }
+    
 }

@@ -9,16 +9,21 @@
         
          <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h2>Add Post to #{topicsListBB.currentThread.getTitle()}</h2>
+                <h2>Edit Post in #{topicsListBB.currentThread.getTitle()}</h2>
+
+                <f:metadata>
+                    <f:viewParam name="index" value="#{editPostBB.index}"/>
+                    <f:viewParam name="content" value="#{editPostBB.content}"/>
+                </f:metadata>
                 <h:form>
                     <h:panelGrid columns="1">
                         <h:outputLabel value="Content" style="font-weight:bold"/>
-                        <p:inputTextarea id="content" value="#{addPostBB.content}"/>
+                        <p:inputTextarea id="content" value="#{editPostBB.content}"/>
                     </h:panelGrid>
                         <div class="btn-group">
                             <p:commandButton value="Cancel" immediate="true" class="btn btn-default"
                                          action="postList?faces-redirect=true" />
-                            <p:commandButton value="Submit" actionListener="#{addPostCtrl.save()}" 
+                            <p:commandButton value="Submit" actionListener="#{editPostCtrl.save()}" 
                                          action="postList?faces-redirect=true" 
                                          class="btn btn-default"/>
                         </div>
