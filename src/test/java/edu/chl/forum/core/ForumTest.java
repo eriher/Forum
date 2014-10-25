@@ -153,7 +153,7 @@ public class ForumTest {
         List<Product> ps = shop.getProductCatalogue().getByPrice((double) 20);
         assertTrue(ps.size() == 2); 
     }
-    */
+    
     @Test
     public void testDB() throws Exception {
       
@@ -185,7 +185,7 @@ public class ForumTest {
         assertTrue(forum.getMainTopicCatalogue().count() > 0);
         assertTrue(forum.getPostCatalogue().count() == 2);
         //assertTrue(forum.getPostCatalogue().count() == 1);
-    }
+    }*/
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces

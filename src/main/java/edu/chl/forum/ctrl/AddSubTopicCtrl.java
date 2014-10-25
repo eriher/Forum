@@ -7,7 +7,9 @@ package edu.chl.forum.ctrl;
 
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;
-import edu.chl.forum.view.AddTopicBB;
+import edu.chl.forum.core.SubTopic;
+import edu.chl.forum.view.AddSubTopicBB;
+import edu.chl.forum.view.NavigationBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -18,29 +20,31 @@ import javax.inject.Named;
 
 /**
  *
- * @author erikk
+ * @author erik
  */
 @Named
 @RequestScoped
-public class AddTopicCtrl {
-    @Inject AddTopicBB addtopicBB;
+public class AddSubTopicCtrl {
+    @Inject AddSubTopicBB addSubTopicBB;
     @Inject IForum forum;
+    @Inject NavigationBB nav;
     
-    private static final Logger LOG = Logger.getLogger(AddTopicCtrl.class.getName());
+    private static final Logger LOG = Logger.getLogger(AddSubTopicCtrl.class.getName());
     
     @PostConstruct
     public void post() {
-        LOG.log(Level.INFO, "AddTopicCtrl alive {0}", this);
+        LOG.log(Level.INFO, "AddSubTopicCtrl alive {0}", this);
     }
     
     @PreDestroy
     public void pre() {
-        LOG.log(Level.INFO, "AddTopicCtrl to be destroyed {0}", this);
+        LOG.log(Level.INFO, "AddSubTopicCtrl to be destroyed {0}", this);
     }
     
     public void save() {
-        MainTopic maintopic = new MainTopic(addtopicBB.getTitle() ,addtopicBB.getDescription(), addtopicBB.getSubtopics());
-        forum.getMainTopicCatalogue().create(maintopic);
+        MainTopic maintopic  = nav.getMaintopic();
+        maintopic.addSubTopic(new SubTopic(addSubTopicBB.getTitle() ,addSubTopicBB.getDescription(), null));
+        forum.getMainTopicCatalogue().update(maintopic);
     }
     
 }

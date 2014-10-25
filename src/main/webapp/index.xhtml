@@ -21,10 +21,10 @@
                 <h:form>           
                     <p:growl id="msgs" showDetail="true" />
                     <h2>Topics</h2>
-                    <p:button value="Add Topic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                    <p:button value="Add Topic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.user.rank>0}"/>
                     <p:accordionPanel value="#{topicsListBB.forum.mainTopicCatalogue.findAll()}" var="mtopic" multiple="true" activeIndex="#{topicsListBB.tabs}">
                         <p:tab title="#{mtopic.getTitle()}">
-                            <p:button value="Add SubTopic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                            <p:commandButton value="Add SubTopic" action="/partials/topics/addSubtopic?faces-redirect=true" actionListener="#{navigationBB.setMaintopic(mtopic)}" icon="ui-icon-plus" rendered="#{loginBean.user.rank>0}"/>
                                 <p:dataList value="#{mtopic.getList()}" var="stopic" styleClass="noborder">
                                     <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigationBB.setSubtopic(stopic)}" />
                             </p:dataList>

@@ -5,12 +5,12 @@
  */
 package edu.chl.forum.ctrl;
 
+import edu.chl.forum.auth.LoginBean;
 import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.view.AddPostBB;
 import edu.chl.forum.view.NavigationBB;
-import edu.chl.forum.view.TopicsListBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -31,6 +31,7 @@ public class AddPostCtrl {
     private static final Logger LOG = Logger.getLogger(AddPostCtrl.class.getName());
     private IForum forum;
     @Inject NavigationBB nav;
+    @Inject LoginBean login;
     
     protected AddPostCtrl(){
         
@@ -56,13 +57,12 @@ public class AddPostCtrl {
         this.postBB = postBB;
     }
     
-    
     // Will it work?
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
         ForumThread thread = nav.getThread();
-        thread.addPost(new Post(postBB.getContent(), null));
+        thread.addPost(new Post(postBB.getContent(), login.getUser()));
         forum.getThreadCatalogue().update(thread);
     }
 }

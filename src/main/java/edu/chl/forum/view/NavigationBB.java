@@ -7,6 +7,7 @@ package edu.chl.forum.view;
 
 
 import edu.chl.forum.core.ForumThread;
+import edu.chl.forum.core.MainTopic;
 import edu.chl.forum.core.SubTopic;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -30,6 +31,7 @@ public class NavigationBB implements Serializable{
     private MenuModel model;
     private ForumThread thread;
     private SubTopic subtopic;
+    private MainTopic maintopic;
     
         
     @PostConstruct
@@ -102,5 +104,14 @@ public class NavigationBB implements Serializable{
     public void setSubtopic(SubTopic subtopic) {
         this.subtopic = subtopic;
     }
+
+    public MainTopic getMaintopic() {
+        return maintopic;
+    }
+
+    public void setMaintopic(MainTopic maintopic) {
+        this.maintopic = maintopic;
+    }
+    
 
 }

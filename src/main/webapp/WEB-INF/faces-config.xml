@@ -34,11 +34,11 @@
     </navigation-case>
         <navigation-case>
         <from-outcome>addTopic</from-outcome>
-        <to-view-id>/addTopic.xhtml</to-view-id>
+        <to-view-id>/partials/topics/addTopic.xhtml</to-view-id>
     </navigation-case>
         <navigation-case>
-        <from-outcome>addSubtopic</from-outcome>
-        <to-view-id>/addSubtopic.xhtml</to-view-id>
+        <from-outcome>addSubTopic</from-outcome>
+        <to-view-id>/partials/topics/addSubtopic.xhtml</to-view-id>
     </navigation-case>
 </navigation-rule>       
     

@@ -7,7 +7,6 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.util.AbstractEntity;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,14 +29,16 @@ public class MainTopic extends AbstractEntity {
         
     }
     
-    public MainTopic(String title, List<SubTopic> list){
+    public MainTopic(String title, String description, List<SubTopic> list){
         this.title = title;
+        this.description = description;
         this.subTopics = list;
     }
     
-    public MainTopic(Long id, String title, List<SubTopic> list){
+    public MainTopic(Long id, String title, String description, List<SubTopic> list){
         super(id);
         this.title = title;
+        this.description = description;
         this.subTopics = list;
     }
     
