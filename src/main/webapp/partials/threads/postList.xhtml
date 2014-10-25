@@ -29,12 +29,12 @@
                              <p:button value="Post" outcome="addPost" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
                              <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                          </f:facet>
-                            <p:panel id="basic" header="#{index}" style="text-align:right">
+                            <p:panel id="custom" header="#{index}" style="text-align:left">
                                 <p:layout style="min-width:400px;min-height:200px;text-align:left">
                                     <p:layoutUnit position="west" size="120" >
                                  
                                         <h:panelGrid columns="1">
-                                            <h:outputText value="Name:" style="font-size:12px" />
+                                            <h:outputText value="#" style="font-size:12px" />
                                             <h:outputText value="Auth" style="font-size:12px"/>
                                             <h:outputText value="500 posts" style="font-size:12px"/>
                                         </h:panelGrid>
@@ -43,12 +43,19 @@
  
                                     <p:layoutUnit position="center">
                                         <h:outputText value="#{post.content}" />
-                                        <p:button value="Edit" outcome="editPost" icon="ui-icon-plus" rendered="#{loginBean.user == post.user}">
-                                            <f:param name="content" value="#{post.content}" />
-                                            <f:param name="index" value="#{index}" />                                            
-                                        </p:button>
+                                                                        
                                     </p:layoutUnit>
                                 </p:layout>
+                                <f:facet name ="actions">
+                                    <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
+                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.user == post.user or loginBean.user.rank gt 0}" >
+                                        <f:param name="content" value="#{post.content}" />
+                                        <f:param name="index" value="#{index}" /> 
+                                    </p:button>
+                                    <p:button value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
+                                        outcome="editPost" icon="ui-icon-pencil" disabled="true" rendered="#{!loginBean.loggedIn or (loginBean.user != post.user and loginBean.user.rank lt 1 )}" >
+                                     </p:button>   
+                                </f:facet>
                             </p:panel>
                     </p:dataGrid>
                 </h:form>
