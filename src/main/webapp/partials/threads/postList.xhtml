@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
 
         
@@ -34,9 +35,10 @@
                                     <p:layoutUnit position="west" size="120" >
                                  
                                         <h:panelGrid columns="1">
-                                            <h:outputText value="#" style="font-size:12px" />
-                                            <h:outputText value="Auth" style="font-size:12px"/>
-                                            <h:outputText value="500 posts" style="font-size:12px"/>
+                                            <h:outputText value="#{post.user.name}" style="font-size:12px" />
+                                            <h:outputText value="User" style="font-size:12px" rendered="#{post.user.rank ==0}"/>
+                                            <h:outputText value="Admin" style="font-size:12px" rendered="#{post.user.rank gt 0}"/>
+                                            <h:outputText value="500" style="font-size:12px"/>
                                         </h:panelGrid>
                                 
                                     </p:layoutUnit>
@@ -48,7 +50,7 @@
                                 </p:layout>
                                 <f:facet name ="actions">
                                     <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
-                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.user == post.user or loginBean.user.rank gt 0}" >
+                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and (loginBean.user == post.user or loginBean.user.rank gt 0)}" >
                                         <f:param name="content" value="#{post.content}" />
                                         <f:param name="index" value="#{index}" /> 
                                     </p:button>
