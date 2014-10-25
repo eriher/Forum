@@ -6,14 +6,9 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.ForumUser;
-import edu.chl.forum.view.TopicsListBB;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 
