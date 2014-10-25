@@ -22,7 +22,7 @@
                         <h:panelGrid columns="1" style="width:100%">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                    <p:commandLink value="#{thread.getTitle()}"  action="/partials/threads/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigationBB.setThread(thread)}" />
+                                    <p:commandLink value="#{thread.getTitle()}"  action="/partials/posts/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigationBB.setThread(thread)}" />
                                 </h:panelGrid>
                             </p:outputPanel>
                         </h:panelGrid>
