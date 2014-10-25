@@ -118,9 +118,11 @@ public class LoginBean implements Serializable{
     *   Method for logging out users
     */
     public void logout(){
+        System.out.println("Logging out user " + user.getName());
         FacesMessage msg;
         msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged out", user.getName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        RequestContext.getCurrentInstance().addCallbackParam("loggedOut", user);
         this.user = null;
         loggedIn = false;
     }
