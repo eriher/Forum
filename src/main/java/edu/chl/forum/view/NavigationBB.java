@@ -45,6 +45,7 @@ public class NavigationBB implements Serializable{
         model = new DefaultMenuModel();
         
         DefaultMenuItem item = new DefaultMenuItem("home");
+        item.setOutcome("home");
         item.setCommand("#{navigationBB.navigateHome}");
         model.addElement(item);
     }
@@ -52,17 +53,17 @@ public class NavigationBB implements Serializable{
     public MenuModel getModel() {
         return model;
     }    
-    public String navigateHome() {
+    public void navigateHome() {
         model = new DefaultMenuModel();
         
         DefaultMenuItem home = new DefaultMenuItem("home");
         home.setCommand("#{navigationBB.navigateHome}");
         model.addElement(home);
         LOG.log(Level.INFO, "navigate home", this);
-        return "home";
+
     }
     
-    public String navigateThreads(){
+    public void navigateThreads(){
         model = new DefaultMenuModel();
         
         DefaultMenuItem home = new DefaultMenuItem("home");
@@ -74,9 +75,8 @@ public class NavigationBB implements Serializable{
         threads.setCommand("#{navigationBB.navigateThreads}");
         this.model.addElement(threads);
         LOG.log(Level.INFO, "navigate threads", this);
-        return "threads";
     }
-    public String navigatePosts(){
+    public void navigatePosts(){
         model = new DefaultMenuModel();
         
         DefaultMenuItem home = new DefaultMenuItem("home");
@@ -93,8 +93,6 @@ public class NavigationBB implements Serializable{
         posts.setCommand("#{navigationBB.navigatePosts}");
         this.model.addElement(posts);
         LOG.log(Level.INFO, "navigate posts", this);
-        
-        return "posts";
     }
 
     public ForumThread getThread() {

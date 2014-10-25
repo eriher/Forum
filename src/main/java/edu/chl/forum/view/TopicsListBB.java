@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,7 +21,7 @@ import javax.inject.Named;
  * @author erik
  */
 @Named
-@ViewScoped
+@RequestScoped
 public class TopicsListBB implements Serializable{
         private static final Logger LOG = Logger.getLogger(TopicsListBB.class.getName()); 
         @Inject IForum forum;

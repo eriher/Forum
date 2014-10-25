@@ -5,10 +5,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
+        <h:head>
         <title>Forum</title>
-    </h:head>
-    <h:body>
+        </h:head>
+        <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
                 <h:form>           
@@ -19,9 +19,7 @@
                         <p:tab title="#{mtopic.getTitle()}">
                             <p:button value="Add SubTopic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
                                 <p:dataList value="#{mtopic.getList()}" var="stopic" styleClass="noborder">
-                                <p:commandLink value="#{stopic.getTitle()}"  action="#{navigationBB.navigateThreads()}" style="font-weight: bold">
-                                    <f:setPropertyActionListener target="#{navigationBB.subtopic}" value="#{stopic}" />
-                                </p:commandLink>
+                                    <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigationBB.setSubtopic(stopic)}" />
                             </p:dataList>
                             
                         </p:tab>

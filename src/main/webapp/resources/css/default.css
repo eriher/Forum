@@ -1,9 +1,6 @@
 /*
 *  Simple CSS
 */
-
-
-
 body {
     margin: auto;
     width : 65em;
@@ -12,8 +9,7 @@ body {
 
 
 header {
-    
-    margin: auto;
+    background-position: center;
     background-image:  url(../resources/img/testbanner.jpg);
 }
 
