@@ -11,7 +11,7 @@
         <ui:composition template="/WEB-INF/template.xhtml">
 
             <ui:define name="top">
-                            <h:form>
+            <h:form>
             <p:breadCrumb model="#{navigationBB.navigatePosts()}">
             </p:breadCrumb>
             </h:form>
@@ -27,7 +27,7 @@
                          <f:facet name="header">
                              #{navigationBB.thread.getTitle()}
                              <p:button value="Post" outcome="addPost" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
-                             <p:button value="Login to post" disabled="true"/>
+                             <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                          </f:facet>
                             <p:panel id="basic" header="#{index}" style="text-align:right">
                                 <p:layout style="min-width:400px;min-height:200px;text-align:left">

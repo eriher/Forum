@@ -24,6 +24,22 @@
         <from-outcome>register</from-outcome>
         <to-view-id>/register.xhtml</to-view-id>
     </navigation-case>
+        <navigation-case>
+        <from-outcome>register</from-outcome>
+        <to-view-id>/register.xhtml</to-view-id>
+    </navigation-case>
+        <navigation-case>
+        <from-outcome>register</from-outcome>
+        <to-view-id>/register.xhtml</to-view-id>
+    </navigation-case>
+        <navigation-case>
+        <from-outcome>addTopic</from-outcome>
+        <to-view-id>/addTopic.xhtml</to-view-id>
+    </navigation-case>
+        <navigation-case>
+        <from-outcome>addSubtopic</from-outcome>
+        <to-view-id>/addSubtopic.xhtml</to-view-id>
+    </navigation-case>
 </navigation-rule>       
     
 </faces-config>
