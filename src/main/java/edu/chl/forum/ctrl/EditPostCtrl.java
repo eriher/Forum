@@ -5,12 +5,10 @@
  */
 package edu.chl.forum.ctrl;
 
-import edu.chl.forum.core.Forum;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
-import edu.chl.forum.core.SingletonForum;
 import edu.chl.forum.view.EditPostBB;
-import edu.chl.forum.view.TopicsListBB;
+import edu.chl.forum.view.NavigationBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -30,7 +28,7 @@ public class EditPostCtrl {
     private EditPostBB postBB;
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
     private IForum forum;
-    private TopicsListBB listBB;
+    @Inject NavigationBB nav;
     
     
     protected EditPostCtrl(){
@@ -57,17 +55,12 @@ public class EditPostCtrl {
         this.postBB = postBB;
     }
     
-    @Inject
-    public void setTopicsList(TopicsListBB listBB){
-        this.listBB = listBB;
-    }
   
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        
-        //TODO Every post need serverside ID(Inside thread only) listBB.getCurrentThread().getList().size();??
-        listBB.getCurrentThread().getList().get(postBB.getIndex()).setContent(postBB.getContent());
-        forum.getThreadCatalogue().update(listBB.getCurrentThread());
+        Post post = nav.getThread().getList().get(postBB.getIndex());
+        post.setContent(postBB.getContent());
+        forum.getPostCatalogue().update(post);
     }
 }

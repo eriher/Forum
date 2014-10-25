@@ -20,15 +20,11 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public  class ForumThreadCatalogue extends AbstractDAO<ForumThread, Long>
-        implements IThreadCatalogue {
+        implements IForumThreadCatalogue {
     
     @PersistenceContext
     EntityManager em;
     
-
-    public static IThreadCatalogue newInstance() {
-        return new ForumThreadCatalogue();
-    }
     
     public ForumThreadCatalogue() {
         super(ForumThread.class);

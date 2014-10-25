@@ -11,40 +11,20 @@
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
-
-                    <h:form>           
+                <h:form>           
                     <p:growl id="msgs" showDetail="true" />
                     <h2>Topics</h2>
-
-
-                    <p:accordionPanel value="#{topicsListBB.maintopics}" var="title" multiple="true" activeIndex="#{topicsListBB.tabs}">
-
-                        <p:tab title="#{title.getTitle()}">
-
-                            <p:dataGrid columns="1" value="#{title.getList()}" var="topic" >
-                                <h:commandLink value="#{topic.getTitle()}"  action="#{breadCrumbBB.navigateThreads()}">
-                                    <f:setPropertyActionListener target="#{topicsListBB.currentTopic}" value="#{topic}" />
-                                </h:commandLink>
-                            </p:dataGrid>
+                    <p:button value="Add Topic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                    <p:accordionPanel value="#{topicsListBB.forum.mainTopicCatalogue.findAll()}" var="mtopic" multiple="true" activeIndex="#{topicsListBB.tabs}">
+                        <p:tab title="#{mtopic.getTitle()}">
+                            <p:button value="Add SubTopic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                                <p:dataList value="#{mtopic.getList()}" var="stopic" styleClass="noborder">
+                                <p:commandLink value="#{stopic.getTitle()}"  action="#{navigationBB.navigateThreads()}" style="font-weight: bold">
+                                    <f:setPropertyActionListener target="#{navigationBB.subtopic}" value="#{stopic}" />
+                                </p:commandLink>
+                            </p:dataList>
+                            
                         </p:tab>
-                                <!--      <p:tab title="Topic 1">
-                            <h:panelGrid columns="1" cellpadding="10">
-                                <h:link value="SubTopic"  outcome="#{breadCrumbBB.navigateThreads()}"/>
-                                <h:link value="SubTopic" />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Topic 2">
-                            <h:panelGrid columns="1" cellpadding="10">
-                                <h:link value="SubTopic" />
-                                <h:link value="SubTopic" />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Topic 3">
-                            <h:panelGrid columns="1" cellpadding="10">
-                                <h:link value="SubTopic" />
-                                <h:link value="SubTopic" />
-                            </h:panelGrid>
-                        </p:tab>-->
                     </p:accordionPanel>    
                 </h:form>
             </ui:define>

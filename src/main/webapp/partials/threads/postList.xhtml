@@ -13,24 +13,17 @@
                 <h2>Posts</h2>
                 <hr/>
             </ui:define>
-            
             <ui:define name="content">
                 <h:form id="form">
-                    
-                    
-                        
-                        <p:dataGrid value="#{topicsListBB.currentThread.getList()}" var="post" columns="1"
+                    <p:dataGrid value="#{navigationBB.thread.getList()}" var="post" columns="1"
                                     rows="12" paginator="true" id="posts" rowIndexVar="index"
                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                 rowsPerPageTemplate="6,12,16">
-                            
-                            
- 
                          <f:facet name="header">
-                             #{topicsListBB.currentThread.getTitle()}
-                             <p:button value="Post" outcome="addPost" icon="ui-icon-plus"/>
+                             #{navigationBB.thread.getTitle()}
+                             <p:button value="Post" outcome="addPost" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                             <p:button value="Login to post" disabled="true"/>
                          </f:facet>
- 
                             <p:panel id="basic" header="#{index}" style="text-align:right">
                                 <p:layout style="min-width:400px;min-height:200px;text-align:left">
                                     <p:layoutUnit position="west" size="120" >
@@ -45,9 +38,9 @@
  
                                     <p:layoutUnit position="center">
                                         <h:outputText value="#{post.content}" />
-                                        <p:button value="Edit" outcome="editPost" icon="ui-icon-plus">
+                                        <p:button value="Edit" outcome="editPost" icon="ui-icon-plus" rendered="#{loginBean.user == post.user}">
                                             <f:param name="content" value="#{post.content}" />
-                                            <f:param name="index" value="#{index}" />
+                                            <f:param name="index" value="#{index}" />                                            
                                         </p:button>
                                     </p:layoutUnit>
                                 </p:layout>

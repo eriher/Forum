@@ -2,9 +2,7 @@
 *  Simple CSS
 */
 
-root { 
-    display: block;   
-}
+
 
 body {
     margin: auto;
@@ -12,14 +10,11 @@ body {
     background: lightgray;
 }
 
-#input{
-    margin-right: auto;
-    width : 20em; 
-}
 
 header {
+    
+    margin: auto;
     background-image:  url(../resources/img/testbanner.jpg);
-    background-position: center;
 }
 
 header h1{  
@@ -31,7 +26,6 @@ header h1{
     font-variant: small-caps;
     color: black;
     text-align: left;
-    margin-left: 0.5em;
     vertical-align: middle;
 }
 
@@ -44,12 +38,6 @@ body h2{
     color: black;
 }
 
-footer {
-    position:fixed;
-    bottom:10px;
-    height:30px;
-    width: 50em;
-}
 
 #error {
     color:  red;
@@ -66,4 +54,7 @@ footer {
     height:22px;
     font-size: 10px;
     color: white;
+}
+.noborder .ui-widget-content {
+border: none;
 }

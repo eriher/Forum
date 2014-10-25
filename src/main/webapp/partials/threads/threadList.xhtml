@@ -11,19 +11,14 @@
                 <h2>Threads</h2>
                 <hr/>
             </ui:define>
-
-
             <ui:define name="content">
-                <h:form> 
-                    <p:dataScroller value="#{topicsListBB.currentTopic.getList()}" var="thread" chunkSize="5">
-                        <f:facet name="header">
-                            Scroll Down to Load More Threads
-                        </f:facet>
+                <h:form>
+                    <p:dataScroller value="#{navigationBB.subtopic.getList()}" var="thread" chunkSize="10" mode="inline" scrollHeight="500">
                         <h:panelGrid columns="1" style="width:100%">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                <h:commandLink value="#{thread.getTitle()}"  action="#{breadCrumbBB.navigatePosts()}">
-                                    <f:setPropertyActionListener target="#{topicsListBB.currentThread}" value="#{thread}" />
+                                <h:commandLink value="#{thread.getTitle()}"  action="#{navigationBB.navigatePosts()}">
+                                    <f:setPropertyActionListener target="#{navigationBB.thread}" value="#{thread}" />
                                 </h:commandLink>
                                 </h:panelGrid>
                             </p:outputPanel>

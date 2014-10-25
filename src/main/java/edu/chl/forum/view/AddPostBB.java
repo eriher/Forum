@@ -24,8 +24,6 @@ import javax.inject.Named;
 public class AddPostBB implements Serializable {
     
     private String content;
-    private Date date = new Date();
-    private ForumUser user = new ForumUser();
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
     
     @PostConstruct
@@ -42,24 +40,7 @@ public class AddPostBB implements Serializable {
         return content;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public ForumUser getUser() {
-        return user;
-    }
-
     public void setContent(String content) {
         this.content = content;
     }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setUser(ForumUser user) {
-        this.user = user;
-    }
-    
 }

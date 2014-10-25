@@ -24,7 +24,6 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditPostBB implements Serializable {
-   
     private int index;
     private Post post;
     private String content;
@@ -54,10 +53,6 @@ public class EditPostBB implements Serializable {
         return user;
     }
     
-    public int getIndex(){
-        return index;
-    }
-    
     public Post getPost(){
         return post;
     }
@@ -73,11 +68,13 @@ public class EditPostBB implements Serializable {
     public void setUser(ForumUser user) {
         this.user = user;
     }
-    
-    public void setIndex(int index){
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
         this.index = index;
     }
-    
-    
-    
+
 }
