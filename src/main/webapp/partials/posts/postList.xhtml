@@ -32,7 +32,7 @@
                          </f:facet>
                             <p:panel id="custom" header="#{index}" style="text-align:left">
                                 <p:layout style="min-width:400px;min-height:200px;text-align:left">
-                                    <p:layoutUnit position="west" size="120" >
+                                    <p:layoutUnit position="west" size="120" resizable="false" >
                                  
                                         <h:panelGrid columns="1">
                                             <h:outputText value="#{post.user.name}" style="font-size:12px" />
@@ -42,19 +42,29 @@
                                         </h:panelGrid>
                                 
                                     </p:layoutUnit>
- 
-                                    <p:layoutUnit position="center">
+                                    
+                                    <p:layoutUnit position="center" resizable="false">
                                         <h:outputText value="#{post.content}" />                       
                                     </p:layoutUnit>
+                                    
+                                    <p:layoutUnit position="south" resizable="false" size="40">
+                                        <h:outputText value="Edited by Admin!" rendered="#{post.adminEdit == true}"/>
+                                        <h:outputText value="Edited by #{post.user.name}" rendered="#{post.userEdit == true}"/>
+                                        <h:outputText value="#{post.date.toString()}" rendered="#{post.adminEdit != true and post.userEdit != true}"/>
+                                    </p:layoutUnit>
+                                    
                                 </p:layout>
                                 <f:facet name ="actions">
-                                    <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
-                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and (loginBean.user == post.user or loginBean.user.rank gt 0)}" >
+                                    <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" style="alignment-adjust: "
+                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and 
+                                        (loginBean.user == post.user or (loginBean.user.rank gt 0 or post.adminEdit == false))}" >
                                         <f:param name="content" value="#{post.content}" />
                                         <f:param name="index" value="#{index}" /> 
                                     </p:button>
                                     <p:button value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
-                                        outcome="editPost" icon="ui-icon-pencil" disabled="true" rendered="#{!loginBean.loggedIn or (loginBean.user != post.user and loginBean.user.rank lt 1 )}" >
+                                        outcome="editPost" icon="ui-icon-pencil" disabled="true" 
+                                        rendered="#{!loginBean.loggedIn or (loginBean.user != post.user and 
+                                        loginBean.user.rank lt 1 ) and post.adminEdit == true}" >
                                      </p:button>   
                                 </f:facet>
                             </p:panel>

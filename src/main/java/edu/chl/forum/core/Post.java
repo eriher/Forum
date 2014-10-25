@@ -22,6 +22,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class Post extends AbstractEntity  {
 
+    private boolean adminEdit;
+    private boolean userEdit;
     private String content;
     @ManyToOne(cascade=CascadeType.PERSIST)
     private ForumUser user;
@@ -41,6 +43,15 @@ public class Post extends AbstractEntity  {
         this.content = content;
         this.user = user;
     }
+    
+    public boolean getAdminEdit(){
+        return adminEdit;
+    }
+    
+    public boolean getUserEdit(){
+        return userEdit;
+    }
+            
 
     public String getContent() {
         return content;
@@ -56,6 +67,14 @@ public class Post extends AbstractEntity  {
     
     public void setContent(String content){
         this.content = content;
+    }
+    
+    public void setUserEdit(boolean userEdit){
+        this.userEdit = userEdit;
+    }
+    
+    public void setAdminEdit(boolean adminEdit){
+        this.adminEdit = adminEdit;
     }
     
 }
