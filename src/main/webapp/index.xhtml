@@ -7,10 +7,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
         <h:head>
         <title>Forum</title>
+
         </h:head>
         <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
-            <ui:define name="content"> 
+            <ui:define name="top">
+            <h:form>
+            <p:breadCrumb model="#{navigationBB.navigateHome()}">
+            </p:breadCrumb>
+            </h:form>
+            </ui:define>
+            <ui:define name="content">
                 <h:form>           
                     <p:growl id="msgs" showDetail="true" />
                     <h2>Topics</h2>

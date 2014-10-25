@@ -39,60 +39,52 @@ public class NavigationBB implements Serializable{
     @PreDestroy
     public void pre() {
         LOG.log(Level.INFO, "NavigationBB to be destroyed {0}", this);
-    }
-    
-    public NavigationBB() {
-        model = new DefaultMenuModel();
-        
-        DefaultMenuItem item = new DefaultMenuItem("home");
-        item.setOutcome("home");
-        item.setCommand("#{navigationBB.navigateHome}");
-        model.addElement(item);
-    }
-    
+    }    
     public MenuModel getModel() {
         return model;
     }    
-    public void navigateHome() {
+    public MenuModel navigateHome() {
         model = new DefaultMenuModel();
         
         DefaultMenuItem home = new DefaultMenuItem("home");
-        home.setCommand("#{navigationBB.navigateHome}");
+        home.setOutcome("home");
         model.addElement(home);
         LOG.log(Level.INFO, "navigate home", this);
-
+        return  model;
     }
     
-    public void navigateThreads(){
+    public MenuModel navigateThreads(){
         model = new DefaultMenuModel();
         
         DefaultMenuItem home = new DefaultMenuItem("home");
-        home.setCommand("#{navigationBB.navigateHome}");
+        home.setOutcome("home");
         model.addElement(home);
                        
         DefaultMenuItem threads = new DefaultMenuItem();
         threads.setValue(subtopic.getTitle());
-        threads.setCommand("#{navigationBB.navigateThreads}");
+        threads.setOutcome("threads");
         this.model.addElement(threads);
-        LOG.log(Level.INFO, "navigate threads", this);
+        
+        return  model;
     }
-    public void navigatePosts(){
+    public MenuModel navigatePosts(){
         model = new DefaultMenuModel();
         
         DefaultMenuItem home = new DefaultMenuItem("home");
-        home.setCommand("#{navigationBB.navigateHome}");
+        home.setOutcome("home");
         model.addElement(home);
                        
         DefaultMenuItem threads = new DefaultMenuItem();
         threads.setValue(subtopic.getTitle());
-        threads.setCommand("#{navigationBB.navigateThreads()}");
+        threads.setOutcome("threads");
         this.model.addElement(threads);
         
         DefaultMenuItem posts = new DefaultMenuItem();
         posts.setValue(thread.getTitle());
-        posts.setCommand("#{navigationBB.navigatePosts}");
+        posts.setOutcome("posts");
         this.model.addElement(posts);
-        LOG.log(Level.INFO, "navigate posts", this);
+        
+        return model;
     }
 
     public ForumThread getThread() {
