@@ -19,38 +19,34 @@ and open the template in the editor.
     <h:body>
         <header>
             <hgroup>
-                <h:form style="float:left">
-                    <c:choose>
-                        <c:when test="#{loginBean.loggedIn}">
-                             <p:commandButton value="#{loginBean.getUser().name}" 
-                                             onclick="#{loginBean.logout()}" 
-                                             title="logout" 
-                                             class="loginButton"/>
-                        </c:when>
-                        <c:otherwise>
-                            <p:commandButton value="Login" 
-                                             onclick="PF('dlg').show();" 
-                                             title="login" 
-                                             class="loginButton"/>
-                        </c:otherwise>
-                    </c:choose>
-                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                <c:choose>
+                    <c:when test="#{loginBean.loggedIn}">
+                        <h:form>
+                            <p:growl id="growlout" sticky="true" showDetail="true" life="3000" />
+                            <p:commandButton value="Logout" update="growlout" actionListener="#{loginBean.logout}" action="index?faces-redirect=true" class="loginButton"/>
+                        </h:form>
+                    </c:when>
+                    <c:otherwise>
+                        <h:form>
+                            <p:commandButton value="Login" onclick="PF('dlg').show();" class="loginButton"/>
+                            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                            <p:dialog header="Login" widgetVar="dlg" resizable="false">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputLabel for="username" value="Username:" style="padding:10px 0px;"/>
+                                    <p:inputText id="username" value="#{loginBB.name}" label="username" />
 
-                    <p:dialog header="Login" widgetVar="dlg" resizable="false">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputLabel for="username" value="Username:" style="padding:10px 0px;"/>
-                            <p:inputText id="username" value="#{loginBB.name}" required="true" label="username" />
+                                    <h:outputLabel for="password" value="Password:" style="padding:10px 0px;"/>
+                                    <p:password id="password" value="#{loginBB.password}" label="password" />
 
-                            <h:outputLabel for="password" value="Password:" style="padding:10px 0px;"/>
-                            <p:password id="password" value="#{loginBB.password}" required="true" label="password" />
-
-                            <f:facet name="footer">
-                                <p:commandButton value="Login" update="growl" actionListener="#{loginBean.login}"
-                                                 oncomplete="handleLoginRequest(xhr, status, args)" />
-                            </f:facet>
-                        </h:panelGrid>
-                    </p:dialog>
-                </h:form>
+                                    <f:facet name="footer">
+                                        <p:commandButton value="Login" update="growl" actionListener="#{loginBean.login}"
+                                                         oncomplete="handleLoginRequest(xhr, status, args)" />
+                                    </f:facet>
+                                </h:panelGrid>
+                            </p:dialog>
+                        </h:form>
+                    </c:otherwise>
+                </c:choose>
                 <c:if test="#{!loginBean.loggedIn}">
                     <h:form style="float:left">
                         <p:commandButton value="New user" action="register" class="loginButton"/>
