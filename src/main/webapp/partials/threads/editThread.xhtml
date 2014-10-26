@@ -6,17 +6,21 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-        <title>Add thread to #{navigation.subtopic.title}</title>
+        <title>Edit thread</title>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h2>Create new thread</h2>
+                <h2>Edit Thread</h2>
+                <f:metadata>
+                    <f:viewParam name="title" value="#{editThreadBB.title}"/>
+                    <f:viewParam name="locked" value="#{editThreadBB.locked}"/>
+                </f:metadata>
                 <h:form>
                     <h:panelGrid columns="2">
                         <h:outputLabel for="title" value="Title:" style="font-weight:bold"/>
-                        <p:inputText id="name" value="#{addThreadBB.title}"/>
-                        <h:outputLabel for="content" value="Content:" style="font-weight:bold"/>
-                        <p:inputTextarea id="content" value="#{addThreadBB.content}"/>
-                        <p:commandButton value="Submit" actionListener="#{addThreadCtrl.save()}" action="threadList" icon="ui-icon-check"/>
+                        <p:inputText id="title" value="#{editThreadBB.title}"/>
+                        <h:outputText value="Locked:  " />
+                        <p:selectBooleanButton value="#{editThreadBB.locked}" onLabel="Yes" offLabel="No" style="width:60px" />
+                        <p:commandButton value="Submit" actionListener="#{editThreadCtrl.save()}" action="threadList" icon="ui-icon-check"/>
                         <p:commandButton value="Cancel" action="threadList" icon="ui-icon-check"/>
                     </h:panelGrid>               
                 </h:form>

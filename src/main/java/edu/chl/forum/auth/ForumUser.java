@@ -5,7 +5,7 @@
  */
 package edu.chl.forum.auth;
 
-import edu.chl.forum.util.AbstractEntity;
+import edu.chl.forum.persistence.AbstractEntity;
 import javax.persistence.Entity;
 
 /**

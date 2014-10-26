@@ -49,6 +49,7 @@ public class TopicsListBB implements Serializable{
         @PostConstruct
         public void init() {
             LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
+
             
             
             maintopics = forum.getMainTopicCatalogue().findAll();
@@ -78,7 +79,8 @@ public class TopicsListBB implements Serializable{
                     maintopics.get(0).getList().get(0).getList().add(new ForumThread("threadtest1",new Post("this is a test post",user),user));
                     forum.getMainTopicCatalogue().update(maintopics.get(0));
             }
-
+            
+            //maintopic = forum.getMainTopicCatalogue().findAll();
             setActiveTabs(forum.getMainTopicCatalogue().count());
         }
         

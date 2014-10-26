@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.chl.forum.view;
+package edu.chl.forum.util;
 
 
 import edu.chl.forum.core.ForumThread;
@@ -26,8 +26,8 @@ import org.primefaces.model.menu.MenuModel;
  */
 @Named
 @SessionScoped
-public class NavigationBB implements Serializable{
-    private static final Logger LOG = Logger.getLogger(NavigationBB.class.getName()); 
+public class Navigation implements Serializable{
+    private static final Logger LOG = Logger.getLogger(Navigation.class.getName()); 
     private MenuModel model;
     private ForumThread thread;
     private SubTopic subtopic;
@@ -36,11 +36,11 @@ public class NavigationBB implements Serializable{
         
     @PostConstruct
     public void init() {
-        LOG.log(Level.INFO, "NavigationBB alive {0}", this);
+        LOG.log(Level.INFO, "Navigation alive {0}", this);
     }
     @PreDestroy
     public void pre() {
-        LOG.log(Level.INFO, "NavigationBB to be destroyed {0}", this);
+        LOG.log(Level.INFO, "Navigation to be destroyed {0}", this);
     }    
     public MenuModel getModel() {
         return model;

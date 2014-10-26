@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package edu.chl.forum.util;
+package edu.chl.forum.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,5 +84,14 @@ public abstract class AbstractDAO<T , K > implements IDAO<T, K> {
         Long n = em.createQuery("select count(t) from " + clazz.getSimpleName() +
                 " t", Long.class).getSingleResult();
         return n.intValue();
+    }
+    
+    @SuppressWarnings("")
+    public List<T> getAllPosts(K id){
+         EntityManager em = getEntityManager();
+         List<T> found = new ArrayList<>();
+         TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName()+ " t where USER_ID= "+id,clazz);
+         found.addAll(q.getResultList());
+         return found;        
     }
 }

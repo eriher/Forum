@@ -6,7 +6,7 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.util.AbstractEntity;
+import edu.chl.forum.persistence.AbstractEntity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -66,7 +66,7 @@ public class SubTopic extends AbstractEntity{
         return description;
     }
 
-    public boolean getLocked() {
+    public boolean isLocked() {
         return locked;
     }
 
