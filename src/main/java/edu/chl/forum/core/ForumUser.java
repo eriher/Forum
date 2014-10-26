@@ -6,6 +6,7 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.persistence.AbstractEntity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -14,9 +15,10 @@ import javax.persistence.Entity;
  */
 @Entity
 public class ForumUser extends AbstractEntity{
-    
+    @Column(unique=true)
     private String name;
     private String password;
+    @Column(unique=true)
     private String email;
     private int rank;
 

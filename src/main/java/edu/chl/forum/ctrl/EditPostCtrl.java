@@ -5,10 +5,10 @@
  */
 package edu.chl.forum.ctrl;
 
+import edu.chl.forum.auth.LoginBean;
 import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
-import edu.chl.forum.core.Post;
 import edu.chl.forum.view.EditPostBB;
 import edu.chl.forum.util.Navigation;
 import java.text.DateFormat;
@@ -34,6 +34,7 @@ public class EditPostCtrl {
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
     private IForum forum;
     @Inject Navigation nav;
+    @Inject LoginBean login;
     
     
     protected EditPostCtrl(){
@@ -73,7 +74,7 @@ public class EditPostCtrl {
         thread.getList().get(postBB.getIndex()).setContent(postBB.getContent());
         
         
-        ForumUser user = forum.getUserCatalogue().find(postBB.getEditorId());
+        ForumUser user = login.getUser();
         if(user.getRank()<1)
         {
             thread.getList().get(postBB.getIndex()).setEditText("Edited on " +date+ " by user " +user.getName());

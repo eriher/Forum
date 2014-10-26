@@ -24,12 +24,8 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditPostBB implements Serializable {
-    private long editorId;
     private int index;
-    private Post post;
     private String content;
-    private Date date = new Date();
-    private ForumUser user;
     private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
     
     @PostConstruct
@@ -46,34 +42,12 @@ public class EditPostBB implements Serializable {
         return content;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public ForumUser getUser() {
-        return user;
-    }
-    
-    public Post getPost(){
-        return post;
-    }
-    
-    public long getEditorId(){
-        return editorId;
-    }
     
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setUser(ForumUser user) {
-        this.user = user;
-    }
 
     public int getIndex() {
         return index;
@@ -82,9 +56,6 @@ public class EditPostBB implements Serializable {
     public void setIndex(int index) {
         this.index = index;
     }
-    
-    public void setEditorId(long editorId){
-        this.editorId = editorId;
-    }
+
 
 }
