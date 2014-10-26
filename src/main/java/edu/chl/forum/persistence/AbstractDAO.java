@@ -87,11 +87,12 @@ public abstract class AbstractDAO<T , K > implements IDAO<T, K> {
     }
     
     @SuppressWarnings("")
-    public List<T> getAllPosts(K id){
+    @Override
+    public int getAllPosts(K id){
          EntityManager em = getEntityManager();
          List<T> found = new ArrayList<>();
-         TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName()+ " t where USER_ID= "+id,clazz);
+         TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName()+ " t where t.user.id= "+id,clazz);
          found.addAll(q.getResultList());
-         return found;        
+         return found.size();        
     }
 }

@@ -29,4 +29,6 @@ public interface IDAO<T , K> {
     public List<T> findRange(int first, int n );
 
     public int count();
+    
+    public int getAllPosts(K id);
 }

@@ -38,7 +38,7 @@
                                             <h:outputText value="#{post.user.name}" style="font-size:12px" />
                                             <h:outputText value="User" style="font-size:12px" rendered="#{post.user.rank ==0}"/>
                                             <h:outputText value="Admin" style="font-size:12px" rendered="#{post.user.rank gt 0}"/>
-                                            <h:outputText value="#{forum.getPostCatalogue.count()}" style="font-size:12px"/>
+                                            <h:outputText value="#{postListBB.getPosts(post.user.id)}" style="font-size:12px"/>
                                         </h:panelGrid>
                                 
                                     </p:layoutUnit>
