@@ -21,18 +21,23 @@ import javax.inject.Named;
 @RequestScoped
 public class Register implements Serializable{
     private RegisterBB registerBB;
+    private LoginBean loginBean;
     @Inject IForum forum;
-    //LoginBean loginBean;
     
     @Inject
     public void setreg(RegisterBB registerBB){
         this.registerBB = registerBB;
     }
     
+    @Inject
+    public void setlog(LoginBean loginBean){
+        this.loginBean = loginBean;
+    }
+    
     public void save(){
         System.out.println("Adding new user: " + registerBB.getName() + ", " + registerBB.getPassword() + ", " + registerBB.getEmail());
         ForumUser user = new ForumUser(registerBB.getName(), registerBB.getPassword(), registerBB.getEmail());
         forum.getUserCatalogue().create(user);
-        //loginBean.login(registerBB.getName(), registerBB.getPassword());
+        loginBean.login(user.getName(), user.getPassword());
     }
 }
