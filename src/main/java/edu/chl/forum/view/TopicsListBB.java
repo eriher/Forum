@@ -6,6 +6,7 @@
 
 package edu.chl.forum.view;
 
+
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;
 import java.io.Serializable;
@@ -14,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -42,8 +42,37 @@ public class TopicsListBB implements Serializable{
         @PostConstruct
         public void init() {
             LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
-            setActiveTabs(forum.getMainTopicCatalogue().count());
+            
+            
             maintopic = forum.getMainTopicCatalogue().findAll();
+            /*if(forum.getMainTopicCatalogue().count() == 0)
+            {
+                    subtopics = new ArrayList();
+                    subtopics.add(new SubTopic("Subtopic 1","context",null));
+                    subtopics.add(new SubTopic("Subtopic 2","context",null));
+                    forum.getMainTopicCatalogue().create(new MainTopic("Title1", "descr",subtopics));
+                    subtopics = new ArrayList();
+                    subtopics.add(new SubTopic("Subtopic 1","context",null));
+                    subtopics.add(new SubTopic("Subtopic 2","context",null));
+                    subtopics.add(new SubTopic("Subtopic 3","context",null));
+                    subtopics.add(new SubTopic("Subtopic 4","context",null));
+                    forum.getMainTopicCatalogue().create(new MainTopic("Title2","descr",subtopics));
+                    subtopics = new ArrayList();
+                    subtopics.add(new SubTopic("Subtopic 1","context",null));
+                    subtopics.add(new SubTopic("Subtopic 2","context",null));
+                    subtopics.add(new SubTopic("Subtopic 3","context",null));
+                    subtopics.add(new SubTopic("Subtopic 4","context",null));
+                    subtopics.add(new SubTopic("Subtopic 5","context",null));
+                    subtopics.add(new SubTopic("Subtopic 6","context",null));
+                    forum.getMainTopicCatalogue().create(new MainTopic("Title3","descr",subtopics));
+                    
+                    maintopics = forum.getMainTopicCatalogue().findAll();
+                    ForumUser user = new ForumUser("Pelle");
+                    maintopics.get(0).getList().get(0).getList().add(new ForumThread("threadtest1",new Post("this is a test post",user),user));
+                    forum.getMainTopicCatalogue().update(maintopics.get(0));
+            }*/
+
+            setActiveTabs(forum.getMainTopicCatalogue().count());
         }
         
         @PreDestroy

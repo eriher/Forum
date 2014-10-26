@@ -5,10 +5,15 @@
  */
 package edu.chl.forum.ctrl;
 
+import edu.chl.forum.auth.ForumUser;
+import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.view.EditPostBB;
 import edu.chl.forum.view.NavigationBB;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -59,8 +64,25 @@ public class EditPostCtrl {
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
-        Post post = nav.getThread().getList().get(postBB.getIndex());
-        post.setContent(postBB.getContent());
-        forum.getThreadCatalogue().update(nav.getThread());
+        
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date today = new Date();
+        String date = df.format(today);
+        
+        ForumThread thread = nav.getThread();
+        thread.getList().get(postBB.getIndex()).setContent(postBB.getContent());
+        
+        
+        ForumUser user = forum.getUserCatalogue().find(postBB.getEditorId());
+        if(user.getRank()<1)
+        {
+            thread.getList().get(postBB.getIndex()).setEditText("Edited on " +date+ " by user " +user.getName());
+            thread.getList().get(postBB.getIndex()).setUserEdit(true);
+        }
+        else{
+            thread.getList().get(postBB.getIndex()).setEditText("Edited on " +date+ " by administrator " +user.getName());
+            thread.getList().get(postBB.getIndex()).setAdminEdit(true);
+        }
+        forum.getThreadCatalogue().update(thread);
     }
 }
