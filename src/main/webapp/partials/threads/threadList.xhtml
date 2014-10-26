@@ -27,9 +27,11 @@
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <p:commandLink value="#{thread.getTitle()}"  action="/partials/posts/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigation.setThread(thread)}" />
                                     <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editThread" actionListener="#{navigation.setThread(thread)}">
+                                        
                                         <f:param name="title" value="#{thread.getTitle()}" />
                                         <f:param name="content" value="#{thread.isLocked()}" />
                                     </p:commandButton>
+                                    <h:outputLabel value="posts: #{thread.list.size()}" style="font-size:small"/>
                                 </h:panelGrid>
                             </p:outputPanel>
                         </h:panelGrid>

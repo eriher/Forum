@@ -22,6 +22,7 @@
                     <p:accordionPanel id="panel" value="#{topicsListBB.maintopic}" 
                                       var="mtopic" multiple="true" activeIndex="#{topicsListBB.tabs}">
                         <p:tab title="#{mtopic.getTitle()}">
+                            <h:outputLabel value="Maintopic Description: #{mtopic.getDescription()}" style="font-size:small"/>
                             <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editMainTopic" actionListener="#{navigation.setMaintopic(mtopic)}">
                                         <f:param name="title" value="#{mtopic.getTitle()}" />
                                         <f:param name="content" value="#{mtopic.getDescription()}" />
@@ -30,9 +31,11 @@
                             <p:commandButton value="Delete #{mtopic.getTitle()}" actionListener="#{deleteCtrl.deleteMainTopic(mtopic.getId())}" action="index?faces-redirect=true" rendered="#{loginBean.user.rank>0}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton>
-                            <p:commandButton value="Add SubTopic" action="/partials/topics/addSubtopic?faces-redirect=true" actionListener="#{navigation.setMaintopic(mtopic)}" icon="ui-icon-plus" rendered="#{(loginBean.user.rank>0)}"/>
+            
+                            <p:commandButton value="Add Subtopic" action="/partials/topics/addSubtopic?faces-redirect=true" actionListener="#{navigation.setMaintopic(mtopic)}" icon="ui-icon-plus" rendered="#{(loginBean.user.rank>0)}"/>
+ 
                             <p:dataGrid id="grid" columns="1" value="#{mtopic.getList()}" var="stopic" styleClass="noborder" rowIndexVar="index">
-                                <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" actionListener="#{navigation.setSubtopic(stopic)}" />
+                                   <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" actionListener="#{navigation.setSubtopic(stopic)}" />
                                     <p:commandButton value="Edit" rendered="#{loginBean.user.rank>0}" action="editSubTopic" actionListener="#{navigation.setSubtopic(stopic)}">
                                         <f:param name="title" value="#{stopic.getTitle()}" />
                                         <f:param name="content" value="#{stopic.getDescription()}" />
@@ -41,6 +44,7 @@
                                     <p:commandButton value="Delete Subtopic" actionListener="#{deleteCtrl.deleteSubTopic(stopic.getId(), index,  mtopic)}" action="index?faces-redirect=true" rendered="#{loginBean.user.rank>0}">
                                     <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                                     </p:commandButton>
+                                    <h:outputLabel value="SubTopic Description: #{stopic.getDescription()} " style="font-size:small"/>
                             </p:dataGrid>  
                         </p:tab>
                     </p:accordionPanel>

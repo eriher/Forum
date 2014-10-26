@@ -6,7 +6,6 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.persistence.AbstractEntity;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -26,7 +25,8 @@ public class Post extends AbstractEntity  {
     private boolean userEdit;
     private String content;
     private String editText;
-    private ForumUser user;
+    @ManyToOne
+    private ForumUser forumUser;
     @Transient
     private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     @Transient
@@ -38,13 +38,13 @@ public class Post extends AbstractEntity  {
     
     public Post(String content, ForumUser user){
         this.content = content;
-        this.user = user;
+        this.forumUser = user;
     }
     
     public Post(Long id, String content, ForumUser user){
         super(id);
         this.content = content;
-        this.user = user;
+        this.forumUser = user;
     }
     
     public boolean getAdminEdit(){
@@ -61,7 +61,7 @@ public class Post extends AbstractEntity  {
     }
 
     public ForumUser getUser() {
-        return user;
+        return forumUser;
     }
 
     public String getDate() {

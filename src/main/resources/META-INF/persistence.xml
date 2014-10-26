@@ -6,8 +6,8 @@
     <class>edu.chl.forum.core.Post</class>
     <class>edu.chl.forum.core.SubTopic</class>
     <class>edu.chl.forum.core.ForumThread</class>
-    <class>edu.chl.forum.auth.ForumUser</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <class>edu.chl.forum.core.ForumUser</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>

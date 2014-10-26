@@ -6,7 +6,6 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.persistence.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +23,12 @@ import javax.persistence.OneToMany;
 public class ForumThread extends AbstractEntity{
     
     @ManyToOne
-    private ForumUser user;
+    private ForumUser forumUser;
     private String title;
     private boolean locked;
     
     @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
-    @JoinColumn(name = "POSTS_FK")
+    @JoinColumn(name = "FORUMTHREAD_ID")
     private List<Post> posts;
 
     public ForumThread() {
@@ -39,7 +38,7 @@ public class ForumThread extends AbstractEntity{
         posts = new ArrayList();
         this.title = title;
         posts.add(post);
-        this.user = user;
+        this.forumUser = user;
     }
     
     public ForumThread(Long id, String title, Post post, ForumUser user){
@@ -47,7 +46,7 @@ public class ForumThread extends AbstractEntity{
         posts = new ArrayList();
         this.title = title;
         posts.add(post);
-        this.user = user;
+        this.forumUser = user;
     }
     
     public boolean addPost(Post post) {
@@ -71,7 +70,7 @@ public class ForumThread extends AbstractEntity{
     }
 
     public ForumUser getUser() {
-        return user;
+        return forumUser;
     }
 
     public void setTitle(String title) {

@@ -7,11 +7,10 @@
     <class>edu.chl.forum.core.Post</class>
     <class>edu.chl.forum.core.SubTopic</class>
     <class>edu.chl.forum.core.ForumThread</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
-
-     <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+      <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
       <property name="eclipselink.logging.level.sql" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>

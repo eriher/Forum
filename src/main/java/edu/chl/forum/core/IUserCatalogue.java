@@ -5,7 +5,6 @@
  */
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.persistence.IDAO;
 import java.util.List;
 import javax.ejb.Local;

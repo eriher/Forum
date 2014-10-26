@@ -5,7 +5,7 @@
  */
 package edu.chl.forum.ctrl;
 
-import edu.chl.forum.auth.ForumUser;
+import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
