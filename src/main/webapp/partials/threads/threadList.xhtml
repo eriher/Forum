@@ -21,21 +21,33 @@
                 <p:button value="Thread" outcome="addThread" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
                 <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                 <h:form> 
-                    <p:dataScroller value="#{navigation.subtopic.getList()}" var="thread" chunkSize="15" mode="inline" scrollHeight="500">
-                        <h:panelGrid columns="1" style="width:100%">
-                            <p:outputPanel>
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <p:commandLink value="#{thread.getTitle()}"  action="/partials/posts/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigation.setThread(thread)}" />
-                                    <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editThread" actionListener="#{navigation.setThread(thread)}">
-                                        
-                                        <f:param name="title" value="#{thread.getTitle()}" />
-                                        <f:param name="content" value="#{thread.isLocked()}" />
-                                    </p:commandButton>
-                                    <h:outputLabel value="posts: #{thread.list.size()}" style="font-size:small"/>
-                                </h:panelGrid>
-                            </p:outputPanel>
-                        </h:panelGrid>
-                    </p:dataScroller>
+                    <div class="row">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>User</th>
+                                    <th>Posts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{navigation.subtopic.getList()}" var="thread">
+                                    
+                                    <tr>
+                                        <td><h:commandLink value="#{thread.getTitle()}"  action="/partials/posts/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigation.setThread(thread)}" /></td>
+                                        <td>#{thread.user.name}</td>
+                                        <td>
+                                            #{thread.list.size()}
+                                            <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editThread" actionListener="#{navigation.setThread(thread)}">
+                                                <f:param name="title" value="#{thread.getTitle()}" />
+                                                <f:param name="content" value="#{thread.isLocked()}" />
+                                            </p:commandButton>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
                 </h:form>
             </ui:define>
         </ui:composition>
