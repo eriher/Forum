@@ -10,7 +10,7 @@ import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.view.EditPostBB;
-import edu.chl.forum.view.NavigationBB;
+import edu.chl.forum.util.Navigation;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,7 +33,7 @@ public class EditPostCtrl {
     private EditPostBB postBB;
     private static final Logger LOG = Logger.getLogger(EditPostCtrl.class.getName());
     private IForum forum;
-    @Inject NavigationBB nav;
+    @Inject Navigation nav;
     
     
     protected EditPostCtrl(){

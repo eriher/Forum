@@ -6,7 +6,7 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.util.AbstractEntity;
+import edu.chl.forum.persistence.AbstractEntity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class MainTopic extends AbstractEntity {
     
     private String title;
     private String description;
-    @OneToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "SUBTOPICS_FK")
     private List<SubTopic> subTopics;
     private boolean locked;
@@ -62,7 +62,7 @@ public class MainTopic extends AbstractEntity {
     public boolean addSubTopic(SubTopic topic){
         return subTopics.add(topic);
     }
-    public boolean getLocked(){
+    public boolean isLocked(){
         return locked;
     }
 

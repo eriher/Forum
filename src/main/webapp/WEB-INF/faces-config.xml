@@ -48,5 +48,17 @@
             <from-outcome>threadlist</from-outcome>
             <to-view-id>/partials/threads/threadList.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>editSubTopic</from-outcome>
+            <to-view-id>/partials/topics/editSubTopic.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editMainTopic</from-outcome>
+            <to-view-id>/partials/topics/editMainTopic.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editThread</from-outcome>
+            <to-view-id>/partials/threads/editThread.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

@@ -13,7 +13,7 @@
 
             <ui:define name="top">
                 <h:form>
-                    <p:breadCrumb model="#{navigationBB.navigatePosts()}"/>
+                    <p:breadCrumb model="#{navigation.navigatePosts()}"/>
                 </h:form>
                 <h2>Posts</h2>
                 <hr/>
@@ -21,13 +21,13 @@
             
             <ui:define name="content">
                 <h:form id="form">
-                    <p:dataGrid value="#{navigationBB.thread.getList()}" var="post" columns="1"
+                    <p:dataGrid value="#{navigation.thread.getList()}" var="post" columns="1"
                                     rows="12" paginator="true" id="posts" rowIndexVar="index"
                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                 rowsPerPageTemplate="6,12,16">
                          <f:facet name="header">
-                             #{navigationBB.thread.getTitle()}
-                             <p:button value="Post" outcome="addPost" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                             #{navigation.thread.getTitle()}
+                             <p:button value="Post" outcome="addPost" icon="ui-icon-plus" rendered="#{loginBean.loggedIn and !navigation.thread.locked}"/>
                              <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                          </f:facet>
                             <p:panel id="custom" header="#{post.date}" style="text-align:left">
@@ -48,13 +48,13 @@
                                     </p:layoutUnit>
                                    
                                         <p:layoutUnit position="south" resizable="false" size="40">
-                                            <h:outputText value="#{post.editText}" rendered="#{post.adminEdit == true or post.userEdit == true}"/>
+                                            <h:outputText value="#{post.editText}" rendered="#{post.adminEdit == true or post.userEdit == true }"/>
                                         </p:layoutUnit>
                          
                                 </p:layout>
                                 <f:facet name ="actions">
                                     <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" style="alignment-adjust: "
-                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and 
+                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and !navigation.thread.locked and
                                         (loginBean.user == post.user or (loginBean.user.rank gt 0 or post.adminEdit == false))}" >
                                         <f:param name="content" value="#{post.content}" />
                                         <f:param name="index" value="#{index}" /> 

@@ -7,17 +7,14 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.auth.ForumUser;
-import edu.chl.forum.util.AbstractEntity;
+import edu.chl.forum.persistence.AbstractEntity;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,18 +26,17 @@ public class ForumThread extends AbstractEntity{
     @ManyToOne
     private ForumUser user;
     private String title;
-    
-    @Temporal(TemporalType.DATE)
-    private  Date date = new Date();
+    private boolean locked;
     
     @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name = "POSTS_FK")
-    private List<Post> posts = new ArrayList();
+    private List<Post> posts;
 
     public ForumThread() {
     }
     
     public ForumThread(String title, Post post, ForumUser user){
+        posts = new ArrayList();
         this.title = title;
         posts.add(post);
         this.user = user;
@@ -48,6 +44,7 @@ public class ForumThread extends AbstractEntity{
     
     public ForumThread(Long id, String title, Post post, ForumUser user){
         super(id);
+        posts = new ArrayList();
         this.title = title;
         posts.add(post);
         this.user = user;
@@ -60,16 +57,26 @@ public class ForumThread extends AbstractEntity{
     public String getTitle(){
         return title;
     }
-    
-     public ForumUser getUser() {
-        return user;
-     }
-
-    public Date getDate() {
-        return date;
-    }
 
     public List<Post> getList() {
         return posts;
     }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+
+    public ForumUser getUser() {
+        return user;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    
 }
