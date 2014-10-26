@@ -12,14 +12,14 @@
         <ui:composition template="/WEB-INF/template.xhtml">
 
             <ui:define name="top">
-                <h:form>
-                    <p:breadCrumb model="#{navigation.navigatePosts()}"/>
-                </h:form>
-                <h2>Posts</h2>
-                <hr/>
+                <h1>Posts</h1>
             </ui:define>
             
             <ui:define name="content">
+                <h:form>
+                    <p:breadCrumb model="#{navigation.navigatePosts()}"/>
+                </h:form>
+                <hr/>
                 <h:form id="form">
                     <p:dataGrid value="#{navigation.thread.getList()}" var="post" columns="1"
                                     rows="12" paginator="true" id="posts" rowIndexVar="index"
@@ -30,42 +30,35 @@
                              <p:button value="Post" outcome="addPost" icon="ui-icon-plus" rendered="#{loginBean.loggedIn and !navigation.thread.locked}"/>
                              <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                          </f:facet>
-                            <p:panel id="custom" header="#{post.date}" style="text-align:left">
-                                <p:layout style="min-width:400px;min-height:200px;text-align:left">
-                                    <p:layoutUnit position="west" size="120" resizable="false" >
-                                 
-                                        <h:panelGrid columns="1">
-                                            <h:outputText value="#{post.forumUser.name}" style="font-size:12px" />
-                                            <h:outputText value="User" style="font-size:12px" rendered="#{post.forumUser.rank ==0}"/>
-                                            <h:outputText value="Admin" style="font-size:12px" rendered="#{post.forumUser.rank gt 0}"/>
-                                            <h:outputText value="#{postListBB.getPosts(post.forumUser.id)}" style="font-size:12px"/>
-                                        </h:panelGrid>
-                                
-                                    </p:layoutUnit>
-                                    
-                                    <p:layoutUnit position="center" resizable="false">
-                                        <h:outputText value="#{post.content}" />                       
-                                    </p:layoutUnit>
-                                   
-                                        <p:layoutUnit position="south" resizable="false" size="40">
-                                            <h:outputText value="#{post.editText}" rendered="#{post.adminEdit == true or post.userEdit == true }"/>
-                                        </p:layoutUnit>
-                         
-                                </p:layout>
-                                <f:facet name ="actions">
-                                    <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" style="alignment-adjust: "
-                                        outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and !navigation.thread.locked and
-                                        (loginBean.user == post.forumUser or (loginBean.user.rank gt 0 or post.adminEdit == false))}" >
-                                        <f:param name="content" value="#{post.content}" />
-                                        <f:param name="index" value="#{index}" /> 
-                                    </p:button>
-                                    <p:button value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
-                                        outcome="editPost" icon="ui-icon-pencil" disabled="true" 
-                                        rendered="#{!loginBean.loggedIn or (loginBean.user != post.forumUser and 
-                                        loginBean.user.rank lt 1 ) and post.adminEdit == true}" >
-                                     </p:button>   
-                                </f:facet>
-                            </p:panel>
+                        
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">#{post.date}</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <div style="text-align: center" class="panel-title">
+                                                    #{post.forumUser.name}
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                #{loginBean.getRank(post.forumUser.id)}<br/>
+                                                #{loginBean.countPosts(post.forumUser.id)} posts
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>#{post.content}</p>
+                                        <p>#{post.editText}</p>
+                                        <p:button id="edit" value="Edit" outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and !navigation.thread.locked and (loginBean.user == post.forumUser or (loginBean.user.rank gt 0 and post.adminEdit == false))}">
+                                                <f:param name="content" value="#{post.content}" />
+                                                <f:param name="index" value="#{index}" /> 
+                                        </p:button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </p:dataGrid>
                 </h:form>
             </ui:define>

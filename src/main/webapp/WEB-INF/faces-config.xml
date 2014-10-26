@@ -18,7 +18,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>posts</from-outcome>
-            <to-view-id>/partials/threads/postList.xhtml</to-view-id>
+            <to-view-id>/partials/posts/postList.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>register</from-outcome>
