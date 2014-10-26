@@ -27,6 +27,7 @@ import javax.inject.Named;
 /**
  *
  * @author erik
+ * Handles the view for Main and SubTopics, uses IForum, used by index.xhtml
  */
 @Named
 @ViewScoped

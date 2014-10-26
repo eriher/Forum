@@ -15,6 +15,7 @@ import javax.inject.Named;
 /**
  *
  * @author erikk
+ * Handles data for editing of threads
  */
 @Named
 @RequestScoped

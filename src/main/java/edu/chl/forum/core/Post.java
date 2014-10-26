@@ -10,6 +10,7 @@ import edu.chl.forum.persistence.AbstractEntity;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
@@ -25,7 +26,7 @@ public class Post extends AbstractEntity  {
     private boolean userEdit;
     private String content;
     private String editText;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     private ForumUser forumUser;
     @Transient
     private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");

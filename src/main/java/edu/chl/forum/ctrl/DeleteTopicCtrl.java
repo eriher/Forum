@@ -17,7 +17,7 @@ import javax.inject.Named;
 /**
  *
  * @author erik
- * Handles deletion of Topics
+ * Handles deletion of Topics, uses forum, used by index.xhmtl
  */
  @Named
  @RequestScoped

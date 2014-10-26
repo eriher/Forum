@@ -116,7 +116,7 @@ public class LoginBean implements Serializable{
     public int countPosts(long id){
         int posts = 0;
         List<Post> ps = forum.getPostCatalogue().findAll();
-        for (int n = 0; n < ps.size(); n++) {
+        for(int n = 0; n < ps.size(); n++) {
             if(ps.get(n).getForumUser().getId().equals(id)){
                 posts++;
             }

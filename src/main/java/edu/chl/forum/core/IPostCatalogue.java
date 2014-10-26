@@ -18,4 +18,5 @@ import javax.ejb.Local;
 public interface IPostCatalogue extends IDAO<Post,Long> {
     
     public List<Post> getByName(String name);
+    public List<Post> getPostsByUserId(long id);
 }

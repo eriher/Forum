@@ -14,7 +14,8 @@ import javax.inject.Named;
 
 /**
  *
- * @author erikk
+ * @author erik
+ * Handles data for editing of topics
  */
 @Named
 @RequestScoped

@@ -25,6 +25,7 @@ import javax.inject.Named;
 /**
  *
  * @author erik
+ * Handles saving for edited posts
  */
 @Named
 @RequestScoped

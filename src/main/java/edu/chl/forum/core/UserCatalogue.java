@@ -35,10 +35,6 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
         return em;
     }
     
-    public static IUserCatalogue newInstance() {
-        return new UserCatalogue();
-    }
-    
     @Override
     public List<ForumUser> getByName(String name) {
         List<ForumUser> found = new ArrayList<>();

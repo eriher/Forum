@@ -36,6 +36,16 @@ public class PostCatalogue extends AbstractDAO<Post, Long>
     protected EntityManager getEntityManager(){
         return em;
     }
+    @Override
+    public List<Post> getPostsByUserId(long id){
+        List<Post> found = new ArrayList();
+        for (Post p : findRange(0, count())) {
+            if(p.getForumUser().getId().equals(id)){
+                found.add(p);
+            }
+        }
+        return found;
+    }
             
     
     
