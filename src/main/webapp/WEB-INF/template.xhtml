@@ -1,82 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="default.css"  />
+        <meta name="Content-Type" content="text/html, charset=UTF-8"/>
+        <!--<h:outputStylesheet library="css" name="default.css"/>-->
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputStylesheet library="css" name="bootstrap-theme.css"/>
         <title>Forum</title>
     </h:head>
     <h:body>
-        <header>
-            <hgroup>
-                <c:choose>
-                    <c:when test="#{loginBean.loggedIn}">
-                        <h:form>
-                            <p:growl id="growlout" sticky="true" showDetail="true" life="3000" />
-                            <p:commandButton value="Logout" update="growlout" actionListener="#{loginBean.logout}" action="/index?faces-redirect=true" class="loginButton"/>
-                        </h:form>
-                    </c:when>
-                    <c:otherwise>
-                        <h:form>
-                            <p:commandButton value="Login" onclick="PF('dlg').show();" class="loginButton"/>
-                            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-                            <p:dialog header="Login" widgetVar="dlg" resizable="false">
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <h:outputLabel for="username" value="Username:" style="padding:10px 0px;"/>
-                                    <p:inputText id="username" value="#{loginBB.name}" required="true" label="username" />
-
-                                    <h:outputLabel for="password" value="Password:" style="padding:10px 0px;"/>
-                                    <p:password id="password" value="#{loginBB.password}" required="true" label="password" />
-
-                                    <f:facet name="footer">
-                                        <p:commandButton value="Login" update="growl" actionListener="#{loginBean.login}"
-                                                         oncomplete="handleLoginRequest(xhr, status, args)" />
-                                    </f:facet>
-                                </h:panelGrid>
-                            </p:dialog>
-                        </h:form>
-                    </c:otherwise>
-                </c:choose>
-                <c:if test="#{!loginBean.loggedIn}">
-                    <h:form style="float:left">
-                        <p:commandButton value="New user" action="register" class="loginButton"/>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <h:form>
+                        <h:commandLink action="index?faces-redirect=true" value="Forum" class="navbar-brand"/>
                     </h:form>
-                </c:if>
-                <h1>Forum</h1>
-            </hgroup>
-        </header>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <c:choose>
+                        <c:when test="#{loginBean.loggedIn}">
+                            <h:form class="navbar-form navbar-right">
+                                <a href="" class="btn btn-primary" role="button">#{loginBean.user.name}</a>
+                                <h:commandButton value="Logout" action="#{loginBean.logout()}" class="btn btn-danger" style="margin-left: 4px"/>
+                            </h:form>
+                        </c:when>
+                        <c:otherwise>
+                            <h:form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                    <h:inputText a:placeholder="Username" value="#{loginBB.name}" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <h:inputSecret a:placeholder="Password" value="#{loginBB.password}" class="form-control"/>
+                                </div>
+                                <h:commandButton value="Sign in" action="#{loginBean.login()}" class="btn btn-success" style="margin-left: 4px"/>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Register</a>
+                            </h:form>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+        </div>
         
-        <div id="top">
-            <ui:insert name="top"></ui:insert>
+        <div class="jumbotron">
+            <div class="container">
+                <ui:insert name="top"></ui:insert>
+            </div>
         </div>
-       
-        <div id="content">
-            <ui:insert name="content">Content</ui:insert>
+        
+        <div class="container">
+            <ui:insert name="content"></ui:insert>
+            <footer>
+                <p>Chalmers university of technology 2014</p>
+            </footer>
         </div>
-        <footer>
-            <p> ThisIsFooter</p> 
-        </footer>
-        <script type="text/javascript">
-            function handleLoginRequest(xhr, status, args) {
-                if(args.validationFailed || !args.loggedIn) {
-                    PF('dlg').jq.effect("shake", {times:2}, 500);
-                }
-                else {
-                    PF('dlg').hide();
-                    $('#loginLink').fadeOut();
-                    location.reload();
-                }
-            }
-        </script>
+        
+        <!-- Register modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">New user</h4>
+                    </div>
+                    <h:form>
+                        <div class="modal-body">
+                            <label for="name">Username:</label>
+                            <h:inputText id="name" value="#{registerBB.name}" class="form-control"/>
+                            <label for="pwd">Password:</label>
+                            <h:inputSecret id="pwd" value="#{registerBB.password}" class="form-control"/>
+                            <label for="email">Email:</label>
+                            <h:inputText id="email" value="#{registerBB.email}" class="form-control"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <h:commandButton value="Submit" action="#{register.save}" class="btn btn-primary"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bootstrap and jQuery javascript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </h:body>
 </html>

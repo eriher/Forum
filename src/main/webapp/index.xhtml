@@ -9,13 +9,13 @@
         <ui:composition template="/WEB-INF/template.xhtml">
             
             <ui:define name="top">
-                <h:form>
-                <p:breadCrumb model="#{navigation.navigateHome()}"/>
-                </h:form>
-                <h2>Topics</h2>
+                <h1>Maintopics</h1>
             </ui:define>
             
             <ui:define name="content">
+                <h:form>
+                <p:breadCrumb model="#{navigation.navigateHome()}"/>
+                </h:form>
                 <h:form id="form">           
                     <p:growl id="msgs" showDetail="true" />
                     <p:button value="Add Topic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.user.rank>0}"/>
