@@ -1,0 +1,1 @@
+Removing SubTopics removes them from database but not from view for some reason, requires rerun of forum to show.
