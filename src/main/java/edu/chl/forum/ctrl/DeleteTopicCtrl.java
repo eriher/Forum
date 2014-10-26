@@ -6,7 +6,6 @@
 package edu.chl.forum.ctrl;
 
 import edu.chl.forum.core.IForum;
-import edu.chl.forum.core.MainTopic;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -17,7 +16,8 @@ import javax.inject.Named;
 
 /**
  *
- * @author erikk
+ * @author erik
+ * Handles deletion of Topics
  */
  @Named
  @RequestScoped
@@ -33,10 +33,8 @@ public class DeleteTopicCtrl {
     public void pre() {
         LOG.log(Level.INFO, "DeleteCtrl to be destroyed {0}", this);
     }
-    public void deleteSubTopic(Long id, int index, MainTopic maintopic) {
+    public void deleteSubTopic(Long id) {
         forum.getSubTopicCatalogue().delete(id);
-        maintopic.getList().get(index);
-        forum.getMainTopicCatalogue().update(maintopic);
     }
     public void deleteMainTopic(Long id){
         forum.getMainTopicCatalogue().delete(id);
