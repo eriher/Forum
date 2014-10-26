@@ -9,6 +9,7 @@ import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.view.RegisterBB;
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,9 +36,12 @@ public class Register implements Serializable{
     }
     
     public void save(){
-        System.out.println("Adding new user: " + registerBB.getName() + ", " + registerBB.getPassword() + ", " + registerBB.getEmail());
         ForumUser user = new ForumUser(registerBB.getName(), registerBB.getPassword(), registerBB.getEmail());
-        forum.getUserCatalogue().create(user);
-        loginBean.login(user.getName(), user.getPassword());
+        List<ForumUser> fu = forum.getUserCatalogue().getByName(user.getName());
+        List<ForumUser> fu2 = forum.getUserCatalogue().getByEmail(user.getEmail());
+        if(fu.size() < 1 && fu2.size() < 1){
+            forum.getUserCatalogue().create(user);
+            loginBean.login(user.getName(), user.getPassword());
+        }
     }
 }

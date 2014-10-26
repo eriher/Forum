@@ -17,5 +17,6 @@ import javax.ejb.Local;
 public interface IUserCatalogue extends IDAO<ForumUser,Long> {
     
         public List<ForumUser> getByName(String name);
+        public List<ForumUser> getByEmail(String email);
         //public ForumUser loginCheck(String name, String password);
 }

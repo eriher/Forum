@@ -44,6 +44,17 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
         return found;
     }
     
+    @Override
+    public List<ForumUser> getByEmail(String email) {
+        List<ForumUser> found = new ArrayList<>();
+        for (ForumUser u : findRange(0, count())) {
+            if (u.getEmail().equals(email)) {
+                found.add(u);
+            }
+        }
+        return found;
+    }
+    
     /*
     @Override
     public ForumUser loginCheck(String name, String password){
