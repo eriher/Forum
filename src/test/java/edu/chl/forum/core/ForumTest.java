@@ -1,6 +1,8 @@
 package edu.chl.forum.core;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
@@ -153,27 +155,19 @@ public class ForumTest {
         List<Product> ps = shop.getProductCatalogue().getByPrice((double) 20);
         assertTrue(ps.size() == 2); 
     }
-    
+    */
     @Test
     public void testDB() throws Exception {
-      
-        forum.getUserCatalogue().create(new ForumUser("test"));
-        
-        forum.getPostCatalogue().create(new Post(12L, "test1", new ForumUser("test testsson")));
-        forum.getPostCatalogue().create(new Post(13L, "test2", new ForumUser("Sara Andersson")));
-
-        assertTrue(forum.getPostCatalogue().count() > 0);
-        
         List<SubTopic> subtopics = new ArrayList();
         subtopics.add(new SubTopic("Subtopic 1","context",null));
         subtopics.add(new SubTopic("Subtopic 2","context",null));
-        forum.getMainTopicCatalogue().create(new MainTopic("Test1",subtopics));
+        forum.getMainTopicCatalogue().create(new MainTopic("Test1","",subtopics));
         subtopics = new ArrayList();
         subtopics.add(new SubTopic("Subtopic 1","context",null));
         subtopics.add(new SubTopic("Subtopic 2","context",null));
         subtopics.add(new SubTopic("Subtopic 3","context",null));
         subtopics.add(new SubTopic("Subtopic 4","context",null));
-        forum.getMainTopicCatalogue().create(new MainTopic("Test2",subtopics));
+        forum.getMainTopicCatalogue().create(new MainTopic("Test2","",subtopics));
         subtopics = new ArrayList();
         subtopics.add(new SubTopic("Subtopic 1","context",null));
         subtopics.add(new SubTopic("Subtopic 2","context",null));
@@ -181,11 +175,8 @@ public class ForumTest {
         subtopics.add(new SubTopic("Subtopic 4","context",null));
         subtopics.add(new SubTopic("Subtopic 5","context",null));
         subtopics.add(new SubTopic("Subtopic 6","context",null));
-        forum.getMainTopicCatalogue().create(new MainTopic("Test3",subtopics));
-        assertTrue(forum.getMainTopicCatalogue().count() > 0);
-        assertTrue(forum.getPostCatalogue().count() == 2);
-        //assertTrue(forum.getPostCatalogue().count() == 1);
-    }*/
+        forum.getMainTopicCatalogue().create(new MainTopic("Test3","",subtopics));
+    }
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
@@ -200,7 +191,6 @@ public class ForumTest {
         em.joinTransaction();
         //em.createQuery("delete from MainTopic").executeUpdate();
         //em.createQuery("delete from SubTopic").executeUpdate();
-        //em.createQuery("delete from ForumUser").executeUpdate();
         //em.createQuery("delete from ForumUser").executeUpdate();
         utx.commit();
     }   
