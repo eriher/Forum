@@ -5,10 +5,8 @@
  */
 package edu.chl.forum.ctrl;
 
-import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;
-import edu.chl.forum.core.Post;
 import edu.chl.forum.core.SubTopic;
 import edu.chl.forum.view.EditTopicBB;
 import edu.chl.forum.util.Navigation;
