@@ -19,7 +19,6 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditThreadBB {
-    
     private String title;
     private boolean locked;
     private static final Logger LOG = Logger.getLogger(EditThreadBB.class.getName());

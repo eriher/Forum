@@ -5,16 +5,12 @@
  */
 package edu.chl.forum.view;
 
-import edu.chl.forum.core.ForumUser;
-import edu.chl.forum.core.Post;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
