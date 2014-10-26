@@ -23,7 +23,7 @@ and open the template in the editor.
                     <c:when test="#{loginBean.loggedIn}">
                         <h:form>
                             <p:growl id="growlout" sticky="true" showDetail="true" life="3000" />
-                            <p:commandButton value="Logout" update="growlout" actionListener="#{loginBean.logout}" action="index?faces-redirect=true" class="loginButton"/>
+                            <p:commandButton value="Logout" update="growlout" actionListener="#{loginBean.logout}" action="/index?faces-redirect=true" class="loginButton"/>
                         </h:form>
                     </c:when>
                     <c:otherwise>
@@ -33,10 +33,10 @@ and open the template in the editor.
                             <p:dialog header="Login" widgetVar="dlg" resizable="false">
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <h:outputLabel for="username" value="Username:" style="padding:10px 0px;"/>
-                                    <p:inputText id="username" value="#{loginBB.name}" label="username" />
+                                    <p:inputText id="username" value="#{loginBB.name}" required="true" label="username" />
 
                                     <h:outputLabel for="password" value="Password:" style="padding:10px 0px;"/>
-                                    <p:password id="password" value="#{loginBB.password}" label="password" />
+                                    <p:password id="password" value="#{loginBB.password}" required="true" label="password" />
 
                                     <f:facet name="footer">
                                         <p:commandButton value="Login" update="growl" actionListener="#{loginBean.login}"
