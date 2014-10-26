@@ -7,7 +7,7 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.auth.ForumUser;
-import edu.chl.forum.util.AbstractEntity;
+import edu.chl.forum.persistence.AbstractEntity;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;

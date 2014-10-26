@@ -6,7 +6,7 @@
 
 package edu.chl.forum.core;
 
-import edu.chl.forum.util.AbstractDAO;
+import edu.chl.forum.persistence.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;

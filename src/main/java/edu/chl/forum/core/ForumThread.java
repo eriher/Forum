@@ -7,7 +7,7 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.auth.ForumUser;
-import edu.chl.forum.util.AbstractEntity;
+import edu.chl.forum.persistence.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;

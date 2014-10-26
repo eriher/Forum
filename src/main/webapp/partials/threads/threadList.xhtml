@@ -10,7 +10,7 @@
 
             <ui:define name="top">
                             <h:form>
-            <p:breadCrumb model="#{navigationBB.navigateThreads()}">
+            <p:breadCrumb model="#{navigation.navigateThreads()}">
             </p:breadCrumb>
             </h:form>
                 <h2>Threads</h2>
@@ -21,12 +21,12 @@
 
             <ui:define name="content">
                 <h:form> 
-                    <p:dataScroller value="#{navigationBB.subtopic.getList()}" var="thread" chunkSize="15" mode="inline" scrollHeight="500">
+                    <p:dataScroller value="#{navigation.subtopic.getList()}" var="thread" chunkSize="15" mode="inline" scrollHeight="500">
                         <h:panelGrid columns="1" style="width:100%">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
-                                    <p:commandLink value="#{thread.getTitle()}"  action="/partials/posts/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigationBB.setThread(thread)}" />
-                                    <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editThread" actionListener="#{navigationBB.setThread(thread)}">
+                                    <p:commandLink value="#{thread.getTitle()}"  action="/partials/posts/postList?faces-redirect=true" style="font-weight: bold" actionListener="#{navigation.setThread(thread)}" />
+                                    <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editThread" actionListener="#{navigation.setThread(thread)}">
                                         <f:param name="title" value="#{thread.getTitle()}" />
                                         <f:param name="content" value="#{thread.isLocked()}" />
                                     </p:commandButton>

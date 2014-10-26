@@ -8,7 +8,7 @@ package edu.chl.forum.ctrl;
 import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.view.EditThreadBB;
-import edu.chl.forum.view.NavigationBB;
+import edu.chl.forum.util.Navigation;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -26,7 +26,7 @@ import javax.inject.Named;
 public class EditThreadCtrl {
     private static final Logger LOG = Logger.getLogger(EditThreadCtrl.class.getName());
     @Inject IForum forum;
-    @Inject NavigationBB nav;
+    @Inject Navigation nav;
     @Inject EditThreadBB editThreadBB;
     
     @PostConstruct

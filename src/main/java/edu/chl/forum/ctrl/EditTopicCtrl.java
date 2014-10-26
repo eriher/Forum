@@ -11,7 +11,7 @@ import edu.chl.forum.core.MainTopic;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.core.SubTopic;
 import edu.chl.forum.view.EditTopicBB;
-import edu.chl.forum.view.NavigationBB;
+import edu.chl.forum.util.Navigation;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -29,7 +29,7 @@ import javax.inject.Named;
 public class EditTopicCtrl {
     private static final Logger LOG = Logger.getLogger(EditTopicCtrl.class.getName());
     @Inject IForum forum;
-    @Inject NavigationBB nav;
+    @Inject Navigation nav;
     @Inject EditTopicBB editTopicBB;
     @PostConstruct
     public void post() {

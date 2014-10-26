@@ -11,7 +11,7 @@ import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.core.SubTopic;
 import edu.chl.forum.view.AddThreadBB;
-import edu.chl.forum.view.NavigationBB;
+import edu.chl.forum.util.Navigation;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -30,7 +30,7 @@ public class AddThreadCtrl {
     
     @Inject AddThreadBB addThreadBB;
     @Inject IForum forum;
-    @Inject NavigationBB nav;
+    @Inject Navigation nav;
     @Inject LoginBean login;
     
     private static final Logger LOG = Logger.getLogger(AddThreadCtrl.class.getName());
