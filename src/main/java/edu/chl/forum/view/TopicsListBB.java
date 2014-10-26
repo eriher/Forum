@@ -7,7 +7,7 @@
 package edu.chl.forum.view;
 
 
-import edu.chl.forum.auth.ForumUser;
+import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;

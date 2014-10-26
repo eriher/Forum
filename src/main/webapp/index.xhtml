@@ -21,12 +21,10 @@
                     <p:button value="Add Topic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.user.rank>0}"/>
                     <p:accordionPanel id="custom" value="#{topicsListBB.maintopic}" 
                                       var="mtopic" multiple="true" activeIndex="#{topicsListBB.tabs}">
-<<<<<<< HEAD
-                        <p:tab title="#{mtopic.getTitle()}" >
-=======
+
                         <p:tab title="#{mtopic.getTitle()}">
                             <h:outputLabel value="Maintopic Description: #{mtopic.getDescription()}" style="font-size:small"/>
->>>>>>> 181ac8730bb59cae7320472397910ff1256a1503
+
                             <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editMainTopic" actionListener="#{navigation.setMaintopic(mtopic)}">
                                         <f:param name="title" value="#{mtopic.getTitle()}" />
                                         <f:param name="content" value="#{mtopic.getDescription()}" />

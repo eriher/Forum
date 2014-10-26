@@ -91,7 +91,7 @@ public abstract class AbstractDAO<T , K > implements IDAO<T, K> {
     public int getAllPosts(K id){
          EntityManager em = getEntityManager();
          List<T> found = new ArrayList<>();
-         TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName()+ " t where t.user.id= "+id,clazz);
+         TypedQuery<T> q = em.createQuery("select t from " + clazz.getSimpleName()+ " t where t.forumUser.id= "+id,clazz);
          found.addAll(q.getResultList());
          return found.size();        
     }
