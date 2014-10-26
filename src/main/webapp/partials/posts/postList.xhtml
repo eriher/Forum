@@ -12,14 +12,14 @@
         <ui:composition template="/WEB-INF/template.xhtml">
 
             <ui:define name="top">
-                <h:form>
-                    <p:breadCrumb model="#{navigation.navigatePosts()}"/>
-                </h:form>
-                <h2>Posts</h2>
-                <hr/>
+                <h1>Posts</h1>
             </ui:define>
             
             <ui:define name="content">
+                <h:form>
+                    <p:breadCrumb model="#{navigation.navigatePosts()}"/>
+                </h:form>
+                <hr/>
                 <h:form id="form">
                     <p:dataGrid value="#{navigation.thread.getList()}" var="post" columns="1"
                                     rows="12" paginator="true" id="posts" rowIndexVar="index"
@@ -31,27 +31,26 @@
                              <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                          </f:facet>
                             <p:panel id="custom" header="#{post.date}" style="text-align:left">
-                                <p:layout style="min-width:400px;min-height:200px;text-align:left">
-                                    <p:layoutUnit position="west" size="120" resizable="false" >
-                                 
-                                        <h:panelGrid columns="1">
-                                            <h:outputText value="#{post.user.name}" style="font-size:12px" />
-                                            <h:outputText value="User" style="font-size:12px" rendered="#{post.user.rank ==0}"/>
-                                            <h:outputText value="Admin" style="font-size:12px" rendered="#{post.user.rank gt 0}"/>
-                                            <h:outputText value="500" style="font-size:12px"/>
-                                        </h:panelGrid>
-                                
-                                    </p:layoutUnit>
-                                    
-                                    <p:layoutUnit position="center" resizable="false">
-                                        <h:outputText value="#{post.content}" />                       
-                                    </p:layoutUnit>
-                                   
-                                        <p:layoutUnit position="south" resizable="false" size="40">
-                                            <h:outputText value="#{post.editText}" rendered="#{post.adminEdit == true or post.userEdit == true }"/>
-                                        </p:layoutUnit>
-                         
-                                </p:layout>
+                                    <div class="row">
+                                        <div class=".col-md-4">
+                                            <div class="list-group">
+                                                <a class="list-group-item active">#{post.user.name}</a>
+                                                <c:if test="#{post.user.rank ==0}">
+                                                    <a class="list-group-item">User</a>
+                                                </c:if>
+                                                <c:if test="#{post.user.rank gt 0}">
+                                                    <a class="list-group-item">Admin</a>
+                                                </c:if>
+                                                <a class="list-group-item">500</a>
+                                            </div>
+                                        </div>
+                                        <div class=".col-md-8">
+                                            <h:outputText value="#{post.content}" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h:outputText value="#{post.editText}" rendered="#{post.adminEdit == true or post.userEdit == true }"/>
+                                    </div>
                                 <f:facet name ="actions">
                                     <p:button id="edit" value="Edit" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" style="alignment-adjust: "
                                         outcome="editPost" icon="ui-icon-pencil" rendered="#{loginBean.loggedIn and !navigation.thread.locked and

@@ -59,6 +59,10 @@ public class ForumTest {
         clearAll();
     }
     
+    @Test
+    public void testPersistAProduct() throws Exception {
+        
+    }
   
     /*
     @Test
