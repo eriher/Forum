@@ -9,17 +9,16 @@
         <ui:composition template="/WEB-INF/template.xhtml">
 
             <ui:define name="top">
-                            <h:form>
-            <p:breadCrumb model="#{navigation.navigateThreads()}">
-            </p:breadCrumb>
-            </h:form>
-                <h2>Threads</h2>
-                <hr/>
-                <p:button value="Thread" outcome="addThread" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
-                <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
+                <h1>Threads</h1>
             </ui:define>
 
             <ui:define name="content">
+                <h:form>
+                    <p:breadCrumb model="#{navigation.navigateThreads()}"/>
+                </h:form>
+                <hr/>
+                <p:button value="Thread" outcome="addThread" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
                 <h:form> 
                     <p:dataScroller value="#{navigation.subtopic.getList()}" var="thread" chunkSize="15" mode="inline" scrollHeight="500">
                         <h:panelGrid columns="1" style="width:100%">

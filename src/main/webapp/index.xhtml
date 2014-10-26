@@ -9,19 +9,21 @@
         <ui:composition template="/WEB-INF/template.xhtml">
             
             <ui:define name="top">
-                <h:form>
-                <p:breadCrumb model="#{navigation.navigateHome()}"/>
-                </h:form>
-                <h2>Topics</h2>
+                <h1>Maintopics</h1>
+                <p>A forum built with a JavaServer Faces and JavaDB backend, designed with Bootstrap and Primefaces.</p>
             </ui:define>
             
             <ui:define name="content">
+                <h:form>
+                <p:breadCrumb model="#{navigation.navigateHome()}"/>
+                </h:form>
+                <hr/>
                 <h:form id="form">           
                     <p:growl id="msgs" showDetail="true" />
                     <p:button value="Add Topic" outcome="addTopic" icon="ui-icon-plus" rendered="#{loginBean.user.rank>0}"/>
                     <p:accordionPanel id="custom" value="#{topicsListBB.maintopic}" 
                                       var="mtopic" multiple="true" activeIndex="#{topicsListBB.tabs}">
-
+                        
                         <p:tab title="#{mtopic.getTitle()}">
                             <h:outputLabel value="Maintopic Description: #{mtopic.getDescription()}" style="font-size:small"/>
 
@@ -33,11 +35,11 @@
                             <p:commandButton value="Delete #{mtopic.getTitle()}" actionListener="#{deleteTopicCtrl.deleteMainTopic(mtopic.getId())}" action="index?faces-redirect=true" rendered="#{loginBean.user.rank>0}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton>
-            
+                            
                             <p:commandButton value="Add Subtopic" action="/partials/topics/addSubtopic?faces-redirect=true" actionListener="#{navigation.setMaintopic(mtopic)}" icon="ui-icon-plus" rendered="#{(loginBean.user.rank>0)}"/>
- 
+                            
                             <p:dataGrid id="grid" columns="1" value="#{mtopic.getList()}" var="stopic" styleClass="noborder" rowIndexVar="index">
-                                   <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" actionListener="#{navigation.setSubtopic(stopic)}" />
+                                <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" actionListener="#{navigation.setSubtopic(stopic)}" />
                                     <p:commandButton value="Edit" rendered="#{loginBean.user.rank>0}" action="editSubTopic" actionListener="#{navigation.setSubtopic(stopic)}">
                                         <f:param name="title" value="#{stopic.getTitle()}" />
                                         <f:param name="content" value="#{stopic.getDescription()}" />

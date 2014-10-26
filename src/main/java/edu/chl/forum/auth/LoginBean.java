@@ -7,6 +7,7 @@ package edu.chl.forum.auth;
 
 import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.IForum;
+import edu.chl.forum.core.Post;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import edu.chl.forum.view.LoginBB;
@@ -51,7 +52,7 @@ public class LoginBean implements Serializable{
     /*
    ¨*   Method for logging in users with clientside input
     */
-    public void login(){
+    public String login(){
         //DEBUG CODE
         System.out.println("logging in user: " + loginBB.getName() + ", "  + loginBB.getPassword());
         System.out.println("Users in db: ");
@@ -59,38 +60,29 @@ public class LoginBean implements Serializable{
             System.out.println("U" + n + ": " + n.getName());
         }
         //DEBUG CODE
-        
-        RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg;
-        
         List<ForumUser> us = forum.getUserCatalogue().getByName(loginBB.getName());
         
         if(us.size() > 0){
             ForumUser u = us.get(0);
             if(u.getPassword().equals(loginBB.getPassword())){
                 System.out.println("Login successfull.");
-                msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", loginBB.getName());
                 this.user = u;
                 loggedIn = true;
             } else {
                 System.out.println("Login failed.");
-                msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Wrong password");
                 loggedIn = false;
             }
         } else {
             System.out.println("Login failed.");
-            msg =  new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "User does not exist");
             loggedIn = false;
         }
-        
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        context.addCallbackParam("loggedIn", loggedIn);
+        return "/index?faces-redirect=true";
     }
     
     /*
    ¨*   Method for logging in users without clientside input
     */
-    public void login(String name, String password){
+    public String login(String name, String password){
         FacesMessage msg;
         List<ForumUser> us = forum.getUserCatalogue().getByName(name);
         
@@ -98,34 +90,48 @@ public class LoginBean implements Serializable{
             ForumUser u = us.get(0);
             if(u.getPassword().equals(password)){
                 System.out.println("Login successfull.");
-                msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", name);
                 this.user = u;
                 loggedIn = true;
             } else {
                 System.out.println("Login failed.");
-                msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Wrong password");
                 loggedIn = false;
             }
         } else {
             System.out.println("Login failed.");
-            msg =  new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "User does not exist");
             loggedIn = false;
         }
-        
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-
+        return "/index?faces-redirect=true";
     }
     
     /*
     *   Method for logging out users
     */
-    public void logout(){
+    public String logout(){
         System.out.println("Logging out user " + user.getName());
-        FacesMessage msg;
-        msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged out", user.getName());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        RequestContext.getCurrentInstance().addCallbackParam("loggedOut", user);
         this.user = null;
         loggedIn = false;
+        return "/index?faces-redirect=true";
+    }
+    
+    public int countPosts(long id){
+        int posts = 0;
+        List<Post> ps = forum.getPostCatalogue().findAll();
+        for (int n = 0; n < ps.size(); n++) {
+            if(ps.get(n).getForumUser().getId().equals(id)){
+                posts++;
+            }
+        }
+        return posts;
+    }
+    
+    public String getRank(long id){
+        switch(forum.getUserCatalogue().find(id).getRank()){
+            case 0:
+                return "User";
+            case 1:
+                return "Moderator";
+            default:
+                return "Admin";
+        }
     }
 }
