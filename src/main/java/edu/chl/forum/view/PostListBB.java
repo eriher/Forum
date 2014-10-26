@@ -6,14 +6,11 @@
 package edu.chl.forum.view;
 
 import edu.chl.forum.core.IForum;
-import edu.chl.forum.core.Post;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -26,8 +23,6 @@ public class PostListBB {
     private IForum forum;
     private static final Logger LOG = Logger.getLogger(PostListBB.class.getName());
 
-    
-    
     protected PostListBB(){
         
     }

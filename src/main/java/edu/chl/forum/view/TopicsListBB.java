@@ -7,14 +7,9 @@
 package edu.chl.forum.view;
 
 
-import edu.chl.forum.core.ForumUser;
-import edu.chl.forum.core.ForumThread;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.MainTopic;
-import edu.chl.forum.core.Post;
-import edu.chl.forum.core.SubTopic;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
