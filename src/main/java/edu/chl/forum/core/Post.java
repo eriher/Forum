@@ -60,7 +60,7 @@ public class Post extends AbstractEntity  {
         return content;
     }
 
-    public ForumUser getUser() {
+    public ForumUser getForumUser() {
         return forumUser;
     }
 
