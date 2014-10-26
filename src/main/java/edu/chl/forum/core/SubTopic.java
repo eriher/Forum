@@ -66,7 +66,7 @@ public class SubTopic extends AbstractEntity{
         return description;
     }
 
-    public boolean getLocked() {
+    public boolean isLocked() {
         return locked;
     }
 
