@@ -24,7 +24,6 @@ public class ForumThreadCatalogue extends AbstractDAO<ForumThread, Long>
     @PersistenceContext
     EntityManager em;
     
-    
     public ForumThreadCatalogue() {
         super(ForumThread.class);
     }
@@ -33,9 +32,7 @@ public class ForumThreadCatalogue extends AbstractDAO<ForumThread, Long>
     protected EntityManager getEntityManager() {
         return em;
     }
-        
-    
-    
+
     @Override
     public List<ForumThread> getByName(String name) {
         List<ForumThread> found = new ArrayList<>();

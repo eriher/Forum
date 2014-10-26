@@ -31,9 +31,9 @@ public class MainTopic extends AbstractEntity {
     
     
     public MainTopic() {
-        
     }
-        public MainTopic(String title, String description){
+        
+    public MainTopic(String title, String description){
         this.title = title;
         this.description = description;
         subTopics = new ArrayList();
@@ -85,5 +85,4 @@ public class MainTopic extends AbstractEntity {
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
-    
 }

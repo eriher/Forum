@@ -48,14 +48,13 @@ public class ForumTest {
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
                 // Must have for CDI to work
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
-
-
     }
           
     @Before  // Run before each test
     public void before() throws Exception {
         clearAll();
     }
+    
     @After
     public void tearDown() throws Exception {
         clearAll();
@@ -85,6 +84,7 @@ public class ForumTest {
         assertTrue(forum.getMainTopicCatalogue().findAll().get(0).getList().size() > 0);
         assertTrue(forum.getSubTopicCatalogue().findAll().get(0).getTitle().equals("hej"));    
     }
+    
     @Test
     public void testCascadeRemove() {
         MainTopic maintopic = new MainTopic("topic","desc");
@@ -94,6 +94,7 @@ public class ForumTest {
         assertTrue(forum.getSubTopicCatalogue().count()==0);
         assertTrue(forum.getMainTopicCatalogue().count()==0);
     }
+    
     @Test
     public void testedit() {
         MainTopic maintopic = new MainTopic("topic","desc");
@@ -105,6 +106,7 @@ public class ForumTest {
         assertTrue(forum.getSubTopicCatalogue().count() == 1);
         assertTrue(forum.getSubTopicCatalogue().findAll().get(0).getTitle().equals("nej"));
     }
+    
     @Test
     public void testGetUsersPosts() {
         ForumUser user = new  ForumUser("pelle");
@@ -117,7 +119,6 @@ public class ForumTest {
         thread.addPost(post3);
         thread.addPost(post4);
         forum.getThreadCatalogue().create(thread);
-        
         assertTrue(forum.getPostCatalogue().getPostsByUserId(user.getId()).size() == 4);
     }
     
@@ -140,5 +141,4 @@ public class ForumTest {
         em.createQuery("delete from ForumUser").executeUpdate();
         utx.commit();
     }   
-    
 }

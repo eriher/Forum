@@ -49,6 +49,4 @@ public class AddSubTopicBB {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
 }

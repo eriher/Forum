@@ -19,7 +19,7 @@ import javax.inject.Named;
 
 
 /**
- *
+ * SessionScoped bean that handles login requests and logged in users
  * @author Simon
  */
 @Named

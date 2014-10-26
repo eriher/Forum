@@ -34,7 +34,6 @@ public class ForumThread extends AbstractEntity{
     public ForumThread() {
     }
     
-    
     public ForumThread(String title, Post post, ForumUser user){
         posts = new ArrayList();
         this.title = title;

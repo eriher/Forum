@@ -35,6 +35,9 @@ public class Register implements Serializable{
         this.loginBean = loginBean;
     }
     
+    /*
+    * Saves a new user to the database if it has a unique username and email
+    */
     public void save(){
         ForumUser user = new ForumUser(registerBB.getName(), registerBB.getPassword(), registerBB.getEmail());
         List<ForumUser> fu = forum.getUserCatalogue().getByName(user.getName());

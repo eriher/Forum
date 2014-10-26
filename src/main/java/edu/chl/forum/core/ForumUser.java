@@ -23,7 +23,6 @@ public class ForumUser extends AbstractEntity{
     private int rank;
 
     public ForumUser(){
-    
     }
     
     public ForumUser(String name){

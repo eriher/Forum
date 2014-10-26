@@ -24,16 +24,13 @@ public abstract class AbstractEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; 
 
-   
     protected AbstractEntity(){
-
     }
     
     protected AbstractEntity(Long id){
         this.id = id;
     }
     
-
     public Long getId(){
         return id;
     }
@@ -56,6 +53,4 @@ public abstract class AbstractEntity implements Serializable{
         final AbstractEntity other = (AbstractEntity) obj;
         return Objects.equals(this.id, other.id);
     }
-
-   
 }

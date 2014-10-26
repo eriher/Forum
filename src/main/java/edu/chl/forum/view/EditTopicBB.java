@@ -58,6 +58,4 @@ public class EditTopicBB {
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
-    
-    
 }

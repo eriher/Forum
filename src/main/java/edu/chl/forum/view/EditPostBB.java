@@ -37,9 +37,7 @@ public class EditPostBB implements Serializable {
     public String getContent() {
         return content;
     }
-
     
-
     public void setContent(String content) {
         this.content = content;
     }
@@ -52,6 +50,4 @@ public class EditPostBB implements Serializable {
     public void setIndex(int index) {
         this.index = index;
     }
-
-
 }

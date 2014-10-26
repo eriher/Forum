@@ -46,5 +46,4 @@ public class AddSubTopicCtrl {
         maintopic.addSubTopic(new SubTopic(addSubTopicBB.getTitle() ,addSubTopicBB.getDescription(), null));
         forum.getMainTopicCatalogue().update(maintopic);
     }
-    
 }

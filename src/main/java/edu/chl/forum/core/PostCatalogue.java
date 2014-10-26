@@ -21,7 +21,6 @@ import javax.persistence.PersistenceContext;
 public class PostCatalogue extends AbstractDAO<Post, Long>
         implements IPostCatalogue{
     
-        
     @PersistenceContext
     EntityManager em;
     
@@ -29,12 +28,11 @@ public class PostCatalogue extends AbstractDAO<Post, Long>
         super(Post.class);
     }
 
-    
-    
     @Override 
     protected EntityManager getEntityManager(){
         return em;
     }
+    
     @Override
     public List<Post> getPostsByUserId(long id){
         List<Post> found = new ArrayList();
@@ -46,8 +44,6 @@ public class PostCatalogue extends AbstractDAO<Post, Long>
         return found;
     }
             
-    
-    
     @Override
     public List<Post> getByName(String name) {
         List<Post> found = new ArrayList<>();
