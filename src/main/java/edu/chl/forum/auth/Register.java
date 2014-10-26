@@ -5,6 +5,7 @@
  */
 package edu.chl.forum.auth;
 
+import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.IUserCatalogue;
 import edu.chl.forum.view.RegisterBB;

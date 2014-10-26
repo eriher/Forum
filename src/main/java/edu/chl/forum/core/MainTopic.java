@@ -7,6 +7,7 @@
 package edu.chl.forum.core;
 
 import edu.chl.forum.persistence.AbstractEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,13 +24,19 @@ public class MainTopic extends AbstractEntity {
     private String title;
     private String description;
     @OneToMany(cascade= CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "SUBTOPICS_FK")
+    @JoinColumn(name = "MAINTOPIC_ID")
     private List<SubTopic> subTopics;
     private boolean locked;
     
     
     public MainTopic() {
         
+    }
+        public MainTopic(String title, String description){
+        this.title = title;
+        this.description = description;
+        subTopics = new ArrayList();
+        locked = false;
     }
     
     public MainTopic(String title, String description, List<SubTopic> list){

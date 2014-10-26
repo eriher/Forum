@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.chl.forum.auth;
+package edu.chl.forum.core;
 
 import edu.chl.forum.persistence.AbstractEntity;
 import javax.persistence.Entity;
