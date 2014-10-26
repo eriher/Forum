@@ -15,7 +15,10 @@
             </h:form>
                 <h2>Threads</h2>
                 <hr/>
+                <p:button value="Thread" outcome="addThread" icon="ui-icon-plus" rendered="#{loginBean.loggedIn}"/>
+                <p:button value="Login to post" disabled="true" rendered="#{!loginBean.loggedIn}"/>
             </ui:define>
+
             <ui:define name="content">
                 <h:form> 
                     <p:dataScroller value="#{navigationBB.subtopic.getList()}" var="thread" chunkSize="10" mode="inline" scrollHeight="500">

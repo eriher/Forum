@@ -9,7 +9,6 @@ package edu.chl.forum.core;
 import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -23,7 +22,7 @@ import javax.persistence.TemporalType;
 public class Post extends AbstractEntity  {
 
     private String content;
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne
     private ForumUser user;
     @Temporal (TemporalType.DATE)
     private Date date = new Date();

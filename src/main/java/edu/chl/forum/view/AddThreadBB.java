@@ -5,7 +5,6 @@
  */
 package edu.chl.forum.view;
 
-import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -15,25 +14,34 @@ import javax.inject.Named;
 
 /**
  *
- * @author erik
+ * @author erikk
  */
 @Named
 @RequestScoped
-public class AddPostBB implements Serializable {
+public class AddThreadBB {
+    private String title;
+    private String  content;
     
-    private String content;
-    private static final Logger LOG = Logger.getLogger(AddPostBB.class.getName());
+    private static final Logger LOG = Logger.getLogger(AddThreadBB.class.getName());
     
     @PostConstruct
     public void post() {
-        LOG.log(Level.INFO, "AddPostBB alive {0}", this);
+        LOG.log(Level.INFO, "AddThreadBB alive {0}", this);
     }
     
     @PreDestroy
     public void pre() {
-        LOG.log(Level.INFO, "AddPostBB to be destroyed {0}", this);
+        LOG.log(Level.INFO, "AddThreadBB to be destroyed {0}", this);
     }
-    
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getContent() {
         return content;
     }
@@ -41,4 +49,7 @@ public class AddPostBB implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
+    
+    
+    
 }

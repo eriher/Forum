@@ -51,7 +51,6 @@ public class NavigationBB implements Serializable{
         DefaultMenuItem home = new DefaultMenuItem("home");
         home.setOutcome("home");
         model.addElement(home);
-        LOG.log(Level.INFO, "navigate home", this);
         return  model;
     }
     

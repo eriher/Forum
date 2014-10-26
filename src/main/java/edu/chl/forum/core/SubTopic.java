@@ -9,8 +9,8 @@ package edu.chl.forum.core;
 import edu.chl.forum.util.AbstractEntity;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,11 +21,14 @@ import javax.persistence.OneToMany;
 
 
 public class SubTopic extends AbstractEntity{
+    
 
     private String title;
     private String description;
-    @OneToMany(cascade=CascadeType.PERSIST)
+    @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
+    @JoinColumn(name = "THREADS_FK")
     private List<ForumThread> threads;
+    private boolean locked;
     
     
     public SubTopic() {
@@ -36,12 +39,14 @@ public class SubTopic extends AbstractEntity{
         this.title = name;
         this.description = description;
         this.threads = list;
+        locked = false;
     }
     
     public SubTopic(Long id, String name, List<ForumThread> list){
         super(id);
         this.title = name;
         this.threads = list;
+        locked = false;
     }
     
 
@@ -53,11 +58,29 @@ public class SubTopic extends AbstractEntity{
         return threads;
     }
     
-    public boolean addThread(ForumThread thread) {
-        return threads.add(thread);
+    public void addThread(ForumThread thread) {
+        threads.add(0, thread);
     }
     
     public String getDescription() {
         return description;
     }
+
+    public boolean getLocked() {
+        return locked;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+    
+    
 }

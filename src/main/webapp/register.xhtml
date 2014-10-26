@@ -20,7 +20,8 @@
                         <p:password id="password1" value="#{registerBB.password}"/>
                         <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>
                         <p:inputText id="email" value="#{registerBB.email}"/>
-                        <p:commandButton value="Submit" actionListener="#{register.save}" action="home" icon="ui-icon-check"/>
+                        <p:commandButton value="Cancel" action="index?faces-redirect=true" icon="ui-icon-arrowreturn-1-e"/>
+                        <p:commandButton value="Submit" actionListener="#{register.save}" action="index?faces-redirect=true" icon="ui-icon-check"/>
                     </h:panelGrid>               
                 </h:form>
             </ui:define>

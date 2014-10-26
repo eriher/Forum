@@ -7,12 +7,15 @@
 package edu.chl.forum.view;
 
 import edu.chl.forum.core.IForum;
+import edu.chl.forum.core.MainTopic;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,33 +24,39 @@ import javax.inject.Named;
  * @author erik
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class TopicsListBB implements Serializable{
         private static final Logger LOG = Logger.getLogger(TopicsListBB.class.getName()); 
-        @Inject IForum forum;
+        private IForum forum;
         private String tabs;
-
+        private List<MainTopic> maintopic;
+        
+        public TopicsListBB() {
+            
+        }
+        @Inject
+        public TopicsListBB(IForum forum) {
+            this.forum = forum;
+        }
         
         @PostConstruct
         public void init() {
-            LOG.log(Level.INFO, "TopicsListBB alive {0}", this);                     
+            LOG.log(Level.INFO, "TopicsListBB alive {0}", this);
             setActiveTabs(forum.getMainTopicCatalogue().count());
+            maintopic = forum.getMainTopicCatalogue().findAll();
         }
         
         @PreDestroy
         public void pre() {
             LOG.log(Level.INFO, "TopicsListBB to be destroyed {0}", this);
         }
-        
-        public IForum getForum() {
-            return forum;
-        }
 
         
         public void settabs(String tabs) {
             this.tabs = tabs;
         }
-        public String gettabs() {
+        
+        public String getTabs() {
             return tabs;
         }
 
@@ -59,7 +68,17 @@ public class TopicsListBB implements Serializable{
                 tabs = Integer.toString(i);
                 else
                 tabs = tabs + "," + Integer.toString(i);
-            }       
+            }
+            
+            
+        }
+
+        public List<MainTopic> getMaintopic() {
+            return maintopic;
+        }
+
+        public void setMaintopic(List<MainTopic> maintopic) {
+            this.maintopic = maintopic;
         }
     
 }

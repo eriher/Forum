@@ -10,6 +10,7 @@ import edu.chl.forum.util.AbstractEntity;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,8 +22,10 @@ public class MainTopic extends AbstractEntity {
     
     private String title;
     private String description;
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name = "SUBTOPICS_FK")
     private List<SubTopic> subTopics;
+    private boolean locked;
     
     
     public MainTopic() {
@@ -33,6 +36,7 @@ public class MainTopic extends AbstractEntity {
         this.title = title;
         this.description = description;
         this.subTopics = list;
+        locked = false;
     }
     
     public MainTopic(Long id, String title, String description, List<SubTopic> list){
@@ -40,6 +44,7 @@ public class MainTopic extends AbstractEntity {
         this.title = title;
         this.description = description;
         this.subTopics = list;
+        locked = false;
     }
     
     public String getTitle(){
@@ -57,4 +62,20 @@ public class MainTopic extends AbstractEntity {
     public boolean addSubTopic(SubTopic topic){
         return subTopics.add(topic);
     }
+    public boolean getLocked(){
+        return locked;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+    
 }

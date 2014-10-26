@@ -11,10 +11,11 @@ import edu.chl.forum.util.AbstractEntity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,7 +33,8 @@ public class ForumThread extends AbstractEntity{
     @Temporal(TemporalType.DATE)
     private  Date date = new Date();
     
-    @OneToMany
+    @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
+    @JoinColumn(name = "POSTS_FK")
     private List<Post> posts = new ArrayList();
 
     public ForumThread() {
@@ -44,10 +46,11 @@ public class ForumThread extends AbstractEntity{
         this.user = user;
     }
     
-    public ForumThread(Long id, String title, Post post){
+    public ForumThread(Long id, String title, Post post, ForumUser user){
         super(id);
         this.title = title;
         posts.add(post);
+        this.user = user;
     }
     
     public boolean addPost(Post post) {

@@ -61,6 +61,6 @@ public class EditPostCtrl {
         LOG.log(Level.INFO, "Save {0}" + postBB);
         Post post = nav.getThread().getList().get(postBB.getIndex());
         post.setContent(postBB.getContent());
-        forum.getPostCatalogue().update(post);
+        forum.getThreadCatalogue().update(nav.getThread());
     }
 }

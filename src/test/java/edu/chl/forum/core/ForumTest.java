@@ -1,10 +1,6 @@
 package edu.chl.forum.core;
 
-import edu.chl.forum.auth.ForumUser;
-import edu.chl.forum.core.Forum;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;

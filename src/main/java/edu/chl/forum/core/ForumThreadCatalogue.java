@@ -10,7 +10,6 @@ import edu.chl.forum.util.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,7 +18,7 @@ import javax.persistence.PersistenceContext;
  * @author Olof
  */
 @Stateless
-public  class ForumThreadCatalogue extends AbstractDAO<ForumThread, Long>
+public class ForumThreadCatalogue extends AbstractDAO<ForumThread, Long>
         implements IForumThreadCatalogue {
     
     @PersistenceContext
