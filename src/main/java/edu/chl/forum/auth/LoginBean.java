@@ -6,6 +6,7 @@
 package edu.chl.forum.auth;
 
 import edu.chl.forum.core.IForum;
+import edu.chl.forum.core.Post;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import edu.chl.forum.view.LoginBB;
@@ -109,5 +110,27 @@ public class LoginBean implements Serializable{
         this.user = null;
         loggedIn = false;
         return "/index?faces-redirect=true";
+    }
+    
+    public int countPosts(long id){
+        int posts = 0;
+        List<Post> ps = forum.getPostCatalogue().findAll();
+        for (int n = 0; n < ps.size(); n++) {
+            if(ps.get(n).getUser().getId().equals(id)){
+                posts++;
+            }
+        }
+        return posts;
+    }
+    
+    public String getRank(long id){
+        switch(forum.getUserCatalogue().find(id).getRank()){
+            case 0:
+                return "User";
+            case 1:
+                return "Moderator";
+            default:
+                return "Admin";
+        }
     }
 }
