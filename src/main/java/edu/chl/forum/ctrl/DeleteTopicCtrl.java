@@ -21,8 +21,8 @@ import javax.inject.Named;
  */
  @Named
  @RequestScoped
-public class DeleteCtrl {
-    private static final Logger LOG = Logger.getLogger(DeleteCtrl.class.getName());
+public class DeleteTopicCtrl {
+    private static final Logger LOG = Logger.getLogger(DeleteTopicCtrl.class.getName());
     @Inject IForum forum;
     @PostConstruct
     public void post() {

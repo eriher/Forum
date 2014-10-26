@@ -7,10 +7,8 @@ package edu.chl.forum.auth;
 
 import edu.chl.forum.core.ForumUser;
 import edu.chl.forum.core.IForum;
-import edu.chl.forum.core.IUserCatalogue;
 import edu.chl.forum.view.RegisterBB;
 import java.io.Serializable;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;

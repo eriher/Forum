@@ -13,6 +13,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
@@ -23,7 +24,6 @@ import javax.persistence.OneToMany;
 
 public class SubTopic extends AbstractEntity{
     
-
     private String title;
     private String description;
     @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)

@@ -42,11 +42,6 @@ public class PostListBB {
         LOG.log(Level.INFO, "PostListBB to be destroyed {0}", this);
     }
     
-    
-    @Inject
-    public PostListBB(IForum forum){
-        this.forum = forum;
-    }
    
     public int getPosts(Long id){
         return forum.getPostCatalogue().getAllPosts(id);
