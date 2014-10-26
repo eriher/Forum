@@ -24,7 +24,7 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditPostBB implements Serializable {
-    private int rank;
+    private long editorId;
     private int index;
     private Post post;
     private String content;
@@ -58,8 +58,8 @@ public class EditPostBB implements Serializable {
         return post;
     }
     
-    public int getRank(){
-        return rank;
+    public long getEditorId(){
+        return editorId;
     }
     
 
@@ -83,8 +83,8 @@ public class EditPostBB implements Serializable {
         this.index = index;
     }
     
-    public void setRank(int rank){
-        this.rank = rank;
+    public void setEditorId(long editorId){
+        this.editorId = editorId;
     }
 
 }

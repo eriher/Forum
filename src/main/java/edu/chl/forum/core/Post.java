@@ -8,12 +8,13 @@ package edu.chl.forum.core;
 
 import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.util.AbstractEntity;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -25,10 +26,15 @@ public class Post extends AbstractEntity  {
     private boolean adminEdit;
     private boolean userEdit;
     private String content;
+    private String editText;
     @ManyToOne(cascade=CascadeType.PERSIST)
     private ForumUser user;
-    @Temporal (TemporalType.DATE)
-    private Date date = new Date();
+    @Transient
+    private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    @Transient
+    private final Date today = new Date();
+
+    private final String date = df.format(today);
 
     public Post() {
     }
@@ -61,8 +67,12 @@ public class Post extends AbstractEntity  {
         return user;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
+    }
+    
+    public String getEditText(){
+        return editText;
     }
     
     public void setContent(String content){
@@ -75,6 +85,10 @@ public class Post extends AbstractEntity  {
     
     public void setAdminEdit(boolean adminEdit){
         this.adminEdit = adminEdit;
+    }
+    
+    public void setEditText(String editText){
+        this.editText = editText;
     }
     
 }

@@ -5,10 +5,14 @@
  */
 package edu.chl.forum.ctrl;
 
+import edu.chl.forum.auth.ForumUser;
 import edu.chl.forum.core.IForum;
 import edu.chl.forum.core.Post;
 import edu.chl.forum.view.EditPostBB;
 import edu.chl.forum.view.NavigationBB;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -59,13 +63,24 @@ public class EditPostCtrl {
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
+        
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date today = new Date();
+        String date = df.format(today);
+        
         Post post = nav.getThread().getList().get(postBB.getIndex());
         post.setContent(postBB.getContent());
-        if(postBB.getRank()<1)
-            post.setUserEdit(true);
-        else
-            post.setAdminEdit(true);
         
+        ForumUser user = forum.getUserCatalogue().find(postBB.getEditorId());
+        if(user.getRank()<1)
+        {
+            post.setEditText("Edited on " +date+ " by user " +user.getName());
+            post.setUserEdit(true);
+        }
+        else{
+            post.setEditText("Edited on " +date+ " by administrator " +user.getName());
+            post.setAdminEdit(true);
+        }
         forum.getPostCatalogue().update(post);
     }
 }

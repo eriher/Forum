@@ -16,7 +16,7 @@
                     <f:viewParam name="index" value="#{editPostBB.index}"/>
                     <f:viewParam name="content" value="#{editPostBB.content}"/>
                 </f:metadata>
-                <c:set value="#{loginBean.user.rank}" target="#{editPostBB}" property="rank"/>
+                <c:set value="#{loginBean.user.getId()}" target="#{editPostBB}" property="editorId"/>
                 <h:form>
                     <h:panelGrid columns="1">
                         <h:outputLabel value="Content" style="font-weight:bold"/>
