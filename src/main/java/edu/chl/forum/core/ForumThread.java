@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class ForumThread extends AbstractEntity{
     
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     private ForumUser forumUser;
     private String title;
     private boolean locked;
@@ -33,6 +33,7 @@ public class ForumThread extends AbstractEntity{
 
     public ForumThread() {
     }
+    
     
     public ForumThread(String title, Post post, ForumUser user){
         posts = new ArrayList();

@@ -20,6 +20,7 @@ import javax.inject.Named;
 /**
  *
  * @author erikk
+ * Handles saving for edited threads
  */
 @Named
 @RequestScoped

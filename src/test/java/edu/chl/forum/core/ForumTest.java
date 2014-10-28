@@ -15,6 +15,7 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.After;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,6 +54,10 @@ public class ForumTest {
           
     @Before  // Run before each test
     public void before() throws Exception {
+        clearAll();
+    }
+    @After
+    public void tearDown() throws Exception {
         clearAll();
     }
     
@@ -99,9 +104,23 @@ public class ForumTest {
         forum.getSubTopicCatalogue().update(subtopic);
         assertTrue(forum.getSubTopicCatalogue().count() == 1);
         assertTrue(forum.getSubTopicCatalogue().findAll().get(0).getTitle().equals("nej"));
-        
-    
     }
+    @Test
+    public void testGetUsersPosts() {
+        ForumUser user = new  ForumUser("pelle");
+        Post post = new Post("post1", user);
+        Post post2 = new Post("post2", user);
+        Post post3 = new Post("post3", user);
+        Post post4 = new Post("post4", user);
+        ForumThread thread = new ForumThread("hej",post,user);
+        thread.addPost(post2);
+        thread.addPost(post3);
+        thread.addPost(post4);
+        forum.getThreadCatalogue().create(thread);
+        
+        assertTrue(forum.getPostCatalogue().getPostsByUserId(user.getId()).size() == 4);
+    }
+    
     
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces

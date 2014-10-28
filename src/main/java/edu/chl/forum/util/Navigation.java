@@ -23,6 +23,11 @@ import org.primefaces.model.menu.MenuModel;
 /**
  *
  * @author erik
+ * Contains models for Breadcrumb navigation
+ * Keeps track refrences for web pages and ctrl beans
+ * Used by: index,postlist,threadlist,add/edit.xhml, 
+ * Used by: EditTopicCtrl,EditThreadCtrl,EditPostCtrl,AddThreadCtrl,
+ * Used by: AddSubTopicCtrl,AddPostCtrl
  */
 @Named
 @SessionScoped
