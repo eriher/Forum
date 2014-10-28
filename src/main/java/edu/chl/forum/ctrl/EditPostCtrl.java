@@ -39,7 +39,6 @@ public class EditPostCtrl {
     
     
     protected EditPostCtrl(){
-        
     }
     
     @PostConstruct
@@ -62,7 +61,6 @@ public class EditPostCtrl {
         this.postBB = postBB;
     }
     
-  
     //TODO Rename Thread, conflict with java.Lang.Thread
     public void save() {
         LOG.log(Level.INFO, "Save {0}" + postBB);
@@ -74,14 +72,11 @@ public class EditPostCtrl {
         ForumThread thread = nav.getThread();
         thread.getList().get(postBB.getIndex()).setContent(postBB.getContent());
         
-        
         ForumUser user = login.getUser();
-        if(user.getRank()<1)
-        {
+        if(user.getRank()<1) {
             thread.getList().get(postBB.getIndex()).setEditText("Edited on " +date+ " by user " +user.getName());
             thread.getList().get(postBB.getIndex()).setUserEdit(true);
-        }
-        else{
+        } else {
             thread.getList().get(postBB.getIndex()).setEditText("Edited on " +date+ " by administrator " +user.getName());
             thread.getList().get(postBB.getIndex()).setAdminEdit(true);
         }

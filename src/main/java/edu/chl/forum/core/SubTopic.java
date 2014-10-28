@@ -32,8 +32,8 @@ public class SubTopic extends AbstractEntity{
     
     
     public SubTopic() {
-        
     }
+    
     public SubTopic(String name, String description){
         this.title = name;
         this.description = description;
@@ -54,7 +54,6 @@ public class SubTopic extends AbstractEntity{
         this.threads = list;
         locked = false;
     }
-    
 
     public String getTitle(){
         return title;
@@ -87,6 +86,4 @@ public class SubTopic extends AbstractEntity{
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
-    
-    
 }

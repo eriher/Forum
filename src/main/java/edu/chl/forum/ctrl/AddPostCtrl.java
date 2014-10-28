@@ -34,7 +34,6 @@ public class AddPostCtrl {
     @Inject LoginBean login;
     
     protected AddPostCtrl(){
-        
     }
     
     @PostConstruct

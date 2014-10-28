@@ -60,5 +60,4 @@ public class AddTopicBB {
     public void setSubtopics(List<SubTopic> subtopics) {
         this.subtopics = subtopics;
     }
-        
 }

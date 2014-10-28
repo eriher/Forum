@@ -19,7 +19,7 @@ import javax.inject.Named;
 
 
 /**
- *
+ * SessionScoped bean that handles login requests and logged in users
  * @author Simon
  */
 @Named
@@ -51,27 +51,17 @@ public class LoginBean implements Serializable{
    ¨*   Method for logging in users with clientside input
     */
     public String login(){
-        //DEBUG CODE
-        System.out.println("logging in user: " + loginBB.getName() + ", "  + loginBB.getPassword());
-        System.out.println("Users in db: ");
-        for(ForumUser n : forum.getUserCatalogue().findAll()){
-            System.out.println("U" + n + ": " + n.getName());
-        }
-        //DEBUG CODE
         List<ForumUser> us = forum.getUserCatalogue().getByName(loginBB.getName());
         
         if(us.size() > 0){
             ForumUser u = us.get(0);
             if(u.getPassword().equals(loginBB.getPassword())){
-                System.out.println("Login successfull.");
                 this.user = u;
                 loggedIn = true;
             } else {
-                System.out.println("Login failed.");
                 loggedIn = false;
             }
         } else {
-            System.out.println("Login failed.");
             loggedIn = false;
         }
         return "/index?faces-redirect=true";
@@ -87,15 +77,12 @@ public class LoginBean implements Serializable{
         if(us.size() > 0){
             ForumUser u = us.get(0);
             if(u.getPassword().equals(password)){
-                System.out.println("Login successfull.");
                 this.user = u;
                 loggedIn = true;
             } else {
-                System.out.println("Login failed.");
                 loggedIn = false;
             }
         } else {
-            System.out.println("Login failed.");
             loggedIn = false;
         }
         return "/index?faces-redirect=true";
@@ -105,7 +92,6 @@ public class LoginBean implements Serializable{
     *   Method for logging out users
     */
     public String logout(){
-        System.out.println("Logging out user " + user.getName());
         this.user = null;
         loggedIn = false;
         return "/index?faces-redirect=true";

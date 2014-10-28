@@ -46,5 +46,4 @@ public class EditThreadCtrl {
         thread.setLocked(editThreadBB.isLocked());
         forum.getThreadCatalogue().update(thread);
     }
-    
 }

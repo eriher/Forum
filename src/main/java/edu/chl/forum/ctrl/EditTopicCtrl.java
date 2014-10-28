@@ -26,11 +26,13 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditTopicCtrl {
+    
     private static final Logger LOG = Logger.getLogger(EditTopicCtrl.class.getName());
     @Inject IForum forum;
     @Inject Navigation nav;
     @Inject EditTopicBB editTopicBB;
     @PostConstruct
+    
     public void post() {
         LOG.log(Level.INFO, "EditCtrl alive {0}", this);
     }
@@ -53,6 +55,5 @@ public class EditTopicCtrl {
         maintopic.setTitle(editTopicBB.getTitle());
         maintopic.setLocked(editTopicBB.isLocked());
         forum.getMainTopicCatalogue().update(maintopic);
-        
     }
 }

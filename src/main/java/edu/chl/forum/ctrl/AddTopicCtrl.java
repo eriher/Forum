@@ -42,5 +42,4 @@ public class AddTopicCtrl {
         MainTopic maintopic = new MainTopic(addtopicBB.getTitle() ,addtopicBB.getDescription(), addtopicBB.getSubtopics());
         forum.getMainTopicCatalogue().create(maintopic);
     }
-    
 }

@@ -32,8 +32,6 @@ public class SubTopicCatalogue extends AbstractDAO<SubTopic, Long>
         return em;
     }
             
-    
-    
     @Override
     public List<SubTopic> getByName(String name) {
         List<SubTopic> found = new ArrayList<>();

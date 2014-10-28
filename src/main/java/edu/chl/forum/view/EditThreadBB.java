@@ -49,7 +49,4 @@ public class EditThreadBB {
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
-    
-    
-    
 }

@@ -33,8 +33,8 @@ public class TopicsListBB implements Serializable{
         private List<MainTopic> maintopics;
         
         public TopicsListBB() {
-            
         }
+        
         @Inject
         public TopicsListBB(IForum forum) {
             this.forum = forum;
@@ -60,7 +60,6 @@ public class TopicsListBB implements Serializable{
         public String getTabs() {
             return tabs;
         }
-
         
         private void setActiveTabs(int count) {
             tabs = new String();
@@ -70,8 +69,6 @@ public class TopicsListBB implements Serializable{
                 else
                 tabs = tabs + "," + Integer.toString(i);
             }
-            
-            
         }
 
         public List<MainTopic> getMaintopic() {
@@ -81,5 +78,4 @@ public class TopicsListBB implements Serializable{
         public void setMaintopic(List<MainTopic> maintopic) {
             this.maintopics = maintopic;
         }
-    
 }

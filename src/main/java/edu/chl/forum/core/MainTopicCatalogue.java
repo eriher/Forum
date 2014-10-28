@@ -21,14 +21,12 @@ import javax.persistence.PersistenceContext;
 public class MainTopicCatalogue extends AbstractDAO<MainTopic, Long>
         implements IMainTopicCatalogue{
     
-        
     @PersistenceContext
     EntityManager em;
     
     public MainTopicCatalogue(){
         super(MainTopic.class);
     }        
-    
     
     @Override
     public List<MainTopic> getByName(String name) {

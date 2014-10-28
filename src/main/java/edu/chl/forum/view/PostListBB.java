@@ -24,7 +24,6 @@ public class PostListBB {
     private static final Logger LOG = Logger.getLogger(PostListBB.class.getName());
 
     protected PostListBB(){
-        
     }
     
     @PostConstruct
@@ -37,10 +36,7 @@ public class PostListBB {
         LOG.log(Level.INFO, "PostListBB to be destroyed {0}", this);
     }
     
-   
     public int getPosts(Long id){
         return forum.getPostCatalogue().getAllPosts(id);
     }
-    
-    
 }

@@ -30,7 +30,6 @@ public class Forum implements IForum, Serializable{
         Logger.getAnonymousLogger().log(Level.INFO, "Forum alive");
     }
 
-    
     @Override
     public IUserCatalogue getUserCatalogue(){
         return userCatalogue;

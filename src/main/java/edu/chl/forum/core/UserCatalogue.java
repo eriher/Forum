@@ -16,7 +16,6 @@ import javax.persistence.PersistenceContext;
  *
  * @author Olof
  */
-
 @Stateless
 public class UserCatalogue extends AbstractDAO<ForumUser, Long> 
         implements IUserCatalogue{
@@ -44,20 +43,14 @@ public class UserCatalogue extends AbstractDAO<ForumUser, Long>
         return found;
     }
     
-    /*
     @Override
-    public ForumUser loginCheck(String name, String password){
-        TypedQuery q = getEntityManager().createQuery("select U from ForumUser U where U.name=':name' and U.password=':password'",ForumUser.class);
-        q.setParameter("name", name);
-        q.setParameter("password", password);
-        
-        List<ForumUser> found = q.getResultList();
-        
-        if(found.isEmpty()){
-            return null;
-        } else {
-            return found.get(0);
+    public List<ForumUser> getByEmail(String email) {
+        List<ForumUser> found = new ArrayList<>();
+        for (ForumUser u : findRange(0, count())) {
+            if (u.getEmail().equals(email)) {
+                found.add(u);
+            }
         }
+        return found;
     }
-    */
 }

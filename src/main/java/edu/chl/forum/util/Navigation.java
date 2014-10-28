@@ -32,24 +32,27 @@ import org.primefaces.model.menu.MenuModel;
 @Named
 @SessionScoped
 public class Navigation implements Serializable{
+    
     private static final Logger LOG = Logger.getLogger(Navigation.class.getName()); 
     private MenuModel model;
     private ForumThread thread;
     private SubTopic subtopic;
     private MainTopic maintopic;
     
-        
     @PostConstruct
     public void init() {
         LOG.log(Level.INFO, "Navigation alive {0}", this);
     }
+    
     @PreDestroy
     public void pre() {
         LOG.log(Level.INFO, "Navigation to be destroyed {0}", this);
     }    
+    
     public MenuModel getModel() {
         return model;
     }    
+    
     public MenuModel navigateHome() {
         model = new DefaultMenuModel();
         
@@ -73,6 +76,7 @@ public class Navigation implements Serializable{
         
         return  model;
     }
+    
     public MenuModel navigatePosts(){
         model = new DefaultMenuModel();
         
@@ -116,6 +120,4 @@ public class Navigation implements Serializable{
     public void setMaintopic(MainTopic maintopic) {
         this.maintopic = maintopic;
     }
-    
-
 }
