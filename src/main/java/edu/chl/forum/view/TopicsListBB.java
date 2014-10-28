@@ -78,4 +78,5 @@ public class TopicsListBB implements Serializable{
         public void setMaintopic(List<MainTopic> maintopic) {
             this.maintopics = maintopic;
         }
+
 }

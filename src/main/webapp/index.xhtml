@@ -39,24 +39,18 @@
                             <p:commandButton value="Add Subtopic" action="/partials/topics/addSubtopic?faces-redirect=true" actionListener="#{navigation.setMaintopic(mtopic)}" icon="ui-icon-plus" rendered="#{(loginBean.user.rank>0)}"/>
                             
                             
-                            <div class="list-group">
-                                <ui:repeat value="#{mtopic.getList()}" var="stopic">
-                                    <div class="list-group-item">
-                                        <h4 class="list-group-item-heading">
-                                            <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" actionListener="#{navigation.setSubtopic(stopic)}" />
-                                        </h4>
-                                        <p:commandButton value="Edit" rendered="#{loginBean.user.rank>0}" action="editSubTopic" actionListener="#{navigation.setSubtopic(stopic)}">
-                                            <f:param name="title" value="#{stopic.getTitle()}" />
-                                            <f:param name="content" value="#{stopic.getDescription()}" />
-                                            <f:param name="locked" value="#{stopic.isLocked()}" />
-                                        </p:commandButton>
-                                        <p:commandButton value="Delete Subtopic" actionListener="#{deleteTopicCtrl.deleteSubTopic(stopic.getId())}" action="index?faces-redirect=true" rendered="#{loginBean.user.rank>0}">
-                                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
-                                        </p:commandButton>
-                                        <p class="list-group-item-text">#{stopic.getDescription()}</p>
-                                    </div>
-                                </ui:repeat>
-                            </div>
+                            <p:dataGrid id="grid" columns="1" value="#{mtopic.getList()}" var="stopic" styleClass="noborder" rowIndexVar="index">
+                                <p:commandLink value="#{stopic.getTitle()}"  action="/partials/threads/threadList?faces-redirect=true" actionListener="#{navigation.setSubtopic(stopic)}" />
+                                    <p:commandButton value="Edit" rendered="#{loginBean.user.rank>0}" action="editSubTopic" actionListener="#{navigation.setSubtopic(stopic)}">
+                                        <f:param name="title" value="#{stopic.getTitle()}" />
+                                        <f:param name="content" value="#{stopic.getDescription()}" />
+                                        <f:param name="locked" value="#{stopic.isLocked()}" />
+                                    </p:commandButton>
+                                    <p:commandButton value="Delete Subtopic" actionListener="#{deleteTopicCtrl.deleteSubTopic(stopic.getId())}" action="index?faces-redirect=true" rendered="#{loginBean.user.rank>0}">
+                                    <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <h:outputLabel value="SubTopic Description: #{stopic.getDescription()} " style="font-size:small"/>
+                            </p:dataGrid>
                             
                         </p:tab>
                         <f:facet name ="actions">

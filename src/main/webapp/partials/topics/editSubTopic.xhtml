@@ -11,6 +11,10 @@
             <ui:define name="content">
                 <h2>Edit Topics</h2>
                 <h:form>
+                    <f:metadata>
+                        <f:event type="preRenderView" listener="#{editTopicBB.setTitle(navigation.subtopic.title)}"/>
+                        <f:event type="preRenderView" listener="#{editTopicBB.setDescription(navigation.subtopic.description)}"/>
+                    </f:metadata>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Title" style="font-weight:bold"/>
                         <p:inputText id="title" value="#{editTopicBB.title}"/>

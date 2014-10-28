@@ -39,8 +39,6 @@
                                         <td>
                                             #{thread.list.size()}
                                             <p:commandButton value="Edit #{mtopic.getTitle()}" rendered="#{loginBean.user.rank>0}" action="editThread" actionListener="#{navigation.setThread(thread)}">
-                                                <f:param name="title" value="#{thread.getTitle()}" />
-                                                <f:param name="content" value="#{thread.isLocked()}" />
                                             </p:commandButton>
                                         </td>
                                     </tr>

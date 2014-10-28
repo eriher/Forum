@@ -11,8 +11,9 @@
             <ui:define name="content">
                 <h2>Edit Thread</h2>
                 <f:metadata>
-                    <f:viewParam name="title" value="#{editThreadBB.title}"/>
-                    <f:viewParam name="locked" value="#{editThreadBB.locked}"/>
+                    <f:event type="preRenderView" listener="#{editThreadBB.setTitle(navigation.thread.title)}"/>
+                    <f:event type="preRenderView" listener="#{editThreadBB.setLocked(navigation.thread.locked)}"/>
+                    
                 </f:metadata>
                 <h:form>
                     <h:panelGrid columns="2">
